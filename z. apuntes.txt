@@ -1,0 +1,31 @@
+Inicio: 13 de abril. 
+PI descargado. Dejo una copia del BLANK en z. PI-Food-BLANK.
+Repositorio git inicializado y sincronizado con gitHub. 
+Archivo .env creado (falta el puerto).
+DB food creada. 
+
+Dudas:
+- Por ahora los endpoints me muestran un 401, es porque para hacer requests tengo que hacerlo con la apikey creada? 
+- Cuántas requests diarias puedo hacer? Me conviene guardar todo en mi DB hasta que termine el desarrollo? 
+
+DB: relación many-to-many entre modelos Recipe y Diets. Comentados porque todavía no creé los modelos. 
+DB: crear dos modelos -> recetas y dietas. 
+npm i dentro de api
+npm start. Levanta bien el server (dice Listening on port 3001 y Connected to DB). 
+model Recipe: bien conectado con DB. Si le agrego atributos, se actualiza correctamente. 
+
+Consignas: 
+API: https://spoonacular.com/food-api
+enpoints permitidos: 
+https://api.spoonacular.com/recipes/complexSearch
+https://api.spoonacular.com/recipes/complexSearch&addRecipeInformation=true
+tipos de dieta: propiedades vegetarian, vegan, glutenFree, las incluidas en propiedad diets. 
+https://api.spoonacular.com/recipes/{id}/information
+
+Buscar recetas.
+Visualizar la información de las recetas.
+Filtrarlas.
+Ordenarlas.
+Crear nuevas recetas.
+Filtrado y ordenamiento: no se pueden usar endpoints de api externa. 
+

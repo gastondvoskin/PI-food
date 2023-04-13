@@ -1,6 +1,8 @@
 const express = require('express');
-const cookieParser = require('cookie-parser');
+
+const cookieParser = require('cookie-parser');      // equivale al middleware express.json
 const bodyParser = require('body-parser');
+
 const morgan = require('morgan');
 const routes = require('./routes/index.js');
 
@@ -33,3 +35,4 @@ server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
 });
 
 module.exports = server;
+
