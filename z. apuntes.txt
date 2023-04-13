@@ -1,3 +1,5 @@
+Para comenzar a trabajar: npm start en api
+
 Inicio: 13 de abril. 
 PI descargado. Dejo una copia del BLANK en z. PI-Food-BLANK.
 Repositorio git inicializado y sincronizado con gitHub. 
@@ -29,3 +31,5 @@ Ordenarlas.
 Crear nuevas recetas.
 Filtrado y ordenamiento: no se pueden usar endpoints de api externa. 
 
+commit added model Recipe
+cambié Diets por Diet en archivo db.js
