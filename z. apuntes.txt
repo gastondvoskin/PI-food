@@ -10,6 +10,7 @@ Dudas:
 - Por ahora los endpoints me muestran un 401, es porque para hacer requests tengo que hacerlo con la apikey creada? 
 - Cuántas requests diarias puedo hacer? Me conviene guardar todo en mi DB hasta que termine el desarrollo? 
 - index de routes. // Configurar los routers // Ejemplo: router.use('/auth', authRouter); // ??
+- Cómo hago para ver TODOS los resultados al hacer el llamado a la API? No sé ni siquiera cuántos recipes hay. 
 
 
 DB: relación many-to-many entre modelos Recipe y Diets. Comentados porque todavía no creé los modelos. 
@@ -47,3 +48,14 @@ En modelo Recipe, cambié el atributo healthScore por healthscore (minúscula).
 Creé un primer registro en la tabla Recipes mediante sql shell. El código para hacerlo está en el archivo index de routes. Seteé force en true en archivo index general. 
 Terminé la implementación de la primera ruta. Para no hacer requests por error a la API externa, dejé comentado el else de la primera ruta. 
 Siguiente paso: seguir trabajando en archivo index de routes. Pasar a la segunda ruta. A futuro, modularizar. 
+
+Creé la segunda ruta. '/recipes' con query name . Interpreté que es de esta manera aunque la consigna ubica el ? después del name en vez de ubicarlo antes. 
+Implementé guardar las recetas que coinciden con el name del query provenientes de la DB. 
+Siguiente paso: guardar las provenientes de la API externa. 
+Guardé la response de la API externa al request general de recipes en mi archivo resExample.json. 
+Implementé el llamado a la API externa. 
+Agregué esta request a Postman. 
+Implementé la segunda ruta '/recipes' con query name . No sé si busca otros nombres de la API externa porque todavía no sé cómo ver todos los recipes (tal vez debería buscar alguno por id para luego chequear si viene también buscando por su name). 
+A futuro implementar que busque con mayúsculas o minúsculas y que la búsqueda no requiera ser exacta. 
+
+Siguiente paso: tercera ruta. 
