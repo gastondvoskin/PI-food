@@ -99,7 +99,19 @@ router.get('/recipes', async (req, res) => {        // puede tener query: name?=
 });  
 
 
-
+// Tono: ruta 3. 
+// NIY: relacionar la nueva receta con los tipos de dieta solicitados. La receta debe estar relacionada con los tipos de dieta indicados (al menos uno). Ver atributo diets en archivo Recipe.js . También rever ruta GET /recipes para que traiga también el atributo diets. 
+router.post('/recipes', async (req, res) => {
+    try {
+        const { id, name, image, summary, healthscore, instructions } = req.body;
+        const newRecipe = await Recipe.create({
+            id, name, image, summary, healthscore, instructions
+        });
+        res.status(201).send("NIY: New recipe created!");     
+    } catch (error) {
+        res.status(400).send({error: error.message});
+    }
+});
 
 
 

@@ -29,11 +29,18 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         allowNull: false
       }, 
-      //
       instructions: {
         type: DataTypes.TEXT,
-        allowNull: false,
+        allowNull: false
       },
+
+      // inicio aún sin chequear
+      // diets: {
+      //   type: DataTypes.STRING,
+      //   allowNull: false
+      // },
+      // fin aún sin chequear
+
       created: {
         type: DataTypes.BOOLEAN,
         defaultValue: true

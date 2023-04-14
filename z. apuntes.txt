@@ -59,3 +59,9 @@ Implementé la segunda ruta '/recipes' con query name . No sé si busca otros no
 A futuro implementar que busque con mayúsculas o minúsculas y que la búsqueda no requiera ser exacta. 
 
 Siguiente paso: tercera ruta. 
+Armé la request en Postman. 
+Desestructuré los datos que llegan por body en la ruta. 
+Con el método create del modelo, creé una recipe en la ruta. Para verla en la DB, recordar apretar enter hasta que aparezca el registro. 
+Para ver DB en psql, al ser varios registros, recordar \x para ver con claridad. 
+En la función que crea el modelo (archivo Recipe.js), agregué el atributo diets. 
+A futuro rever diets en Recipe.js, en ruta GET /recipes , en ruta POST /recipes y en Postman. 
