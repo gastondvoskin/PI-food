@@ -14,6 +14,10 @@ Dudas:
 - Cómo manejo las diets que están en propiedades vs las que están en la propiedad Diets? Se duplican, es necesario usar las propiedades sueltas además de las de la propiedaD Diets? Por qué no incluir diaryFree dentro de las propiedades que van por separado igual que vegetarian, vegan y flutenFree? 
 - Cómo se están relacionando los modelos?
 
+- React. npm start: creo que servía para crear y actualizar el bundle. Confirmar. 
+- React-router-dom está en versión 5, en vez de 6.3.0. Debería actualizarla? 
+
+
 
 DB: relación many-to-many entre modelos Recipe y Diets. Comentados porque todavía no creé los modelos. 
 DB: crear dos modelos -> recetas y dietas. 
@@ -80,4 +84,29 @@ Siguiente paso back-end: relacionar modelos (hasta ahora tengo la relación many
 Paso futuro para el back-end: modularizar. 
 git commit -m "added route get /diets"
 
+
+
+FRONT-end
+npm start: para compilar. 
 Siguiente paso: comenzar front-end. 
+Para el front-end, no enfocarme en los estilos. Ir a lo funcional. 
+npm i en client.
+Instalé la extensión Live Server en VSC. Abrí el HTML con Live Server. 
+Dejé como estaban web vitals del package json y el archivo reportWebVitals.js contenido en src. Por las dudas de que los necesito a futuro.  
+Probé agregar un div al html y se actualiza correctamente con el Live Server. 
+npm run build lo voy a usar recién para el deployment. 
+Cambié el title del html a PI-Food. 
+Probé agregar un div desde el componente App y funciona correctamente. 
+Cambié el background-color del body (archivo index.css) a black y el color a white.
+
+FLUJO: 
+html -> index.js -> App -> Landing
+                        -> Home
+                        -> etc
+                        
+Actualicé las versiones en package.json de: React, React-dom, React-router-dom, React-redux, React-scripts. Volví a hacer npm i. 
+Siguiente paso: hacer el ruteo desde el archivo index.js 
+Archivo index.js . Reemplacé el código de ReactDom.render(...) por otro, dejando el que estaba como comentado. 
+archivo index.js. Envolví al componente App en el BrowserRouter (y lo importé). A futuro, envolver con Provider store (para conectar con redux). 
+Archivo App.js. Hice los imports de React, Routes y Route. Reescribí el componente App, cambiándolo a función flecha y agregándole rutas. 
+Creé la carpeta components dentro de src. Dentro de components, creé la carpeta Landing, y dentro de ella Landing.jsx y Landing.module.css. Exporté el componente Landing, lo importé en App.js y creé la ruta correspondiente. 

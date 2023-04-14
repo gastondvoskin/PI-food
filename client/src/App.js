@@ -1,12 +1,18 @@
 import './App.css';
+// inicio TONO
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Landing from './components/Landing/Landing.jsx';
+// fin TONO
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <h1>Henry Food</h1>
-      <div>Texto desde el componente App</div>
-    </div>
+    <>
+      <Routes>
+        <Route path="/landing" element={<Landing />} />
+      </Routes>  
+    </>
   );
-}
+};
 
 export default App;
