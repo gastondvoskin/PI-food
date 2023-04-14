@@ -555,8 +555,8 @@
     "totalResults": 5221
 }
 
-let apiRecipesRaw = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true`);
-(abajo copio lo que consologuea de apiRecipesRaw.data.results)
+// let apiRecipesRaw = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true`);
+// (abajo copio lo que consologuea de apiRecipesRaw.data.results)
 [
     {
         "vegetarian": true,
@@ -2781,3 +2781,17 @@ let apiRecipesRaw = await axios.get(`https://api.spoonacular.com/recipes/complex
       created: false
     }
   ]
+
+
+// ruta 4, después de los dos bucles forEach, es decir allDiets. 
+[
+    "vegetarian",
+    "vegan",
+    "glutenFree",
+    "gluten free",
+    "dairy free",
+    "lacto ovo vegetarian",
+    "paleolithic",
+    "primal",
+    "whole 30"
+]

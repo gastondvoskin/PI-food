@@ -11,6 +11,8 @@ Dudas:
 - Cuántas requests diarias puedo hacer? Me conviene guardar todo en mi DB hasta que termine el desarrollo? 
 - index de routes. // Configurar los routers // Ejemplo: router.use('/auth', authRouter); // ??
 - Cómo hago para ver TODOS los resultados al hacer el llamado a la API? No sé ni siquiera cuántos recipes hay. 
+- Cómo manejo las diets que están en propiedades vs las que están en la propiedad Diets? Se duplican, es necesario usar las propiedades sueltas además de las de la propiedaD Diets? Por qué no incluir diaryFree dentro de las propiedades que van por separado igual que vegetarian, vegan y flutenFree? 
+- Cómo se están relacionando los modelos?
 
 
 DB: relación many-to-many entre modelos Recipe y Diets. Comentados porque todavía no creé los modelos. 
@@ -65,3 +67,17 @@ Con el método create del modelo, creé una recipe en la ruta. Para verla en la 
 Para ver DB en psql, al ser varios registros, recordar \x para ver con claridad. 
 En la función que crea el modelo (archivo Recipe.js), agregué el atributo diets. 
 A futuro rever diets en Recipe.js, en ruta GET /recipes , en ruta POST /recipes y en Postman. 
+
+Creé la ruta 4. GET /diets . Tomé la petición de la ruta 2, a futuro modularizar esta función. 
+Inicialicé allDiets con tres propiedades (está hardcodeado o está ok). Las demás propiedades las tomé haciendo dos bucles: el primer recorre todas las apiRecipes, el segundo recorre dentro de cada apiRecipe su propiedad diets. Cada diet que no esté incluida en el arreglo allDiets se pushea a este arreglo. 
+Siguiente paso: agregar los elementos del arreglo allDiets a la DB para que ya queden guardados ahí. 
+Agregué el modelo Diet al archivo index.js de rutas. A futuro, modularizar. 
+Quité el atributo created de la función que crea el modelo Diet (archivo Diet.js). 
+Con un bucle forEach, agregué cada elemento del arreglo allDiets a la DB. 
+El arreglo allDiets tiene un elemento glutenFree y un elemento gluten Free. Rever a futuro si está ok. 
+A futuro, hacer que la petición a la API externa traiga todos los recipes, no solamente 10 (es la misma función que voy a necesitar para la ruta 2). 
+Siguiente paso back-end: relacionar modelos (hasta ahora tengo la relación many-to-many, pero estoy tratando a las tablas como entidades totalmente separadas).
+Paso futuro para el back-end: modularizar. 
+git commit -m "added route get /diets"
+
+Siguiente paso: comenzar front-end. 

@@ -4,7 +4,7 @@ require('dotenv').config();         // tono
 
 const { API_KEY } = process.env;    // tono
 
-const { Recipe } = require('../db.js');     // tono. importo el Modelo. A futuro modularizar. 
+const { Recipe, Diet } = require('../db.js');     // tono. importo el Modelo. A futuro modularizar. 
 
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
@@ -101,6 +101,7 @@ router.get('/recipes', async (req, res) => {        // puede tener query: name?=
 
 // Tono: ruta 3. 
 // NIY: relacionar la nueva receta con los tipos de dieta solicitados. La receta debe estar relacionada con los tipos de dieta indicados (al menos uno). Ver atributo diets en archivo Recipe.js . También rever ruta GET /recipes para que traiga también el atributo diets. 
+// Para los tipos de dieta debes tener en cuenta las propiedades vegetarian, vegan y glutenFree por un lado, y también analizar las que se incluyan dentro de la propiedad diets por otro.
 router.post('/recipes', async (req, res) => {
     try {
         const { id, name, image, summary, healthscore, instructions } = req.body;
@@ -115,7 +116,48 @@ router.post('/recipes', async (req, res) => {
 
 
 
+// Tono: ruta 4. 
+// GET | /diets
+// Obtiene un arreglo con todos los tipos de dietas existentes.
+// En una primera instancia, cuando no exista ninguna dieta, deberás precargar la base de datos con las dietas de la documentación.
+// Estas deben ser obtenidas de la API (se evaluará que no haya hardcodeo). Luego de obtenerlas de la API, deben ser guardadas en la base de datos para su posterior consumo desde allí.
+router.get('/diets', async (req, res) => {
+    try {
+        // inicio copiado de ruta 2. Luego modularizar. 
+        // A futuro, hacer que la petición a la API externa traiga todos los recipes, no solamente 10 (es la misma función que voy a necesitar para la ruta 2). 
+        let apiRecipesRaw = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true`); 
+        apiRecipesRaw = apiRecipesRaw.data.results;
+        // fin copiado de ruta 2. Luego modularizar.
+
+        const allDiets = ["vegetarian", "vegan", "glutenFree"]; // inicializado con las propiedades mencionadas en el enunciado general. Chequear si esto se considera harcodeado o si está ok. 
+
+        apiRecipesRaw.forEach((apiRecipe) => {
+            apiRecipe.diets.forEach((diet) => {
+                if(!allDiets.includes(diet)) {
+                    allDiets.push(diet);
+                };
+            });
+        });
+        // console.log('allDiets: ', allDiets);
+        // El arreglo allDiets tiene un elemento glutenFree y un elemento gluten Free. Rever a futuro si está ok. 
+
+        allDiets.forEach((diet) => {
+            Diet.create({
+                name: diet
+            });    
+        });
+
+        res.status(200).send(allDiets);     
+        // res.status(200).send("NIY: arreglo con todos los tipos de dietas existentes");     
+    } catch (error) {
+        res.status(400).send({error: error.message});
+    }
+});
+// Para chequear en psql:
+// SELECT * FROM "Diets";
 
 //tono fin
 
 module.exports = router;
+
+
