@@ -1,15 +1,16 @@
 import './App.css';
-// inicio TONO
+
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Landing from './components/Landing/Landing.jsx';
-// fin TONO
+import Home from './components/Home/Home.jsx';
 
 const App = () => {
   return (
     <>
       <Routes>
-        <Route path="/landing" element={<Landing />} />
+        <Route path="/" element={<Landing />} />
+        <Route path="/home" element={<Home />} />
       </Routes>  
     </>
   );
