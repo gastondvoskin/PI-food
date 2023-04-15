@@ -16,6 +16,7 @@ Dudas:
 
 - React. npm start: creo que servía para crear y actualizar el bundle. Confirmar. 
 - React-router-dom está en versión 5, en vez de 6.3.0. Debería actualizarla? 
+- El archivo App.jsx tendría que tener extensión .jsx? Es necesario importar React en ese archivo? 
 
 
 
@@ -100,13 +101,34 @@ Probé agregar un div desde el componente App y funciona correctamente.
 Cambié el background-color del body (archivo index.css) a black y el color a white.
 
 FLUJO: 
-html -> index.js -> App -> Landing
-                        -> Home
-                        -> etc
+html -> index.js -> App.js -> Landing.jsx -> 
+-> Home.jsx -> SearchBar.jsx
+        -> Cards.jsx -> Detail.jsx
+        -> Filters.jsx
+        -> Sorting.jsx 
+        -> Pagination
+                                    
                         
+
 Actualicé las versiones en package.json de: React, React-dom, React-router-dom, React-redux, React-scripts. Volví a hacer npm i. 
 Siguiente paso: hacer el ruteo desde el archivo index.js 
 Archivo index.js . Reemplacé el código de ReactDom.render(...) por otro, dejando el que estaba como comentado. 
 archivo index.js. Envolví al componente App en el BrowserRouter (y lo importé). A futuro, envolver con Provider store (para conectar con redux). 
 Archivo App.js. Hice los imports de React, Routes y Route. Reescribí el componente App, cambiándolo a función flecha y agregándole rutas. 
 Creé la carpeta components dentro de src. Dentro de components, creé la carpeta Landing, y dentro de ella Landing.jsx y Landing.module.css. Exporté el componente Landing, lo importé en App.js y creé la ruta correspondiente. 
+
+Siguiente paso: implementar Landing.jsx 
+Creé carpeta assets dentro de src. Ahí van las imágenes. 
+Landing. Importé React. Agregué un breve texto. Importé styles y agregué una imagen al archivo landing.module.css. Cambié la imagen directamente al Landing.jsx para controlar su opacity desde el module.css. 
+A futuro, acomodar los estilos. 
+Agregué botón para ingresar a la Home desde la Landing. 
+Agregué archivo Home, todavía sin implementar. 
+Agregué ruta a Home desde App.js. 
+Hasta ahora se puede hacer npm start, entrar a localgost:3000/landing, y desde allí apretar el botón que redirige a /home y carga correctamente. 
+git commit -m "implemented Landing and added Home"
+
+Siguiente paso: Crear componentes que se renderizan en Home.jsx. Basarme en Landing y en proyectos anteriores como Rick, reactdesdecero y CP. 
+Creé los archivos de lso componentes que se renderizan en Home. Son los siguientes: SearchBar, Cards, Filters, Sorting, Pagination. 
+Creé un componente estándar en cada componente que se renderiza en Home, lo exporté, lo importé y rendericé en Home.jsx. 
+
+Siguiente paso: crear componente Detail y renderizarlo en Cards.jsx . Lo correspondiente para Form. 

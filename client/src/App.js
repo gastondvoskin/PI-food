@@ -1,9 +1,10 @@
 import './App.css';
 
-import React from 'react';
+import React from 'react';    // el archivo debería ser .jsx?
 import { Routes, Route } from 'react-router-dom';
 import Landing from './components/Landing/Landing.jsx';
 import Home from './components/Home/Home.jsx';
+
 
 const App = () => {
   return (
