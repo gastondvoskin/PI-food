@@ -1,15 +1,17 @@
 import React from "react";
 import styles from './SearchBar.module.css';
 
+
 const SearchBar = () => {
     return (
         <div>
-            NIY: SearchBar: un input de búsqueda para encontrar recetas por nombre.
+            <span>SearchBar</span>
+            <input 
+                placeholder="Search recipe by name"
+            />
         </div>
     );
 };
 
 export default SearchBar;
 
-
-// SearchBar: un input de búsqueda para encontrar recetas por nombre.

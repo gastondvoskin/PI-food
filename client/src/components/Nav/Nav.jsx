@@ -1,18 +1,21 @@
 import React from "react";
 import styles from './Nav.module.css';
 import { NavLink } from "react-router-dom";
+import SearchBar from "../SearchBar/SearchBar.jsx";
+import Filters from "../Filters/Filters.jsx";
+import Sorting from "../Sorting/Sorting.jsx";
 
 
 const Nav = () => {
     return (
         <nav>
-            NIY: Nav. 
-            <NavLink to='/form'>FORM</NavLink>
+            <h1>NIY - Nav</h1>
+            <SearchBar />
+            <Filters />
+            <Sorting />
+            <NavLink to='/form'>Form para crear recetas</NavLink>
         </nav>
     );
 };
 
 export default Nav;
-
-
-// Tono. Nav: componente Nav que se renderice en Home por fuera de las rutas. Este componente Nav debe tener un link al Form. A futuro, incluir dentro del Nav los componentes SearchBar, Filters y Sorting. 

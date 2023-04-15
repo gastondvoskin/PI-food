@@ -101,15 +101,19 @@ Probé agregar un div desde el componente App y funciona correctamente.
 Cambié el background-color del body (archivo index.css) a black y el color a white.
 
 FLUJO: 
-html -> index.js -> App.js -> Nav.jsx ---> Tiene Link a Form.jsx
-                           -> ruta a Landing.jsx ---> Tiene Link a Home.jsx
-                           -> ruta a Home.jsx -> SearchBar.jsx
-                                       -> Cards.jsx ---> Tiene Link a Detail.jsx
-                                       -> Filters.jsx
-                                       -> Sorting.jsx 
-                                       -> Pagination
-                           -> ruta a Detail.jsx
-                           -> ruta a Form.jsx
+html 
+index.js 
+-> App.js -> Nav.jsx ---> Tiene Link a Form.jsx
+                       -> SearchBar.jsx
+                       -> Filters.jsx
+                       -> Sorting.jsx
+
+           -> ruta a Landing.jsx ---> Tiene Link a Home.jsx
+           -> ruta a Home.jsx -> SearchBar.jsx
+                       -> Cards.jsx ---> Tiene Link a Detail.jsx
+                       -> Pagination
+           -> ruta a Detail.jsx
+           -> ruta a Form.jsx
                         
 
 Actualicé las versiones en package.json de: React, React-dom, React-router-dom, React-redux, React-scripts. Volví a hacer npm i. 
@@ -143,3 +147,14 @@ Creé archivo Form.jsx con un componente estándar, lo exporté, lo importé y r
 Agregué componente Nav que se renderice en Home por fuera de las rutas. Este componente Nav debe tener un link al Form. 
 A futuro, evitar que el Nav se renderice en la Landing (usar renderizado condicional). 
 Siguiente paso: dentro del Nav los componentes SearchBar, Filters y Sorting. 
+git commit -m "added Detail, Form, Nav"
+
+Pasé los imports y renderizaciones de los componentes SearchBar, Filters y Sorting de Home.jsx a Nav.jsx. 
+Siguiente paso: implementación visual mínima de los componentes contenidos en Nav para ir dándome una idea. Empezar por SearchBar. 
+
+SearchBar.jsx. Agregué un input. A futuro, agregar funcionalidad. 
+Filters.jsx. Agregué dos inputs. A futuro, agregar funcionalidad. 
+Sorting.jsx. Agregué dos buttons. A futuro, agregar funcionalidad. 
+
+Siguiente paso: implementar componente Cards. 
+git commit -m "SearchBar, Filters, Sorting rendered by Nav and added basic inputs and buttons"
