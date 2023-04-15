@@ -7,9 +7,10 @@ const Landing = () => {
     return (
         <div >
             <img className={styles.background} src={bgImage} alt="background image with food" />
-            <h1>Welcome to our food website! </h1>
+            <h1>Landing</h1>
+{/*             <h1>Welcome to our food website! </h1>
             <p>Our mission is to provide you with delicious recipes to make your kitchen experience enjoyable and hassle-free. Whether you're an experienced chef or just starting, we have something for everyone!</p>
-            <NavLink to="/home">HOME</NavLink> 
+ */}            <NavLink to="/home">HOME</NavLink> 
             {/* este NavLink fue lo último que agregué */}
         </div>
     );

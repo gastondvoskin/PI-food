@@ -101,13 +101,15 @@ Probé agregar un div desde el componente App y funciona correctamente.
 Cambié el background-color del body (archivo index.css) a black y el color a white.
 
 FLUJO: 
-html -> index.js -> App.js -> Landing.jsx -> 
--> Home.jsx -> SearchBar.jsx
-        -> Cards.jsx -> Detail.jsx
-        -> Filters.jsx
-        -> Sorting.jsx 
-        -> Pagination
-                                    
+html -> index.js -> App.js -> Nav.jsx ---> Tiene Link a Form.jsx
+                           -> ruta a Landing.jsx ---> Tiene Link a Home.jsx
+                           -> ruta a Home.jsx -> SearchBar.jsx
+                                       -> Cards.jsx ---> Tiene Link a Detail.jsx
+                                       -> Filters.jsx
+                                       -> Sorting.jsx 
+                                       -> Pagination
+                           -> ruta a Detail.jsx
+                           -> ruta a Form.jsx
                         
 
 Actualicé las versiones en package.json de: React, React-dom, React-router-dom, React-redux, React-scripts. Volví a hacer npm i. 
@@ -131,5 +133,13 @@ Siguiente paso: Crear componentes que se renderizan en Home.jsx. Basarme en Land
 Creé los archivos de lso componentes que se renderizan en Home. Son los siguientes: SearchBar, Cards, Filters, Sorting, Pagination. 
 Creé un componente estándar en cada componente que se renderiza en Home, lo exporté, lo importé y rendericé en Home.jsx. 
 
-Siguiente paso: crear componente Detail y renderizarlo en Cards.jsx . Lo correspondiente para Form. 
-git commit -m "added SearchBar, Cards, Filters, Sorting, Pagination"
+Siguiente paso: crear componente Detail y renderizarlo en Cards.jsx . A futuro, vista del  Form. 
+git commit -m "added SearchBar, Cards, Filters, Sorting, Pagination".
+
+Creé ruta detail/id en App.js. A futuro cambiarlo por ruta dinámica. 
+Creé archivo Detail.jsx con un componente estándar, lo exporté, lo importé y rendericé en Home. En Cards importé Link y agregué el link a Detail, que a futuro tiene que ser dinámico según el id de la recipe. 
+
+Creé archivo Form.jsx con un componente estándar, lo exporté, lo importé y rendericé en Home. 
+Agregué componente Nav que se renderice en Home por fuera de las rutas. Este componente Nav debe tener un link al Form. 
+A futuro, evitar que el Nav se renderice en la Landing (usar renderizado condicional). 
+Siguiente paso: dentro del Nav los componentes SearchBar, Filters y Sorting. 

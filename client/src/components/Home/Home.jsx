@@ -13,11 +13,23 @@ const Home = () => {
     return (
         <div>
             NIY: Home
+            <hr />
+
             <SearchBar />
-            <Cards />
+            <hr />
+
             <Filters />
+            <hr />
+
             <Sorting />
+            <hr />
+
+            <Cards />
+            <hr />
+
             <Pagination />
+            <hr />
+
         </div>
     );
 };
