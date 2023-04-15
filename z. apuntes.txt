@@ -132,3 +132,4 @@ Creé los archivos de lso componentes que se renderizan en Home. Son los siguien
 Creé un componente estándar en cada componente que se renderiza en Home, lo exporté, lo importé y rendericé en Home.jsx. 
 
 Siguiente paso: crear componente Detail y renderizarlo en Cards.jsx . Lo correspondiente para Form. 
+git commit -m "added SearchBar, Cards, Filters, Sorting, Pagination"
