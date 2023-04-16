@@ -70,22 +70,24 @@ router.get('/recipes', async (req, res) => {        // puede tener query: name?=
         console.log('dbRecipesByNameClean: ', dbRecipesByNameClean);
 
         // implementación para la API externa
-        let apiRecipesRaw = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true`); 
-        apiRecipesRaw = apiRecipesRaw.data.results;
+        const apiRecipesByNameClean = [];   // sólo para no hacer requests a la API desde el front. A futuro, eliminar y descomentar el código siguiente que hace la request. 
+        
+        // let apiRecipesRaw = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true`); 
+        // apiRecipesRaw = apiRecipesRaw.data.results;
 
-        const apiRecipesByNameRaw = apiRecipesRaw.filter((apiRecipe) => apiRecipe.title === name);
-        const apiRecipesByNameClean = apiRecipesByNameRaw.map((apiRecipe) => {
-            return {
-                id: apiRecipe.id,
-                title: apiRecipe.title,
-                image: apiRecipe.image,
-                summary: apiRecipe.summary,
-                healthscore: apiRecipe.healthScore,         // ojo la mayúscula y minúscula
-                instructions: apiRecipe.analyzedInstructions,
-                created: false
-            }
-        }); 
-        console.log('apiRecipesByNameClean: ', apiRecipesByNameClean);
+        // const apiRecipesByNameRaw = apiRecipesRaw.filter((apiRecipe) => apiRecipe.title === name);
+        // const apiRecipesByNameClean = apiRecipesByNameRaw.map((apiRecipe) => {
+        //     return {
+        //         id: apiRecipe.id,
+        //         title: apiRecipe.title,
+        //         image: apiRecipe.image,
+        //         summary: apiRecipe.summary,
+        //         healthscore: apiRecipe.healthScore,         // ojo la mayúscula y minúscula
+        //         instructions: apiRecipe.analyzedInstructions,
+        //         created: false
+        //     }
+        // }); 
+        // console.log('apiRecipesByNameClean: ', apiRecipesByNameClean);
 
         // unificación de DB con API externa
         const allRecipesByName = [...dbRecipesByNameClean, ...apiRecipesByNameClean];

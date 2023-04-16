@@ -109,9 +109,8 @@ index.js
                        -> Sorting.jsx
 
            -> ruta a Landing.jsx ---> Tiene Link a Home.jsx
-           -> ruta a Home.jsx -> SearchBar.jsx
-                       -> Cards.jsx ---> Tiene Link a Detail.jsx
-                       -> Pagination
+           -> ruta a Home.jsx -> Cards.jsx -> Card.jsx ---> Tiene Link a Detail.jsx
+                              -> Pagination
            -> ruta a Detail.jsx
            -> ruta a Form.jsx
                         
@@ -156,5 +155,15 @@ SearchBar.jsx. Agregué un input. A futuro, agregar funcionalidad.
 Filters.jsx. Agregué dos inputs. A futuro, agregar funcionalidad. 
 Sorting.jsx. Agregué dos buttons. A futuro, agregar funcionalidad. 
 
-Siguiente paso: implementar componente Cards. 
+Siguiente paso: implementar componente Cards. Basarme en proyecto Rick. 
 git commit -m "SearchBar, Filters, Sorting rendered by Nav and added basic inputs and buttons"
+
+Agregué archivo Card.jsx que contiene el componente Card que se exporta y se renderiza en Cards.jsx. 
+
+Siguiente paso: implementar Card y Cards usando props. A futuro, chequear si es mejor así o usar Redux. 
+Archivo.jsx. Importé los hooks useEffect y useState. importé axios. npm i axios dentro de client. Dentro del componente App, inicializo el state recipes como un arreglo vacío. Visualizo en consola web (en Components) que se carga correctamente el state. 
+Hice una petición a mi back-end con get /recipes, harcodeando el query name. 
+Siguiente paso: cargar la card con la petición harcodeada. Luego, corregir el back para poder hacer la request sin query y que traiga todas las recipes. Luego, crear esl reducer para guardar el estado general del cliente, mostrando las recipes adecuadas, según los filtros. 
+
+hacer npm start en el cliente y npm start en el back. dejé comentada la request a la api externa para no exceder las consultas diarias. 
+git commit -m "added Card and added basic request to App"
