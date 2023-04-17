@@ -1,12 +1,7 @@
 // (api)
 
 const { Router } = require('express');
-const axios = require("axios");     // tono
-require('dotenv').config();         // tono
 
-const { API_KEY } = process.env;    // tono
-
-const { Recipe, Diet } = require('../db.js');     // tono. importo el Modelo. A futuro modularizar. 
 const recipesRouter = require('./recipesRouter.js');
 const dietsRouter = require('./dietsRouter.js');
 
@@ -19,36 +14,17 @@ const mainRouter = Router();
 // Ejemplo: router.use('/auth', authRouter);            // ??
 
 // tono inicio
-// nuevo
-
 
 // están creados los archivos en los que voy a modularizar index.js pero todavía no les pasé el código de este archivo index a los handlers. 
 mainRouter.use('/recipes', recipesRouter); 
 mainRouter.use('/diets', dietsRouter);
 
 
-// fin nuevo
+// nuevo. me llevo la primera ruta para modularizarla en recipes Handler y su controller. 
 
-mainRouter.get('/recipes/:idRecipe', async (req, res) => {
-    try {
-        const { idRecipe } = req.params;
-        const source = isNaN(idRecipe) ? "DB" : "apiExterna";       // DB tiene UUID (NaN), apiExterna tiene id numérico
-        // console.log('source:' , source);
 
-        let recipeById;
-        if(source === "DB") {
-            recipeById = await Recipe.findByPk(idRecipe); 
-            // console.log('recipeById: ', recipeById.dataValues);
-        } else {    // API externa
-        // let recipeById = await axios.get(`https://api.spoonacular.com/recipes/${idRecipe}/information?apiKey=${API_KEY}`);
-        // recipeById = recipeById.data; 
-        }
+// fin. me llevo la primera ruta para modularizarla en recipes Handler y su controller. 
 
-        res.status(200).send(recipeById);        
-    } catch (error) {
-        res.status(400).send({error: error.message});
-    }
-});
 
 
    

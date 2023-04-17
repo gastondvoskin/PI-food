@@ -4,7 +4,7 @@ const cookieParser = require('cookie-parser');      // equivale al middleware ex
 const bodyParser = require('body-parser');
 
 const morgan = require('morgan');
-const router = require('./routes/index.js');      // tono: cambié routes por router
+const router = require('./routes/indexRouter.js');      // tono: cambié routes por router
 
 require('./db.js');
 

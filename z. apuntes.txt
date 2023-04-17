@@ -192,3 +192,13 @@ Creé carpetas handlers y controllers. En cada una creé handlers y controllers 
 Creé una función estándar en recipesHandlers.js para exportar y luego importarla en recipesROuter.js. 
 Están creados los archivos en los que voy a modularizar index.js pero todavía no les pasé el código de este archivo index a los handlers y controllers. 
 git commit -m "added routers, handlers and controllers files for recipes and diets. NIY"
+
+Siguiente paso: trasladar código de index.js a handlers y controllers. 
+Cambié el nombre de index.js (en carpeta routes) por indexRouter.js porque me resulta más claro. Adapté el import en app.js. 
+Pasé axios, doenv, api_key y modelos desde indexRouter.js a recipesController.js. 
+Cambié el nombre de idRecipe por id (req.params.idRecipe, en vez de desestructurarlo). 
+Corregí el controller searchRecipeById para que traiga de la API externa sólo las propiedades que necesito. 
+Modifiqué analizedInstructions por instructions, que es más abreviada y creo que es la que necesito. 
+
+Próximo paso: modularizar ruta 2 (GET /recipes).
+git commit -m "modularized GET /recipes:idRecipe and improved searchRecipeById controller to show less properties from the external api"
