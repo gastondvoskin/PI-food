@@ -180,5 +180,15 @@ Archivo index.js. Ruta 2: agregar la posibilidad de que no haya query, para trae
 
 
 Archivo index.js de routes. Ruta GET /recipes. Agregué un if(!query) dentro del try e implementé que la ruta traiga todas las recipes si no hay query. Cambié nombre de propiedad title por name, para unificar con mi DB. 
-Siguiente paso: modularizar ruta GET /recipes. 
-git commit -m "Enable GET /recipes endpoint to fetch all recipes in addition to filtered queries
+git commit -m "enable GET /recipes endpoint to fetch all recipes in addition to filtered queries". 
+Vi hasta min 32 de Selene. 
+
+Siguiente paso: modularizar ruta GET /recipes del archivo index.js.
+Creé archivo recipesRouter.js y dietsRouter.js dentro de carpeta routes. 
+Cambié el nombre de router por mainRouter. 
+Creé archivo SQL con los ejemplos que usé para cargar la db.  
+Archivo recipesRouter.js. Trasladé lo que tenía en index.js. 
+Creé carpetas handlers y controllers. En cada una creé handlers y controllers para recipes y para diets. 
+Creé una función estándar en recipesHandlers.js para exportar y luego importarla en recipesROuter.js. 
+Están creados los archivos en los que voy a modularizar index.js pero todavía no les pasé el código de este archivo index a los handlers y controllers. 
+git commit -m "added routers, handlers and controllers files for recipes and diets. NIY"

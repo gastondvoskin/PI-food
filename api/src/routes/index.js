@@ -7,20 +7,29 @@ require('dotenv').config();         // tono
 const { API_KEY } = process.env;    // tono
 
 const { Recipe, Diet } = require('../db.js');     // tono. importo el Modelo. A futuro modularizar. 
+const recipesRouter = require('./recipesRouter.js');
+const dietsRouter = require('./dietsRouter.js');
 
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
-const router = Router();
+const mainRouter = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);            // ??
 
-
 // tono inicio
-const API_URL =
+// nuevo
 
-router.get('/recipes/:idRecipe', async (req, res) => {
+
+// están creados los archivos en los que voy a modularizar index.js pero todavía no les pasé el código de este archivo index a los handlers. 
+mainRouter.use('/recipes', recipesRouter); 
+mainRouter.use('/diets', dietsRouter);
+
+
+// fin nuevo
+
+mainRouter.get('/recipes/:idRecipe', async (req, res) => {
     try {
         const { idRecipe } = req.params;
         const source = isNaN(idRecipe) ? "DB" : "apiExterna";       // DB tiene UUID (NaN), apiExterna tiene id numérico
@@ -41,23 +50,9 @@ router.get('/recipes/:idRecipe', async (req, res) => {
     }
 });
 
-// Para hacer pruebas en la DB:
-// \dt
-// SELECT * FROM "Recipes";
-
-// INSERT INTO "Recipes" (id, name, image, summary, healthscore, instructions)
-// VALUES ('d936ed1c-3a3e-43b3-b013-f328e10cfa87', 'Spaghetti Carbonara', 'https://www.example.com/spaghetti-carbonara.jpg', 'A classic Italian dish.', '90', '1. Cook the pasta. 2. Fry.');
-// INSERT INTO "Recipes" (id, name, image, summary, healthscore, instructions)
-// VALUES ('d936ed1c-3a3e-43b3-b013-f328e10cfa80', 'Spaghetti Carbonara', 'https://www.example.com/spaghetti-carbonara.jpg', 'A classic Italian dish.', '90', '1. Cook the pasta. 2. Fry.');
-// INSERT INTO "Recipes" (id, name, image, summary, healthscore, instructions)
-// VALUES ('d936ed1c-3a3e-43b3-b013-f328e10cfa81', 'pollo', 'https://www.example.com/spaghetti-carbonara.jpg', 'A classic Italian dish.', '90', '1. Cook the pasta. 2. Fry.');
-// INSERT INTO "Recipes" (id, name, image, summary, healthscore, instructions)
-// VALUES ('d936ed1c-3a3e-43b3-b013-f328e10cfa82', 'Cannellini Bean and Asparagus Salad with Mushrooms', 'https://www.example.com/spaghetti-carbonara.jpg', 'A classic Italian dish.', '90', '1. Cook the pasta. 2. Fry.');
-// INSERT INTO "Recipes" (id, name, image, summary, healthscore, instructions)
-// VALUES ('d936ed1c-3a3e-43b3-b013-f328e10cfa83', 'Another dish name', 'https://www.example.com/spaghetti-carbonara.jpg', 'A classic Italian dish.', '90', '1. Cook the pasta. 2. Fry.');
 
    
-router.get('/recipes', async (req, res) => {        // puede tener query: name?=ejemplo 
+mainRouter.get('/recipes', async (req, res) => {        // puede tener query: name?=ejemplo 
     // A futuro implementar que busque con mayúsculas o minúsculas y que la búsqueda no requiera ser exacta. 
     try {
         const { name } = req.query;
@@ -118,7 +113,7 @@ router.get('/recipes', async (req, res) => {        // puede tener query: name?=
 // Tono: ruta 3. 
 // NIY: relacionar la nueva receta con los tipos de dieta solicitados. La receta debe estar relacionada con los tipos de dieta indicados (al menos uno). Ver atributo diets en archivo Recipe.js . También rever ruta GET /recipes para que traiga también el atributo diets. 
 // Para los tipos de dieta debes tener en cuenta las propiedades vegetarian, vegan y glutenFree por un lado, y también analizar las que se incluyan dentro de la propiedad diets por otro.
-router.post('/recipes', async (req, res) => {
+mainRouter.post('/recipes', async (req, res) => {
     try {
         const { id, name, image, summary, healthscore, instructions } = req.body;
         const newRecipe = await Recipe.create({
@@ -137,7 +132,7 @@ router.post('/recipes', async (req, res) => {
 // Obtiene un arreglo con todos los tipos de dietas existentes.
 // En una primera instancia, cuando no exista ninguna dieta, deberás precargar la base de datos con las dietas de la documentación.
 // Estas deben ser obtenidas de la API (se evaluará que no haya hardcodeo). Luego de obtenerlas de la API, deben ser guardadas en la base de datos para su posterior consumo desde allí.
-router.get('/diets', async (req, res) => {
+mainRouter.get('/diets', async (req, res) => {
     try {
         // inicio copiado de ruta 2. Luego modularizar. 
         // A futuro, hacer que la petición a la API externa traiga todos los recipes, no solamente 10 (es la misma función que voy a necesitar para la ruta 2). 
@@ -174,6 +169,6 @@ router.get('/diets', async (req, res) => {
 
 //tono fin
 
-module.exports = router;
+module.exports = mainRouter;
 
 
