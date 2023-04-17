@@ -17,7 +17,7 @@ Dudas:
 - React. npm start: creo que servía para crear y actualizar el bundle. Confirmar. 
 - React-router-dom está en versión 5, en vez de 6.3.0. Debería actualizarla? 
 - El archivo App.jsx tendría que tener extensión .jsx? Es necesario importar React en ese archivo? 
-
+- De la API externa me traigo todo el objeto Instructions o sólo los steps en un array? 
 
 
 DB: relación many-to-many entre modelos Recipe y Diets. Comentados porque todavía no creé los modelos. 
@@ -166,4 +166,19 @@ Hice una petición a mi back-end con get /recipes, harcodeando el query name.
 Siguiente paso: cargar la card con la petición harcodeada. Luego, corregir el back para poder hacer la request sin query y que traiga todas las recipes. Luego, crear esl reducer para guardar el estado general del cliente, mostrando las recipes adecuadas, según los filtros. 
 
 hacer npm start en el cliente y npm start en el back. dejé comentada la request a la api externa para no exceder las consultas diarias. 
-git commit -m "added Card and added basic request to App"
+git commit -m "added Card and added basic request from client to api in App component"
+
+
+// VOLVI AL BACK - END.  
+// Apuntes para agregar a partir del Repaso de Selene. 
+pgAdmin. Servers, PostgreSQL, Databases, click derecho, refresh. Food, Schemas, Tables, click derecho sobre una tabla, View, All rows. 
+Modelo Diet: cambiar UUID por INTEGER. 
+Creé un diagrama de los modelos en app.diagrams.net. 
+Por lo que entendí, el atributo Diets en Recipe no va. 
+
+Archivo index.js. Ruta 2: agregar la posibilidad de que no haya query, para traer todas las recipes de la API externa. 
+
+
+Archivo index.js de routes. Ruta GET /recipes. Agregué un if(!query) dentro del try e implementé que la ruta traiga todas las recipes si no hay query. Cambié nombre de propiedad title por name, para unificar con mi DB. 
+Siguiente paso: modularizar ruta GET /recipes. 
+git commit -m "Enable GET /recipes endpoint to fetch all recipes in addition to filtered queries

@@ -1,3 +1,5 @@
+// (api)
+
 const { Router } = require('express');
 const axios = require("axios");     // tono
 require('dotenv').config();         // tono
@@ -16,9 +18,7 @@ const router = Router();
 
 
 // tono inicio
-
-
-//
+const API_URL =
 
 router.get('/recipes/:idRecipe', async (req, res) => {
     try {
@@ -53,48 +53,62 @@ router.get('/recipes/:idRecipe', async (req, res) => {
 // VALUES ('d936ed1c-3a3e-43b3-b013-f328e10cfa81', 'pollo', 'https://www.example.com/spaghetti-carbonara.jpg', 'A classic Italian dish.', '90', '1. Cook the pasta. 2. Fry.');
 // INSERT INTO "Recipes" (id, name, image, summary, healthscore, instructions)
 // VALUES ('d936ed1c-3a3e-43b3-b013-f328e10cfa82', 'Cannellini Bean and Asparagus Salad with Mushrooms', 'https://www.example.com/spaghetti-carbonara.jpg', 'A classic Italian dish.', '90', '1. Cook the pasta. 2. Fry.');
-
-
+// INSERT INTO "Recipes" (id, name, image, summary, healthscore, instructions)
+// VALUES ('d936ed1c-3a3e-43b3-b013-f328e10cfa83', 'Another dish name', 'https://www.example.com/spaghetti-carbonara.jpg', 'A classic Italian dish.', '90', '1. Cook the pasta. 2. Fry.');
 
    
 router.get('/recipes', async (req, res) => {        // puede tener query: name?=ejemplo 
     // A futuro implementar que busque con mayúsculas o minúsculas y que la búsqueda no requiera ser exacta. 
     try {
         const { name } = req.query;
+        if (!name) {       // si no hay query, traer todas las recipes
+            const dbAllRecipesRaw = await Recipe.findAll();
+            const dbAllRecipesClean = dbAllRecipesRaw.map((dbRecipe) => dbRecipe.dataValues);
 
-        // implementación para la DB
-        const dbRecipesByNameRaw = await Recipe.findAll({ 
-            where: { name }
-        });
-        const dbRecipesByNameClean = dbRecipesByNameRaw.map((dbRecipe) => dbRecipe.dataValues);
-        console.log('dbRecipesByNameClean: ', dbRecipesByNameClean);
+            let apiAllRecipesRaw = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true`); 
+            apiAllRecipesRaw = apiAllRecipesRaw.data.results;
 
-        // implementación para la API externa
-        const apiRecipesByNameClean = [];   // sólo para no hacer requests a la API desde el front. A futuro, eliminar y descomentar el código siguiente que hace la request. 
-        
-        // let apiRecipesRaw = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true`); 
-        // apiRecipesRaw = apiRecipesRaw.data.results;
+            const apiAllRecipesClean = apiAllRecipesRaw.map((apiRecipe) => {
+                return {
+                    id: apiRecipe.id,
+                    name: apiRecipe.title,                      // ojo name en vez de title
+                    image: apiRecipe.image,
+                    summary: apiRecipe.summary,
+                    healthscore: apiRecipe.healthScore,         // ojo la mayúscula y minúscula
+                    instructions: apiRecipe.analyzedInstructions,
+                    created: false
+                }
+            }); 
 
-        // const apiRecipesByNameRaw = apiRecipesRaw.filter((apiRecipe) => apiRecipe.title === name);
-        // const apiRecipesByNameClean = apiRecipesByNameRaw.map((apiRecipe) => {
-        //     return {
-        //         id: apiRecipe.id,
-        //         title: apiRecipe.title,
-        //         image: apiRecipe.image,
-        //         summary: apiRecipe.summary,
-        //         healthscore: apiRecipe.healthScore,         // ojo la mayúscula y minúscula
-        //         instructions: apiRecipe.analyzedInstructions,
-        //         created: false
-        //     }
-        // }); 
-        // console.log('apiRecipesByNameClean: ', apiRecipesByNameClean);
+            const allRecipes = [...dbAllRecipesClean, ...apiAllRecipesClean];
 
-        // unificación de DB con API externa
-        const allRecipesByName = [...dbRecipesByNameClean, ...apiRecipesByNameClean];
-        console.log('allRecipesByName: ', allRecipesByName);
+            return res.status(200).send(allRecipes);
+        } else {            // si hay query, traer recetas filtrada por name
+            const dbRecipesByNameRaw = await Recipe.findAll({ 
+                where: { name }
+            });
+            const dbRecipesByNameClean = dbRecipesByNameRaw.map((dbRecipe) => dbRecipe.dataValues);
 
-        // response
-        res.status(200).send(allRecipesByName); 
+            let apiRecipesRaw = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true`); 
+            apiRecipesRaw = apiRecipesRaw.data.results;
+
+            const apiRecipesByNameRaw = apiRecipesRaw.filter((apiRecipe) => apiRecipe.title === name);
+            const apiRecipesByNameClean = apiRecipesByNameRaw.map((apiRecipe) => {
+                return {
+                    id: apiRecipe.id,
+                    name: apiRecipe.title,                      // ojo name en vez de title
+                    image: apiRecipe.image,
+                    summary: apiRecipe.summary,
+                    healthscore: apiRecipe.healthScore,         // ojo la mayúscula y minúscula
+                    instructions: apiRecipe.analyzedInstructions,
+                    created: false
+                }
+            }); 
+
+            const allRecipesByName = [...dbRecipesByNameClean, ...apiRecipesByNameClean];
+
+            return res.status(200).send(allRecipesByName); 
+        }
     } catch (error) {
         res.status(400).send({error: error.message});
     }
