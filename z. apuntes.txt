@@ -99,20 +99,6 @@ npm run build lo voy a usar recién para el deployment.
 Cambié el title del html a PI-Food. 
 Probé agregar un div desde el componente App y funciona correctamente. 
 Cambié el background-color del body (archivo index.css) a black y el color a white.
-
-FLUJO: 
-html 
-index.js 
--> App.js -> Nav.jsx ---> Tiene Link a Form.jsx
-                       -> SearchBar.jsx
-                       -> Filters.jsx
-                       -> Sorting.jsx
-
-           -> ruta a Landing.jsx ---> Tiene Link a Home.jsx
-           -> ruta a Home.jsx -> Cards.jsx -> Card.jsx ---> Tiene Link a Detail.jsx
-                              -> Pagination
-           -> ruta a Detail.jsx
-           -> ruta a Form.jsx
                         
 
 Actualicé las versiones en package.json de: React, React-dom, React-router-dom, React-redux, React-scripts. Volví a hacer npm i. 
@@ -223,4 +209,10 @@ Quité el id de createRecipeHandler, porque no se recibe por body, sino que lo g
 Quité el id en Postman. 
 En Postman agregué diets. A futuro, implementar que al crear receta se usen las diets.  
 Borré la ruta 3 antigua de indexRouter.js porque ya se modularizó completamente. 
-git commit -m "implemented createRecipe. deleted id from req.body"
+git commit -m "implemented createRecipe controller. deleted id from req.body"
+
+Siguiente paso: modularizar la ruta 4. 
+Modularicé la ruta 4. Implementé el controller getDiets y el handler getDietsHandler. 
+Creé archivo back-flow que muestra el flujo del back-end. 
+Creé archivo front-flow. Pasé el flujo que tenía en este archivo apuntes.txt al nuevo archivo. 
+git commit -m "implemented getDiets controller"

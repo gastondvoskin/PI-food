@@ -1,0 +1,8 @@
+FLUJO BACK-END: 
+                                    api
+                                 index.js
+                db.js                                   app.js
+Recipe.js    Diets.js                               indexRouter.js
+                                        recipesRouter.js        dietsRouter.js
+                                        recipesHandler.js       dietsHandler.js
+                                        recipesController.js    dietsController.js

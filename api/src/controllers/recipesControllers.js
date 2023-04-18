@@ -31,7 +31,6 @@ const searchRecipeById = async (id) => {
 };
 
 
-
 const searchAllRecipes = async () => {
     // A futuro implementar que no retorne sólo 10 recetas. 
     const dbAllRecipesRaw = await Recipe.findAll(); 
