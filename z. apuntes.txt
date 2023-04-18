@@ -201,4 +201,12 @@ Corregí el controller searchRecipeById para que traiga de la API externa sólo 
 Modifiqué analizedInstructions por instructions, que es más abreviada y creo que es la que necesito. 
 
 Próximo paso: modularizar ruta 2 (GET /recipes).
-git commit -m "modularized GET /recipes:idRecipe and improved searchRecipeById controller to show less properties from the external api"
+git commit -m "modularized GET /recipes:idRecipe . improved searchRecipeById controller to show less properties from the external api"
+
+Creé controllers searchAllRecipes y searchRecipesByName. Los exporté y los importé en recipesHandler.js. 
+Modularicé la ruta GET /recipes. 
+Implementé getRecipesHandler. Siguiente paso: implementar los dos controllers que usa este handler. 
+Implementé controller SearchAllRecipes. Lo adapté para que instructions mapee y traiga sólos los steps. Copié en resExamp.json las respuestas de la API externa y la lógica para llegar al código del mapeo de instructions. 
+
+Siguiente paso: implementar searchRecipesByName (el código está comentado en el archivo recipesHandler.js, en el else de getRecipesHandler)
+git commit -m "modularized getRecipesHandler and implemented searchAllRecipes"

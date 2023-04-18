@@ -20,10 +20,10 @@ mainRouter.use('/recipes', recipesRouter);
 mainRouter.use('/diets', dietsRouter);
 
 
-// nuevo. me llevo la primera ruta para modularizarla en recipes Handler y su controller. 
+// nuevo. me llevo la segunda ruta para modularizarla en recipes Handler y su controller. 
 
 
-// fin. me llevo la primera ruta para modularizarla en recipes Handler y su controller. 
+// fin. me llevo la segunda ruta para modularizarla en recipes Handler y su controller. 
 
 
 
