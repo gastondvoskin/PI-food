@@ -209,4 +209,10 @@ Implementé getRecipesHandler. Siguiente paso: implementar los dos controllers q
 Implementé controller SearchAllRecipes. Lo adapté para que instructions mapee y traiga sólos los steps. Copié en resExamp.json las respuestas de la API externa y la lógica para llegar al código del mapeo de instructions. 
 
 Siguiente paso: implementar searchRecipesByName (el código está comentado en el archivo recipesHandler.js, en el else de getRecipesHandler)
-git commit -m "modularized getRecipesHandler and implemented searchAllRecipes"
+git commit -m "modularized getRecipesHandler and implemented searchAllRecipes". 
+
+Le pasé el argumento name a searchRecipesByName. 
+Implementé el controller searchAllRecipes. Lo adapté para que haga las búsquedas que incluyan name y no sólo las que coinciden exactamente. Importé op en recipesCOntrollers.js. 
+Borré el código comentado en recipesHandler que ya está modularizado.
+git commit -m "implemented searchRecipesByName. added inexact queries"
+Siguiente paso: modularizar la ruta 3. 

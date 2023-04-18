@@ -499,6 +499,49 @@ ApiAllRecipesClean retorna:
 
 
 
+// ruta 2. resultado final parte B. 
+let apiAllRecipesRaw = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true`); 
+apiAllRecipesRaw = apiAllRecipesRaw.data.results;
+
+const apiRecipesByNameRaw = apiAllRecipesRaw.filter((apiRecipe) => apiRecipe.title === name);       // ojo name en vez de title
+
+const apiRecipesByNameClean = apiRecipesByNameRaw.map((apiRecipe) => {
+    return {
+        id: apiRecipe.id,
+        name: apiRecipe.title,                      // ojo name en vez de title
+        image: apiRecipe.image,
+        summary: apiRecipe.summary,
+        healthscore: apiRecipe.healthScore,         // ojo la mayúscula y minúscula
+        instructions: apiRecipe.analyzedInstructions[0].steps.map((step) => step.step),       // [0] porque analyzedInstructions es un array con sólo un elemento
+        created: false
+    }
+}); 
+
+
+// apiRecipesByNameClean (con query Berry Banana Breakfast Smoothie) retorna: 
+
+[
+    {
+        "id": 715497,
+        "name": "Berry Banana Breakfast Smoothie",
+        "image": "https://spoonacular.com/recipeImages/715497-312x231.jpg",
+        "summary": "If you want to add more <b>lacto ovo vegetarian</b> recipes to your recipe box, Berry Banana Breakfast Smoothie might be a recipe you should try. One portion of this dish contains about <b>21g of protein</b>, <b>10g of fat</b>, and a total of <b>457 calories</b>. This recipe serves 1 and costs $2.07 per serving. 689 people have tried and liked this recipe. It works well as a rather inexpensive breakfast. A mixture of banana, graham cracker crumbs, vanilla yogurt, and a handful of other ingredients are all it takes to make this recipe so yummy. From preparation to the plate, this recipe takes roughly <b>5 minutes</b>. It is brought to you by Pink When. Overall, this recipe earns a <b>super spoonacular score of 99%</b>. Similar recipes include <a href=\"https://spoonacular.com/recipes/berry-banana-breakfast-smoothie-1364145\">Berry Banana Breakfast Smoothie</a>, <a href=\"https://spoonacular.com/recipes/berry-banana-breakfast-smoothie-1405583\">Berry Banana Breakfast Smoothie</a>, and <a href=\"https://spoonacular.com/recipes/berry-banana-breakfast-smoothie-1601311\">Berry Banana Breakfast Smoothie</a>.",
+        "healthscore": 64,
+        "instructions": [
+            "Take some yogurt in your favorite flavor and add 1 container to your blender.",
+            "Add in the berries, banana, and soy milk and blend. Top your glass with a few graham cracker crumbs and serve."
+        ],
+        "created": false
+    }
+]
+
+
+
+
+
+
+
+
 
 
 
