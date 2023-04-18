@@ -58,7 +58,6 @@ const searchAllRecipes = async () => {
 
 
 
-// nuevo. inicio.
 const searchRecipesByName = async (name) => {
     // A futuro implementar que busque con mayúsculas o minúsculas y que la búsqueda no requiera ser exacta.
     const dbRecipesByNameRaw = await Recipe.findAll({ 
@@ -91,13 +90,23 @@ const searchRecipesByName = async (name) => {
     const recipesByName = [...dbRecipesByNameClean, ...apiRecipesByNameClean];
     return recipesByName; 
 };
-// nuevo. fin. 
 
+
+
+const createRecipe = async (name, image, summary, healthscore, instructions) => {
+    // NIY: relacionar la nueva receta con los tipos de dieta solicitados. La receta debe estar relacionada con los tipos de dieta indicados (al menos uno). Ver atributo diets en archivo Recipe.js . También rever ruta GET /recipes para que traiga también el atributo diets. 
+    // Para los tipos de dieta debes tener en cuenta las propiedades vegetarian, vegan y glutenFree por un lado, y también analizar las que se incluyan dentro de la propiedad diets por otro.
+    const newRecipe = await Recipe.create({
+        name, image, summary, healthscore, instructions
+    });
+    return newRecipe;
+};
 
 
 
 module.exports = {
     searchRecipeById, 
     searchAllRecipes, 
-    searchRecipesByName
+    searchRecipesByName,
+    createRecipe
 }

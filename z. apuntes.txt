@@ -216,3 +216,11 @@ Implementé el controller searchAllRecipes. Lo adapté para que haga las búsque
 Borré el código comentado en recipesHandler que ya está modularizado.
 git commit -m "implemented searchRecipesByName. added inexact queries"
 Siguiente paso: modularizar la ruta 3. 
+
+Borré la ruta 2 antigua de indexRouter.js que ya se modularizó completamente. 
+Creé el controller createRecipe. Lo exporté y lo importé en recipesHandler.js. 
+Quité el id de createRecipeHandler, porque no se recibe por body, sino que lo genera sequelize con el método .create() del modelo Recipe. 
+Quité el id en Postman. 
+En Postman agregué diets. A futuro, implementar que al crear receta se usen las diets.  
+Borré la ruta 3 antigua de indexRouter.js porque ya se modularizó completamente. 
+git commit -m "implemented createRecipe. deleted id from req.body"
