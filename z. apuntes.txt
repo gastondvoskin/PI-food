@@ -235,3 +235,7 @@ Corregí el controller searchRecipeById para que retorne recipeByIdClean.dataVal
 Refactorizar helpers para que haya funciones para una recipe, y luego esa función se reutilice en el mapeo con todas las recipes. 
 Agregué helpers para procesar de a una recipe: getDbRecipeByIdRaw, cleanDbRecipe, getDbRecipeByIdClean. getDbRecipeByIdRaw fue corregido para que la respuesta incluya el resultado del modelo Diet (además del modelo Recipe). 
 git commit -m "implemented helpers for searchRecipeById controller. Refactored the other helpers"
+
+Modularicé helpers en: dbRecipesHelper.js y apiRecipesHelper.js. 
+searchRecipesByName no está funcionando el includes ni el toLowerCase, no entiendo por qué. 
+git commit -m "modularized helpers. searchRecipesByName is not working properly"

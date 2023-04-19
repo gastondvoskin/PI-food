@@ -2,7 +2,9 @@ const axios = require("axios");
 require('dotenv').config(); 
 const { Recipe, Diet } = require('../db.js'); 
 const { Op } = require('sequelize');
-const { getDbRecipeByIdClean, getApiRecipeByIdClean, getAllDbRecipesClean, getAllApiRecipesClean } = require('../helpers/helpers.js');
+const { getDbRecipeByIdClean, getAllDbRecipesClean } = require('../helpers/dbRecipesHelpers.js');
+const { getApiRecipeByIdClean, getAllApiRecipesClean } = require('../helpers/apiRecipesHelpers.js');
+
 
 const { API_KEY } = process.env; 
 
@@ -19,24 +21,6 @@ const searchRecipeById = async (id) => {
     if (source === 'apiExterna') {
         const apiAllRecipesClean = getApiRecipeByIdClean(id);
         return apiAllRecipesClean;
-        // let recipeByIdRaw = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`);
-        // recipeByIdRaw = recipeByIdRaw.data; 
-
-        // // console.log(recipeByIdRaw);
-
-
-        // const recipeByIdClean = cleanApiRecipes([recipeByIdRaw]);
-
-        // recipeByIdClean = {
-        //     id: recipeByIdRaw.id,
-        //     name: recipeByIdRaw.title,      // ojo name y title 
-        //     image: recipeByIdRaw.image,
-        //     summary: recipeByIdRaw.summary,
-        //     healthscore: recipeByIdRaw.healthScore,     // ojo mayúscula y minúscula
-        //     instructions: recipeByIdRaw.instructions,
-        //     created: false
-        // }
-
     }
     return recipeByIdClean;
 };
@@ -52,7 +36,11 @@ const searchAllRecipes = async () => {
 
 const searchRecipesByName = async (name) => {
     const allRecipes = await searchAllRecipes();
-    const recipesByName = allRecipes.filter((recipe) => recipe.name.toLowerCase().includes(name.toLowerCase()));
+    const recipesByName = allRecipes.filter((recipe) => {
+        return recipe.name === name;
+        // return recipe.name.toLowerCase().includes(name.toLowerCase());           // por qué no funciona? 
+
+    });
     return recipesByName; 
 };
 
