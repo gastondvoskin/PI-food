@@ -224,4 +224,6 @@ Modifiqué controller searchAllRecipes para que dbAllRecipesRaw tenga el include
 Importé el modelo Diet a recipesControllers.js. 
 Agregué la carpeta helpers dentro de src para modularizar los controllers. 
 Modularicé el controller searchAllRecipes.
-git commit -m "Separated searchAllRecipes concerns into dedicated helper functions"
+git commit -m "Separated searchAllRecipes concerns into dedicated helper functions". 
+Siguiente paso: modularizar searchRecioesByName usando helpers. 
+Refactoricé searchRecipesByName reutilizando el controller searchAllRecipes y luego aplicándole un filter a todo el arreglo. 

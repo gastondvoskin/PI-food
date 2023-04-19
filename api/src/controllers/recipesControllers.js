@@ -76,36 +76,38 @@ const searchAllRecipes = async () => {
 
 
 const searchRecipesByName = async (name) => {
-    // A futuro implementar que busque con mayúsculas o minúsculas y que la búsqueda no requiera ser exacta.
-    const dbRecipesByNameRaw = await Recipe.findAll({ 
-        where: {
-             name: {
-                [Op.iLike]: `%${name.toLowerCase()}%`           // nuevo
-             }
-        }
-    });
-    const dbRecipesByNameClean = dbRecipesByNameRaw.map((dbRecipe) => dbRecipe.dataValues);
-
-
-    let apiAllRecipesRaw = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true`); 
-    apiAllRecipesRaw = apiAllRecipesRaw.data.results;
-
-    const apiRecipesByNameRaw = apiAllRecipesRaw.filter((apiRecipe) => apiRecipe.title.toLowerCase().includes(name.toLowerCase()));  // nuevo. ojo name en vez de title
-
-    const apiRecipesByNameClean = apiRecipesByNameRaw.map((apiRecipe) => {
-        return {
-            id: apiRecipe.id,
-            name: apiRecipe.title,                      // ojo name en vez de title
-            image: apiRecipe.image,
-            summary: apiRecipe.summary,
-            healthscore: apiRecipe.healthScore,         // ojo la mayúscula y minúscula
-            instructions: apiRecipe.analyzedInstructions[0].steps.map((step) => step.step),       // [0] porque analyzedInstructions es un array con sólo un elemento
-            created: false
-        }
-    }); 
-
-    const recipesByName = [...dbRecipesByNameClean, ...apiRecipesByNameClean];
+    const allRecipes = await searchAllRecipes();
+    const recipesByName = allRecipes.filter((recipe) => recipe.name.toLowerCase().includes(name.toLowerCase()));
     return recipesByName; 
+    // const dbRecipesByNameRaw = await Recipe.findAll({ 
+    //     where: {
+    //          name: {
+    //             [Op.iLike]: `%${name.toLowerCase()}%`           // nuevo
+    //          }
+    //     }
+    // });
+    // const dbRecipesByNameClean = dbRecipesByNameRaw.map((dbRecipe) => dbRecipe.dataValues);
+
+
+    // let apiAllRecipesRaw = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true`); 
+    // apiAllRecipesRaw = apiAllRecipesRaw.data.results;
+
+    // const apiRecipesByNameRaw = apiAllRecipesRaw.filter((apiRecipe) => apiRecipe.title.toLowerCase().includes(name.toLowerCase()));  // nuevo. ojo name en vez de title
+
+    // const apiRecipesByNameClean = apiRecipesByNameRaw.map((apiRecipe) => {
+    //     return {
+    //         id: apiRecipe.id,
+    //         name: apiRecipe.title,                      // ojo name en vez de title
+    //         image: apiRecipe.image,
+    //         summary: apiRecipe.summary,
+    //         healthscore: apiRecipe.healthScore,         // ojo la mayúscula y minúscula
+    //         instructions: apiRecipe.analyzedInstructions[0].steps.map((step) => step.step),       // [0] porque analyzedInstructions es un array con sólo un elemento
+    //         created: false
+    //     }
+    // }); 
+
+    // const recipesByName = [...dbRecipesByNameClean, ...apiRecipesByNameClean];
+    // return recipesByName; 
 };
 
 
