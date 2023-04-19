@@ -1,7 +1,8 @@
 const axios = require("axios"); 
 require('dotenv').config(); 
-const { Recipe } = require('../db.js'); 
+const { Recipe, Diet } = require('../db.js'); 
 const { Op } = require('sequelize');
+const { getAllDbRecipesClean, getAllApiRecipesClean } = require('../helpers/helpers.js');
 
 const { API_KEY } = process.env; 
 
@@ -32,28 +33,45 @@ const searchRecipeById = async (id) => {
 
 
 const searchAllRecipes = async () => {
-    // A futuro implementar que no retorne sólo 10 recetas. 
-    const dbAllRecipesRaw = await Recipe.findAll(); 
-    const dbAllRecipesClean = dbAllRecipesRaw.map((dbRecipe) => dbRecipe.dataValues);
-    
-    let apiAllRecipesRaw = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true`); 
-    apiAllRecipesRaw = apiAllRecipesRaw.data.results;
-
-    const apiAllRecipesClean = apiAllRecipesRaw.map((apiRecipe) => {
-        return {
-            id: apiRecipe.id,
-            name: apiRecipe.title,                      // ojo name en vez de title
-            image: apiRecipe.image,
-            summary: apiRecipe.summary,
-            healthscore: apiRecipe.healthScore,         // ojo la mayúscula y minúscula
-            instructions: apiRecipe.analyzedInstructions[0].steps.map((step) => step.step),       // [0] porque analyzedInstructions es un array con sólo un elemento
-            created: false
-        }
-    }); 
-
+    const dbAllRecipesClean = await getAllDbRecipesClean();
+    const apiAllRecipesClean = await getAllApiRecipesClean();
     const allRecipes = [...dbAllRecipesClean, ...apiAllRecipesClean];
     return allRecipes;
 };
+    // Comentado porque ya se modularizó en helpers.js
+    // // A futuro implementar que no retorne sólo 10 recetas. 
+    // // nuevo modificaciones
+    // const dbAllRecipesRaw = await Recipe.findAll({
+    //     include: {
+    //         model: Diet,
+    //         attributes: ['id', 'name'],     // id lo puedo omitir? 
+    //         through: {
+    //             attributes: []
+    //         }
+    //     }
+    // }); 
+    // // fin modificaciones
+    // const dbAllRecipesClean = dbAllRecipesRaw.map((dbRecipe) => dbRecipe.dataValues);
+    
+
+    // let apiAllRecipesRaw = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true`); 
+    // apiAllRecipesRaw = apiAllRecipesRaw.data.results;
+
+    // const apiAllRecipesClean = apiAllRecipesRaw.map((apiRecipe) => {
+    //     return {
+    //         id: apiRecipe.id,
+    //         name: apiRecipe.title,                      // ojo name en vez de title
+    //         image: apiRecipe.image,
+    //         summary: apiRecipe.summary,
+    //         healthscore: apiRecipe.healthScore,         // ojo la mayúscula y minúscula
+    //         instructions: apiRecipe.analyzedInstructions[0].steps.map((step) => step.step),       // [0] porque analyzedInstructions es un array con sólo un elemento
+    //         created: false
+    //     }
+    // }); 
+
+    // const allRecipes = [...dbAllRecipesClean, ...apiAllRecipesClean];
+    // return allRecipes;
+// };
 
 
 

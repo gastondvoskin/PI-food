@@ -216,3 +216,12 @@ Modularicé la ruta 4. Implementé el controller getDiets y el handler getDietsH
 Creé archivo back-flow que muestra el flujo del back-end. 
 Creé archivo front-flow. Pasé el flujo que tenía en este archivo apuntes.txt al nuevo archivo. 
 git commit -m "implemented getDiets controller"
+
+Siguiente paso: seguir viendo video de Selene. Dudas principales: cómo traer más de 10 resultados de la api externa. recordar cómo se crea la aplicación de redux. 
+minuto 24 de Selene. Muestra el include para traer la info de los dos modelos. 
+
+Modifiqué controller searchAllRecipes para que dbAllRecipesRaw tenga el include del modelo Diet.
+Importé el modelo Diet a recipesControllers.js. 
+Agregué la carpeta helpers dentro de src para modularizar los controllers. 
+Modularicé el controller searchAllRecipes.
+git commit -m "Separated searchAllRecipes concerns into dedicated helper functions"
