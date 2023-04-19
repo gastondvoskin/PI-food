@@ -227,3 +227,11 @@ Modularicé el controller searchAllRecipes.
 git commit -m "Separated searchAllRecipes concerns into dedicated helper functions". 
 Siguiente paso: modularizar searchRecioesByName usando helpers. 
 Refactoricé searchRecipesByName reutilizando el controller searchAllRecipes y luego aplicándole un filter a todo el arreglo. 
+git commit -m "refactored searchRecipesByName".
+
+Siguiente paso: modularizar searchRecipeById. 
+Corregí el controller searchRecipeById para que retorne recipeByIdClean.dataValues (le agregué el .dataValues). 
+
+Refactorizar helpers para que haya funciones para una recipe, y luego esa función se reutilice en el mapeo con todas las recipes. 
+Agregué helpers para procesar de a una recipe: getDbRecipeByIdRaw, cleanDbRecipe, getDbRecipeByIdClean. getDbRecipeByIdRaw fue corregido para que la respuesta incluya el resultado del modelo Diet (además del modelo Recipe). 
+git commit -m "implemented helpers for searchRecipeById controller. Refactored the other helpers"

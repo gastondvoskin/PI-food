@@ -17,11 +17,11 @@ const getRecipeByIdHandler = async (req, res) => {
 const getRecipesHandler = async (req, res) => {
     try {
         const { name } = req.query;
-        // nuevo inicio
-        if (!name) {        // si no hay query, trae todas las recetas
+        if (!name) { 
             const allRecipes = await searchAllRecipes();
             res.status(200).send(allRecipes);
-        } else {            // si hay query, trae las recetas que coinciden con el name
+        } 
+        if (name) {  
             const recipesByName = await searchRecipesByName(name);
             res.status(200).send(recipesByName);
         }
