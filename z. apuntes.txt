@@ -239,3 +239,7 @@ git commit -m "implemented helpers for searchRecipeById controller. Refactored t
 Modularicé helpers en: dbRecipesHelper.js y apiRecipesHelper.js. 
 searchRecipesByName no está funcionando el includes ni el toLowerCase, no entiendo por qué. 
 git commit -m "modularized helpers. searchRecipesByName is not working properly"
+Otro problema; getRecipesHandler sin query name no trae todas las propiedades (rever helper cleanAllApiRecipes) y cleanApiRecipe. 
+Los problemas se daban porque en la api las propiedades que yo desestructuré como name y healthscore figuran como title y healthScore respectivamente. 
+Corregí el helper cleanApiRecipe. 
+git commit -m "fixed cleanApiRecipe"

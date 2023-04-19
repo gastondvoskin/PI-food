@@ -37,9 +37,18 @@ const searchAllRecipes = async () => {
 const searchRecipesByName = async (name) => {
     const allRecipes = await searchAllRecipes();
     const recipesByName = allRecipes.filter((recipe) => {
-        return recipe.name === name;
-        // return recipe.name.toLowerCase().includes(name.toLowerCase());           // por qué no funciona? 
+        // console.log('aca... ');
 
+        // console.log('name... ', name);
+        // console.log('name.toLowerCase()... ', name.toLowerCase());
+
+        // console.log('recipe... ', recipe);
+        // console.log('recipe.name... ', recipe.name);
+        // console.log('recipe.name.toLowerCase()... ', recipe.name.toLowerCase());
+        // console.log('recipe.name.toLowerCase().includes(name.toLowerCase())... ', recipe.name.toLowerCase().includes(name.toLowerCase()));
+        if (recipe.name) {
+            return recipe.name.toLowerCase().includes(name.toLowerCase());
+        }
     });
     return recipesByName; 
 };

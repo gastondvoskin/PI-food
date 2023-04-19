@@ -14,7 +14,7 @@ const getApiRecipeByIdRaw = async (id) => {
 };
 
 const cleanApiRecipe = (apiRecipeRaw) => {
-    const { id, name, image, summary, healthscore, analyzedInstructions } = apiRecipeRaw;
+    const { id, title: name, image, summary, healthScore: healthscore, analyzedInstructions } = apiRecipeRaw;
     const apiRecipeByIdClean = {
         id, 
         name, 
