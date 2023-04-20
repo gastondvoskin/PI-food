@@ -242,4 +242,18 @@ git commit -m "modularized helpers. searchRecipesByName is not working properly"
 Otro problema; getRecipesHandler sin query name no trae todas las propiedades (rever helper cleanAllApiRecipes) y cleanApiRecipe. 
 Los problemas se daban porque en la api las propiedades que yo desestructuré como name y healthscore figuran como title y healthScore respectivamente. 
 Corregí el helper cleanApiRecipe. 
-git commit -m "fixed cleanApiRecipe"
+git commit -m "fixed cleanApiRecipe". 
+
+
+Siguiente paso: retomar video de Selene. Sigo con las mismas dudas:
+Dudas principales: cómo traer más de 10 resultados de la api externa. recordar cómo se crea la aplicación de redux. 
+minuto 24 de Selene. Muestra el include para traer la info de los dos modelos. 
+
+Modifiqué el helper getAllApiRecipesRaw para que traiga más de 10 resultados, usando offset. Ya trae los resultados que indique en la variable numberOfResults. 
+No está funcionando correctamente cleanApiRecipe, ya que trae algunas recipes bien, pero con otras retorna "error": "Cannot read properties of undefined (reading 'steps')". Comenté la línea de steps para corregirlo a futuro. 
+En helpers.js agregué la variable baseURL y reemplacé el principio del endpoint tanto para todas las recipes como para la búsqueda por id. 
+Para ver qué trae la API usar los endpoints directamente en la web. 
+La propiedad analizedInstructions en algunas recipes viene vacía. Por lo tanto, hay que validar esto. 
+Corregí steps agregándole previamente la validación if (analyzedInstructions.length). Si no hay analyzedInstructions en la api externa, steps retornará []; Funciona correctamente. 
+Actualicé en resExample.json lo que trae la API externa (primeros 100 resultados). 
+git commit -m "Enhanced cleanApiRecipe helper with property step validation and increased getAllApiRecipesRaw results to 100"
