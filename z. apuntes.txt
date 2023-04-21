@@ -245,9 +245,6 @@ Corregí el helper cleanApiRecipe.
 git commit -m "fixed cleanApiRecipe". 
 
 
-Siguiente paso: retomar video de Selene. Sigo con las mismas dudas:
-Dudas principales: cómo traer más de 10 resultados de la api externa. recordar cómo se crea la aplicación de redux. 
-minuto 24 de Selene. Muestra el include para traer la info de los dos modelos. 
 
 Modifiqué el helper getAllApiRecipesRaw para que traiga más de 10 resultados, usando offset. Ya trae los resultados que indique en la variable numberOfResults. 
 No está funcionando correctamente cleanApiRecipe, ya que trae algunas recipes bien, pero con otras retorna "error": "Cannot read properties of undefined (reading 'steps')". Comenté la línea de steps para corregirlo a futuro. 
@@ -256,4 +253,13 @@ Para ver qué trae la API usar los endpoints directamente en la web.
 La propiedad analizedInstructions en algunas recipes viene vacía. Por lo tanto, hay que validar esto. 
 Corregí steps agregándole previamente la validación if (analyzedInstructions.length). Si no hay analyzedInstructions en la api externa, steps retornará []; Funciona correctamente. 
 Actualicé en resExample.json lo que trae la API externa (primeros 100 resultados). 
-git commit -m "Enhanced cleanApiRecipe helper with property step validation and increased getAllApiRecipesRaw results to 100"
+git commit -m "Enhanced cleanApiRecipe helper with property step validation and increased getAllApiRecipesRaw results to 100". 
+
+Siguiente paso: retomar video de Selene. 
+Dudas principales: relación entre los modelos. recordar cómo se crea la aplicación de redux. 
+
+Corregí funcionalidad de dietsControllers para que busque en 100 recetas, no sólo en las primeras 10. 
+Corregí dietsController para uqe ejecute findOrCreate en vez de create, y lo corregí para que maneje adecuadamente las promesas con Promise.all. A futuro, chequear que esté bien aplicado el Promise.all y si debería aplicarlo también en getAllApiRecipesRaw. 
+
+Próximo paso: Agregar funcionalidad para que una vez que se carga la db, en siguientes búsquedas, lo haga directamente ahí. 
+git commit -m "enhanced getDiets controller to query more results and to handle the findOrCreate promises"
