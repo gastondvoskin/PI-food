@@ -263,3 +263,7 @@ Corregí dietsController para uqe ejecute findOrCreate en vez de create, y lo co
 
 Próximo paso: Agregar funcionalidad para que una vez que se carga la db, en siguientes búsquedas, lo haga directamente ahí. 
 git commit -m "enhanced getDiets controller to query more results and to handle the findOrCreate promises"
+
+Modifiqué el controller getDiets para usar un for of con await en vez del Promise.all porque lo entiendo más (a pesar de que sea menos óptimo). 
+Agregué el controller getDietsFromDb. Ahora getDietsHandler hace la búsqueda inicialmente en la api, carga los datos en la db, y a partir de la segunda búsqueda, va directamente a la db. 
+git commit -m "added getDietsFromDb controller. Now getDietsHandler queries the db after the first query"

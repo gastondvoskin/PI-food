@@ -1,16 +1,18 @@
-const getDiets = require('../controllers/dietsControllers.js');
+const { getDietsFromApi, getDietsFromDb } = require('../controllers/dietsControllers.js');
 
 
-// let sourceToGetDiets = 'api';   // it will change to db after the first query 
-// if (sourceToGetDiets === 'api') {
-             
-    
-// };
+let sourceToGetDiets = 'api';   // it changes to db after first query
 
 const getDietsHandler = async (req, res) => {
     try {
-        const diets = await getDiets();
-        res.status(200).send(diets); 
+        let allDiets;
+        if (sourceToGetDiets === 'api') {
+            sourceToGetDiets = 'db';
+            allDiets = await getDietsFromApi(); 
+        } else {
+            allDiets = await getDietsFromDb();
+        };
+        res.status(200).send(allDiets); 
     } catch (error) {
         res.status(400).send({error: error.message});
     }

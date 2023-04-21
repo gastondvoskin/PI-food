@@ -50,7 +50,7 @@ const getApiRecipeByIdClean = async (id) => {
 
 const getAllApiRecipesRaw = async () => {
     const numberOfRecipesPerPage = 10;  
-    const numberOfResults = 30;         // reducido a 30 para no hacer tantas requests. a futuro, 100.  
+    const numberOfResults = 10;         // reducido a 30 para no hacer tantas requests. a futuro, 100.  
     const numberOfPages = numberOfResults / numberOfRecipesPerPage;     
 
     let apiAllRecipesRaw = []; 

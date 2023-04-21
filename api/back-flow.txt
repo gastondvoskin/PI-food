@@ -3,7 +3,7 @@ FLUJO BACK-END:
                                  index.js
                 db.js                                   app.js
 Recipe.js    Diets.js                               indexRouter.js
-                                        recipesRouter.js        dietsRouter.js
-                                        recipesHandler.js       dietsHandler.js
-                                        recipesController.js    dietsController.js
-                                                      helpers.js
+                                        recipesRouter.js         dietsRouter.js
+                                        recipesHandlers.js       dietsHandlers.js
+                                        recipesControllers.js    dietsControllers.js
+                        apiRecipesHelpers.js    dbRecipesHelpers.js
