@@ -15,7 +15,7 @@ const getApiRecipeByIdRaw = async (id) => {
 
 let i = 0;
 const cleanApiRecipe = (apiRecipeRaw) => {
-    const { id, title: name, image, summary, healthScore: healthscore, analyzedInstructions } = apiRecipeRaw;
+    const { id, title: name, image, summary, healthScore: healthscore, analyzedInstructions, diets } = apiRecipeRaw;
 
     let stepsClean = [];        // si no hay analyzedInstructions en la api externa, steps retornará []; 
     if (analyzedInstructions.length) {
@@ -31,6 +31,7 @@ const cleanApiRecipe = (apiRecipeRaw) => {
         summary, 
         healthscore, 
         steps: stepsClean,
+        diets,
         created: false,
         myId: 'myId' + i++     // a futuro borrar
     }; 
@@ -50,7 +51,7 @@ const getApiRecipeByIdClean = async (id) => {
 
 const getAllApiRecipesRaw = async () => {
     const numberOfRecipesPerPage = 10;  
-    const numberOfResults = 10;         // reducido a 30 para no hacer tantas requests. a futuro, 100.  
+    const numberOfResults = 20;         // reducido a 30 para no hacer tantas requests. a futuro, 100.  
     const numberOfPages = numberOfResults / numberOfRecipesPerPage;     
 
     let apiAllRecipesRaw = []; 

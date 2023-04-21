@@ -255,15 +255,23 @@ Corregí steps agregándole previamente la validación if (analyzedInstructions.
 Actualicé en resExample.json lo que trae la API externa (primeros 100 resultados). 
 git commit -m "Enhanced cleanApiRecipe helper with property step validation and increased getAllApiRecipesRaw results to 100". 
 
-Siguiente paso: retomar video de Selene. 
-Dudas principales: relación entre los modelos. recordar cómo se crea la aplicación de redux. 
 
 Corregí funcionalidad de dietsControllers para que busque en 100 recetas, no sólo en las primeras 10. 
 Corregí dietsController para uqe ejecute findOrCreate en vez de create, y lo corregí para que maneje adecuadamente las promesas con Promise.all. A futuro, chequear que esté bien aplicado el Promise.all y si debería aplicarlo también en getAllApiRecipesRaw. 
 
-Próximo paso: Agregar funcionalidad para que una vez que se carga la db, en siguientes búsquedas, lo haga directamente ahí. 
 git commit -m "enhanced getDiets controller to query more results and to handle the findOrCreate promises"
 
 Modifiqué el controller getDiets para usar un for of con await en vez del Promise.all porque lo entiendo más (a pesar de que sea menos óptimo). 
 Agregué el controller getDietsFromDb. Ahora getDietsHandler hace la búsqueda inicialmente en la api, carga los datos en la db, y a partir de la segunda búsqueda, va directamente a la db. 
 git commit -m "added getDietsFromDb controller. Now getDietsHandler queries the db after the first query"
+
+Siguiente paso: retomar video de Selene. 
+Dudas principales: relación entre los modelos. recordar cómo se crea la aplicación de redux. 
+
+cleanApiRecipe debería retornar también la propiedad diets? 
+Cumplir con estas consignas: 
+- Tiene que incluir los datos de los tipos de dietas asociados a la receta. (ruta del id
+- Corregir la ruta del POST para asociar con diets) 
+
+Agregué diets al helper cleanApiRecipe. 
+A futuro, agregar algunos manejos de errores, por ejemplo si no existe un determinado id, o si no se encuentran coincidencias con un name. 
