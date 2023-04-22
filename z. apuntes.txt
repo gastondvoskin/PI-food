@@ -320,3 +320,8 @@ Refactoricé cleanAllApiRecipe para que tuviera un código análogo a cleanAllDb
 Refactoricé cleanApiRecipe para mejor legibilidad. 
 
 git commit -m "improved cleanDbRecipe and cleanAllDbRecipes helpers to bring diets instead of Diets. Improved readability of createRecipe controller, cleanApiRecipe".
+
+Agregué mensaje de error en controller searchRecipesByName y en helper getDbRecipeByIdRaw. 
+Intenté agregar mensaje de error en getApiRecipeByIdRaw helpers, pero no funciona porque da 404. 
+Actualicé archivo resExamp.json con respuestas actuales a las requests de: recipes, recipes por id db y api, diets. 
+El back-end está funcionando completamente. A futuro, chequear que para GET /recipes asocie también las propiedas vegetarian, etc además de las de diets. 

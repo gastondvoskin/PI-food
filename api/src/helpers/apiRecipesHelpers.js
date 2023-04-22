@@ -9,6 +9,7 @@ const baseURL = 'https://api.spoonacular.com/recipes';
 
 const getApiRecipeByIdRaw = async (id) => {
     let apiRecipeByIdRaw = await axios.get(`${baseURL}/${id}/information?apiKey=${API_KEY}`);
+    // if (!dbRecipeByIdRaw) throw Error('There is no recipe with this id');       // esto no funciona porque el endpoint con falso id da 404
     apiRecipeByIdRaw = apiRecipeByIdRaw.data;
     return apiRecipeByIdRaw;
 };
@@ -41,7 +42,7 @@ const getApiRecipeByIdClean = async (id) => {
 
 const getAllApiRecipesRaw = async () => {
     const numberOfRecipesPerPage = 10;  
-    const numberOfResults = 10;         // reducido a 10 para hacer una sola request a Spoonacular. a futuro, 100.  
+    const numberOfResults = 100;         // reducido a 10 para hacer una sola request a Spoonacular. a futuro, 100.  
     const numberOfPages = numberOfResults / numberOfRecipesPerPage;     
 
     let apiAllRecipesRaw = []; 

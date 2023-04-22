@@ -1,26 +1,386 @@
-pruebas
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//////////////////////////////////////////////////
-
-
-REQUEST GET /RECIPES
-- Primeros 100 resultados
-- Propiedad extra myId (a futuro borrar)
+GET /diets (primeras 100) retorna
 [
+    "vegetarian",
+    "gluten free",
+    "dairy free",
+    "lacto ovo vegetarian",
+    "vegan",
+    "paleolithic",
+    "primal",
+    "whole 30",
+    "pescatarian",
+    "ketogenic",
+    "fodmap friendly"
+]
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+GET /recipes/0641ad8c-3957-4635-a616-92d065fb3711 retorna
+{
+    "id": "0641ad8c-3957-4635-a616-92d065fb3711",
+    "name": "hola example Name",
+    "image": "https://www.exa.com/img.jpg",
+    "summary": "Example Summary",
+    "healthscore": 80,
+    "steps": [
+        "Example step",
+        "Another example step"
+    ],
+    "diets": [
+        "vegetarian",
+        "vegan"
+    ],
+    "created": true
+}
+
+
+GET /recipes/1 retorna
+{
+    "id": 1,
+    "name": "Fried Anchovies with Sage",
+    "image": "https://spoonacular.com/recipeImages/1-556x370.jpg",
+    "summary": "Fried Anchovies with Sage might be a good recipe to expand your main course collection. Watching your figure? This dairy free and pescatarian recipe has <b>396 calories</b>, <b>37g of protein</b>, and <b>12g of fat</b> per serving. This recipe serves 3. For <b>$5.61 per serving</b>, this recipe <b>covers 26%</b> of your daily requirements of vitamins and minerals. From preparation to the plate, this recipe takes around <b>45 minutes</b>. This recipe from latavolamarcherecipebox.blogspot.com requires anchovies, baking powder, salt, and vegetable oil. This recipe is liked by 3 foodies and cooks. Taking all factors into account, this recipe <b>earns a spoonacular score of 75%</b>, which is solid. <a href=\"https://spoonacular.com/recipes/fried-anchovies-with-sage-1189555\">Fried Anchovies with Sage</a>, <a href=\"https://spoonacular.com/recipes/fried-anchovies-with-sage-1355669\">Fried Anchovies with Sage</a>, and <a href=\"https://spoonacular.com/recipes/fried-anchovies-with-sage-1201577\">Fried Anchovies with Sage</a> are very similar to this recipe.",
+    "healthscore": 23,
+    "steps": [
+        "If you have not tried anchovies before - you must try them now! Get over any weird apprehensions or that its just bait or a punchline for a joke about pizza (\"extra anchovies\")! These little suckers are delicious &amp; actually good for you!",
+        "Baked, fried &amp; grilled - they are ohh so good and worth a try. If your not up to it, then pass me your plate because I love'em!Here is my favorite - Fried Anchovies - the recipe below adds a sage leave to each piece of fish as well for an extra burst of flavor &amp; color.Fried Anchovies with Sage",
+        "Acciughe fritte con Salvia1lb of anchovies cleaned, spine removedsage leaves (optional - if you are not a fan of sage just omit)batter1 cup of flour1 egg1 teaspoon of salt1 teaspoon of baking powderseltzer watervegetable oil for frying",
+        "In a bowl combine flour, eggs, salt &amp; baking powder. Slowly add in seltzer water &amp; mix until forms a thin batter. Cover with plastic &amp; set in the fridge for at least an hour.",
+        "Heat oil in a pot to 350 degree.",
+        "Remove batter from fridge and mix once or twice (batter will have separated).Take a sage leaf &amp; anchovy put them together &amp; dip into the batter - allowing access batter to drip off.Fry 20 seconds a side until golden brown.",
+        "Remove from oil &amp; drain on a paper towel.",
+        "Sprinkle with salt &amp; serve immediately.Pairs great with prosecco or white wine."
+    ],
+    "diets": [
+        "dairy free",
+        "pescatarian"
+    ],
+    "created": false
+}
+
+
+GET /recipes/3 retorna
+{
+    "id": 3,
+    "name": "Carrots, Cauliflower And Anchovies",
+    "image": "https://spoonacular.com/recipeImages/3-556x370.jpg",
+    "summary": "Carrots, Cauliflower And Anchovies might be just the main course you are searching for. For <b>$2.8 per serving</b>, this recipe <b>covers 29%</b> of your daily requirements of vitamins and minerals. This recipe serves 1. Watching your figure? This dairy free and pescatarian recipe has <b>943 calories</b>, <b>17g of protein</b>, and <b>73g of fat</b> per serving. A mixture of sale e pepe, quarter of a cauliflower, extra virgin olive oil, and a handful of other ingredients are all it takes to make this recipe so flavorful. This recipe is liked by 1 foodies and cooks. From preparation to the plate, this recipe takes around <b>45 minutes</b>. It is brought to you by saladpride.blogspot.com. With a spoonacular <b>score of 83%</b>, this dish is amazing. If you like this recipe, you might also like recipes such as <a href=\"https://spoonacular.com/recipes/carrots-cauliflower-and-anchovies-1228191\">Carrots, Cauliflower And Anchovies</a>, <a href=\"https://spoonacular.com/recipes/cauliflower-anchovies-and-tomatoes-23\">Cauliflower, Anchovies and Tomatoes</a>, and <a href=\"https://spoonacular.com/recipes/orecchiette-with-cauliflower-anchovies-and-pistachios-1228731\">Orecchiette with Cauliflower, Anchovies and Pistachios</a>.",
+    "healthscore": 43,
+    "steps": [],
+    "diets": [
+        "dairy free",
+        "pescatarian"
+    ],
+    "created": false
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+GET /recipes (primeras 100) retorna
+
+[
+    {
+        "id": "cb0c390b-818d-4488-8755-867531200745",
+        "name": "Example Name",
+        "image": "https://www.exa.com/img.jpg",
+        "summary": "Example Summary",
+        "healthscore": 80,
+        "steps": [
+            "Example step",
+            "Another example step"
+        ],
+        "diets": [
+            "vegetarian",
+            "vegan"
+        ],
+        "created": true
+    },
+    {
+        "id": "f97f694d-6993-4ffe-8b14-3c058bff92d3",
+        "name": "Example Name",
+        "image": "https://www.exa.com/img.jpg",
+        "summary": "Example Summary",
+        "healthscore": 80,
+        "steps": [
+            "Example step",
+            "Another example step"
+        ],
+        "diets": [
+            "vegetarian",
+            "vegan"
+        ],
+        "created": true
+    },
+    {
+        "id": "df675e0c-450a-4cf8-8163-36ab5ef24360",
+        "name": "Example Name",
+        "image": "https://www.exa.com/img.jpg",
+        "summary": "Example Summary",
+        "healthscore": 80,
+        "steps": [
+            "Example step",
+            "Another example step"
+        ],
+        "diets": [
+            "vegetarian",
+            "vegan"
+        ],
+        "created": true
+    },
+    {
+        "id": "dc4b559f-9ff0-4360-89b8-1119617df846",
+        "name": "Example Name",
+        "image": "https://www.exa.com/img.jpg",
+        "summary": "Example Summary",
+        "healthscore": 80,
+        "steps": [
+            "Example step",
+            "Another example step"
+        ],
+        "diets": [
+            "vegetarian",
+            "vegan"
+        ],
+        "created": true
+    },
+    {
+        "id": "820512ab-3e58-46f1-9f7b-d70ff29bd6ec",
+        "name": "Example Name",
+        "image": "https://www.exa.com/img.jpg",
+        "summary": "Example Summary",
+        "healthscore": 80,
+        "steps": [
+            "Example step",
+            "Another example step"
+        ],
+        "diets": [
+            "vegetarian",
+            "vegan"
+        ],
+        "created": true
+    },
+    {
+        "id": "9c429e62-cf81-459e-9519-244d718d0a89",
+        "name": "New example Name",
+        "image": "https://www.exa.com/img.jpg",
+        "summary": "Example Summary",
+        "healthscore": 80,
+        "steps": [
+            "Example step",
+            "Another example step"
+        ],
+        "diets": [
+            "vegetarian",
+            "vegan"
+        ],
+        "created": true
+    },
+    {
+        "id": "2570e6d0-2053-43ee-9c77-b8ed6540b4e2",
+        "name": "New new example Name",
+        "image": "https://www.exa.com/img.jpg",
+        "summary": "Example Summary",
+        "healthscore": 80,
+        "steps": [
+            "Example step",
+            "Another example step"
+        ],
+        "diets": [
+            "vegetarian",
+            "vegan"
+        ],
+        "created": true
+    },
+    {
+        "id": "3f0a113f-5401-4877-b668-1b7c363b3b04",
+        "name": "New new example Name",
+        "image": "https://www.exa.com/img.jpg",
+        "summary": "Example Summary",
+        "healthscore": 80,
+        "steps": [
+            "Example step",
+            "Another example step"
+        ],
+        "diets": [
+            "vegetarian",
+            "vegan"
+        ],
+        "created": true
+    },
+    {
+        "id": "cd4a304f-be3c-47e4-ba4d-c81df0575ba5",
+        "name": "New new new example Name",
+        "image": "https://www.exa.com/img.jpg",
+        "summary": "Example Summary",
+        "healthscore": 80,
+        "steps": [
+            "Example step",
+            "Another example step"
+        ],
+        "diets": [
+            "vegan"
+        ],
+        "created": true
+    },
+    {
+        "id": "8348b2e8-f8db-49ff-aa18-358aa5c6e81b",
+        "name": "Great example Name",
+        "image": "https://www.exa.com/img.jpg",
+        "summary": "Example Summary",
+        "healthscore": 80,
+        "steps": [
+            "Example step",
+            "Another example step"
+        ],
+        "diets": [
+            "vegan"
+        ],
+        "created": true
+    },
+    {
+        "id": "1551c9d1-26f0-4ec5-84c2-902029644cad",
+        "name": "hola example Name",
+        "image": "https://www.exa.com/img.jpg",
+        "summary": "Example Summary",
+        "healthscore": 80,
+        "steps": [
+            "Example step",
+            "Another example step"
+        ],
+        "diets": [
+            "vegan"
+        ],
+        "created": true
+    },
+    {
+        "id": "0641ad8c-3957-4635-a616-92d065fb3711",
+        "name": "hola example Name",
+        "image": "https://www.exa.com/img.jpg",
+        "summary": "Example Summary",
+        "healthscore": 80,
+        "steps": [
+            "Example step",
+            "Another example step"
+        ],
+        "diets": [
+            "vegetarian",
+            "vegan"
+        ],
+        "created": true
+    },
+    {
+        "id": "09c76705-fbc1-436c-9285-269a1af35875",
+        "name": "hola example Name",
+        "image": "https://www.exa.com/img.jpg",
+        "summary": "Example Summary",
+        "healthscore": 80,
+        "steps": [
+            "Example step",
+            "Another example step"
+        ],
+        "diets": [
+            "vegetarian",
+            "vegan"
+        ],
+        "created": true
+    },
+    {
+        "id": "7a4544ec-9bf3-47c7-b340-cd8f09fc8f77",
+        "name": "probando",
+        "image": "https://www.exa.com/img.jpg",
+        "summary": "Example Summary",
+        "healthscore": 80,
+        "steps": [
+            "Example step",
+            "Another example step"
+        ],
+        "diets": [
+            "vegetarian",
+            "vegan"
+        ],
+        "created": true
+    },
+    {
+        "id": "73c4e0a6-9971-4d0a-b94d-2e6c18667b3d",
+        "name": "Example Name",
+        "image": "https://www.exa.com/img.jpg",
+        "summary": "Example Summary",
+        "healthscore": 80,
+        "steps": [
+            "Example step",
+            "Another example step"
+        ],
+        "diets": [],
+        "created": true
+    },
+    {
+        "id": "60150995-7968-4c8d-8e99-54c670345073",
+        "name": "Example Name",
+        "image": "https://www.exa.com/img.jpg",
+        "summary": "Example Summary",
+        "healthscore": 80,
+        "steps": [
+            "Example step",
+            "Another example step"
+        ],
+        "diets": [],
+        "created": true
+    },
+    {
+        "id": "2e365e43-5c32-418c-96da-a43cb2945698",
+        "name": "Example Name",
+        "image": "https://www.exa.com/img.jpg",
+        "summary": "Example Summary",
+        "healthscore": 80,
+        "steps": [
+            "Example step",
+            "Another example step"
+        ],
+        "diets": [],
+        "created": true
+    },
+    {
+        "id": "b0822e69-90d3-4a2b-ab07-5b88dd1f5f8b",
+        "name": "aa",
+        "image": "https://www.example.com/spaghetti-carbonara.jpg",
+        "summary": "a",
+        "healthscore": 80,
+        "steps": [
+            "do something",
+            "do another thing"
+        ],
+        "diets": [],
+        "created": true
+    },
+    {
+        "id": "73521339-9986-44bb-8f2f-b49f309719b2",
+        "name": "aa",
+        "image": "https://www.example.com/spaghetti-carbonara.jpg",
+        "summary": "a",
+        "healthscore": 80,
+        "steps": [
+            "do something",
+            "do another thing"
+        ],
+        "diets": [],
+        "created": true
+    },
+    {
+        "id": "a9cc4ec9-c8a2-45e3-9db0-7764edc6aebc",
+        "name": "Example Name",
+        "image": "https://www.exa.com/img.jpg",
+        "summary": "Example Summary",
+        "healthscore": 80,
+        "steps": [
+            "Example step",
+            "Another example step"
+        ],
+        "diets": [],
+        "created": true
+    },
     {
         "id": 782585,
         "name": "Cannellini Bean and Asparagus Salad with Mushrooms",
@@ -38,8 +398,13 @@ REQUEST GET /RECIPES
             "Pour the dressing over the salad, season with salt and pepper, and toss.",
             "Serve at room temperature or chilled."
         ],
-        "created": false,
-        "myId": "myId1"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "lacto ovo vegetarian",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 716426,
@@ -58,8 +423,13 @@ REQUEST GET /RECIPES
             "Drizzle soy sauce and toasted sesame oil over rice.Cook for another minute or so and turn off heat.",
             "Add chopped scallion tops and toss.I like to toast some sesame seeds in a dry pan; I sprinkle these and some more raw, chopped scallion over the top of the rice for added flavor and crunch.Season to taste with salt and, if you'd like, more soy sauce. Keep in mind that if you're serving this with something salty and saucy (ie. teriyaki chicken) you may want to hold off on adding too much salt to the fried rice."
         ],
-        "created": false,
-        "myId": "myId2"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "lacto ovo vegetarian",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 715497,
@@ -71,8 +441,10 @@ REQUEST GET /RECIPES
             "Take some yogurt in your favorite flavor and add 1 container to your blender.",
             "Add in the berries, banana, and soy milk and blend. Top your glass with a few graham cracker crumbs and serve."
         ],
-        "created": false,
-        "myId": "myId3"
+        "diets": [
+            "lacto ovo vegetarian"
+        ],
+        "created": false
     },
     {
         "id": 715415,
@@ -87,8 +459,11 @@ REQUEST GET /RECIPES
             "Add the chicken breast and parsley. Cook for an additional 5 minutes. Adjust seasoning to taste.",
             "Serve the soup immediately garnished with fresh parsley and any additional toppings. Enjoy!"
         ],
-        "created": false,
-        "myId": "myId4"
+        "diets": [
+            "gluten free",
+            "dairy free"
+        ],
+        "created": false
     },
     {
         "id": 716406,
@@ -102,8 +477,15 @@ REQUEST GET /RECIPES
             "Add the whole bag of asparagus and cover everything with the broth. Season with salt and pepper and a pinch of red pepper flakes, if using.Simmer until the asparagus is bright green and tender (if you've thawed the asparagus it will only take a couple of minutes). Turn off the heat and puree using an immersion blender.",
             "Add peas (the heat of the soup will quickly thaw them) and puree until smooth; add more until it reaches the thickness you like.Top with chives and a small dollop of creme fraiche or sour cream or greek yogurt."
         ],
-        "created": false,
-        "myId": "myId5"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "paleolithic",
+            "lacto ovo vegetarian",
+            "primal",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 644387,
@@ -117,8 +499,16 @@ REQUEST GET /RECIPES
             "Add garlic and basalmic.Allow to cook for about another 30 seconds or so, mixing well so that the garlic and vinegar are well distributed.",
             "Serve hot."
         ],
-        "created": false,
-        "myId": "myId6"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "paleolithic",
+            "lacto ovo vegetarian",
+            "primal",
+            "whole 30",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 715446,
@@ -131,8 +521,11 @@ REQUEST GET /RECIPES
             "Pour in the cream of mushroom soup, Dale's seasoning, water, and beef broth and stir until mixed well.",
             "Add in your stew meat, potatoes, onions, carrots, celery, and green onions. Stir well until covered and cook on low for 8 hours. You can add salt and pepper as desired, but the flavors and the Dale's marry together so well that you probably won’t need them."
         ],
-        "created": false,
-        "myId": "myId7"
+        "diets": [
+            "gluten free",
+            "dairy free"
+        ],
+        "created": false
     },
     {
         "id": 782601,
@@ -148,8 +541,13 @@ REQUEST GET /RECIPES
             "Pour in the vegetable stock, liquid smoke, rice and the cooked kidney beans. Bring to a boil, reduce heat to medium low, cover, and cook, stirring occasionally, for 45 minutes or until the rice is tender.",
             "Add water as necessary if the stew becomes too dry.Season with sriracha, salt and pepper, and taste for seasoning  add more liquid smoke, sriracha, salt, pepper or herbs as desired."
         ],
-        "created": false,
-        "myId": "myId8"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "lacto ovo vegetarian",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 795751,
@@ -165,8 +563,10 @@ REQUEST GET /RECIPES
             "Place in the oven for about 10 minutes until the bell pepper has softened.Chicken Fajita Stuffed Bell Pepper",
             "Top with avocado and serve with shredded lettuce and salsa for a complete meal.This is SO GOOD! I love bell peppers, and I love all of these flavors that are married together that make this chicken fajita stuffed bell pepper so amazing. I could seriously just eat the flavored quinoa all by itself.If you are looking for even more delicious and healthy recipes, make sure you head over to the Simple Fit Forty tab under the cooking section of this blog. We have all of our favorite healthy recipes listed for you right there in one spot. You can also drool over out latest on the Simple Fit Forty Instagram page.If you are looking to get healthy and fit, come and join the super secret and awesome Simple Fit Forty Lifestyle community over on Facebook. We would love to have you join!"
         ],
-        "created": false,
-        "myId": "myId9"
+        "diets": [
+            "gluten free"
+        ],
+        "created": false
     },
     {
         "id": 766453,
@@ -182,8 +582,13 @@ REQUEST GET /RECIPES
             "Transfer the hummus to a shallow bowl and drizzle with olive oil.",
             "Sprinkle with za'atar and paprika, and serve with chopped fresh vegetables or toasted pita triangles.Refrigerate leftover hummus for a few days or freeze for up to a month."
         ],
-        "created": false,
-        "myId": "myId10"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "lacto ovo vegetarian",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 716627,
@@ -197,8 +602,13 @@ REQUEST GET /RECIPES
             "Add all other remaining ingredients and stir together. Increase the heat to medium high and bring to a boil. Cover and reduce heat to medium low so that the mixture simmers. Cook for 15-20 minutes, or until rice is fluffy and liquid is absorbed.*",
             "Serve with salsa, cheese, and sour cream."
         ],
-        "created": false,
-        "myId": "myId11"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "lacto ovo vegetarian",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 664147,
@@ -212,8 +622,13 @@ REQUEST GET /RECIPES
             "Add the salt to taste.Ladle the soup into bowls.",
             "Drizzle with the olive oil, sprinkle with rosemary, and serve."
         ],
-        "created": false,
-        "myId": "myId12"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "lacto ovo vegetarian",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 640941,
@@ -230,8 +645,14 @@ REQUEST GET /RECIPES
             "Mix and combine so that each sprout is covered with the dressing.",
             "Serve warm or cold as a side dish."
         ],
-        "created": false,
-        "myId": "myId13"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "paleolithic",
+            "lacto ovo vegetarian",
+            "primal"
+        ],
+        "created": false
     },
     {
         "id": 715495,
@@ -245,8 +666,8 @@ REQUEST GET /RECIPES
             "Add another layer of cheese, and then sprinkle with pepper.",
             "Place the pizza on a ceramic grill plate and place into the grill.Grill for 6-10 minutes, or until cooked as desired.Slice, and serve immediately."
         ],
-        "created": false,
-        "myId": "myId14"
+        "diets": [],
+        "created": false
     },
     {
         "id": 794349,
@@ -260,8 +681,13 @@ REQUEST GET /RECIPES
             "Add the broccoli to a large bowl, along with the remaining salad ingredients.To make the dressing, whisk together all of the dressing ingredients in a small bowl.",
             "Pour the dressing over the salad and toss well to coat evenly. Taste for seasoning and serve."
         ],
-        "created": false,
-        "myId": "myId15"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "lacto ovo vegetarian",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 716381,
@@ -278,8 +704,12 @@ REQUEST GET /RECIPES
             "Add your snails and stir in and allow to stew for 2-4 minutes more on medium heat.",
             "Serve with Rice, Pasta, Plantain, Yams or Potatoes."
         ],
-        "created": false,
-        "myId": "myId16"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "whole 30"
+        ],
+        "created": false
     },
     {
         "id": 660306,
@@ -293,8 +723,11 @@ REQUEST GET /RECIPES
             "Add 1/4 of an avocado sliced, top with chopped fresh cilantro.NOTES:*1 The beans do not need to be soaked before adding to the slow cooker. They will be perfectly soft and creamy without pre-soaking.*2 Substitute the water for: 2 cups water and 1 bottle of good quality dark beer like Negra Modelo. You can also substitute the water for chicken stock or pork stock. Each of these substitutions will add an extra dimension of flavor.*3 If you want to shred the pork, it is easiest to do when the pork is hot. Use two forks to pull the pork apart and shred. If you want to slice the pork (like for sandwiches) it is best to do when the pork is cold.",
             "Let the pork rest in the refrigerator for several hours or over night. Slice with a serrated knife or a very sharp chef knife."
         ],
-        "created": false,
-        "myId": "myId17"
+        "diets": [
+            "gluten free",
+            "dairy free"
+        ],
+        "created": false
     },
     {
         "id": 756814,
@@ -306,8 +739,11 @@ REQUEST GET /RECIPES
             "Combine all of the ingredients in a blender. Blend on high until smooth.",
             "Serve immediately."
         ],
-        "created": false,
-        "myId": "myId18"
+        "diets": [
+            "gluten free",
+            "dairy free"
+        ],
+        "created": false
     },
     {
         "id": 715769,
@@ -322,8 +758,13 @@ REQUEST GET /RECIPES
             "Add quinoa to pan, stir to combine. Slowly add in broth and bring to a boil.Cover and reduce heat to low, cook for 15 minutes.In the last 2-3 minutes of cooking add in broccolini on top of the quinoa (do not stir) and cover.Uncover and toss broccolini and quinoa together.Season to taste with salt and pepper.",
             "Add walnuts and serve hot."
         ],
-        "created": false,
-        "myId": "myId19"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "lacto ovo vegetarian",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 642129,
@@ -336,8 +777,12 @@ REQUEST GET /RECIPES
             "Place 2 shrimp halves in a row across the center and top with basil, mint, cilantro and lettuce. Leave about 1 to 2 inches uncovered on each side.  Fold uncovered sides inward, then tightly roll the wrapper, beginning at the end with the lettuce.  Repeat with remaining wrappers and ingredients.",
             "Cut and serve at room temperature with dipping sauce.The Culinary Chases Note: The rice wrapper can be fussy to handle if you let it soak too long. I usually give it a couple of swishes in the water and then remove. It may feel slightly stiff but by the time you are ready to roll up, the wrapper will become very pliable.  A typical spring roll contains cooked rice vermicelli, slivers of cooked pork and julienned carrots but you can use whatever suits your fancy.  Enjoy!"
         ],
-        "created": false,
-        "myId": "myId20"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "pescatarian"
+        ],
+        "created": false
     },
     {
         "id": 642605,
@@ -353,8 +798,11 @@ REQUEST GET /RECIPES
             "Add chicken stock, and bring it to a boil.Stir in farro, and return to a boil.Lower the heat to a simmer, and cover with a tight fitting lid.  Cook for 10 minutes.",
             "Add asparagus, and cook, covered, for an additional 10 minutes.Season with 1 tablespoon sherry vinegar, salt and pepper."
         ],
-        "created": false,
-        "myId": "myId21"
+        "diets": [
+            "dairy free",
+            "lacto ovo vegetarian"
+        ],
+        "created": false
     },
     {
         "id": 636589,
@@ -372,8 +820,10 @@ REQUEST GET /RECIPES
             "Bake in oven for 30-35 minutes, until middle is slightly firm",
             "Let it cool for a few minutes"
         ],
-        "created": false,
-        "myId": "myId22"
+        "diets": [
+            "gluten free"
+        ],
+        "created": false
     },
     {
         "id": 646738,
@@ -397,8 +847,13 @@ REQUEST GET /RECIPES
             "Remove the bay leaves and Parmesan rind, if using.",
             "Add the beans, kale, and lemon juice and simmer for 10 minutes, until the kale is tender. Taste and adjust the seasoning, then serve, garnished with a generous drizzle of extra-virgin olive oil."
         ],
-        "created": false,
-        "myId": "myId23"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "lacto ovo vegetarian",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 715540,
@@ -411,8 +866,15 @@ REQUEST GET /RECIPES
             "Mix in with Romaine lettuce",
             "Toss in some basalmic vinaigrette"
         ],
-        "created": false,
-        "myId": "myId24"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "paleolithic",
+            "lacto ovo vegetarian",
+            "primal",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 663559,
@@ -427,8 +889,13 @@ REQUEST GET /RECIPES
             "Stir in lentils, season with salt and cook for 5 minutes.",
             "Before serving sprinkle with chopped parsley."
         ],
-        "created": false,
-        "myId": "myId25"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "lacto ovo vegetarian",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 662670,
@@ -449,8 +916,15 @@ REQUEST GET /RECIPES
             "Enjoy these wraps as a side to your favorite protein! Feel free to dip these wraps in more sauce.",
             "These wraps are best consumed when they are freshly made. Refrigerate any leftovers in an airtight container."
         ],
-        "created": false,
-        "myId": "myId26"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "paleolithic",
+            "lacto ovo vegetarian",
+            "primal",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 640062,
@@ -465,8 +939,13 @@ REQUEST GET /RECIPES
             "Add cooled corn.",
             "Mix in cumin and vinegar and blend well."
         ],
-        "created": false,
-        "myId": "myId27"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "lacto ovo vegetarian",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 715421,
@@ -480,8 +959,10 @@ REQUEST GET /RECIPES
             "Remove from oven and allow to cool for 5 minutes. Then top with chopped Roma tomato, chopped avocado, green onion tops, and remaining 2 tsp of cilantro.",
             "Serve immediately."
         ],
-        "created": false,
-        "myId": "myId28"
+        "diets": [
+            "gluten free"
+        ],
+        "created": false
     },
     {
         "id": 648320,
@@ -494,8 +975,14 @@ REQUEST GET /RECIPES
             "Chill for 30 minutes.",
             "Add lime juice and vinegar, adjust to perfect, and serve."
         ],
-        "created": false,
-        "myId": "myId29"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "paleolithic",
+            "primal",
+            "pescatarian"
+        ],
+        "created": false
     },
     {
         "id": 716432,
@@ -504,8 +991,13 @@ REQUEST GET /RECIPES
         "summary": "Finger Foods: Frittata Muffins might be a good recipe to expand your breakfast repertoire. This recipe makes 1 servings with <b>655 calories</b>, <b>50g of protein</b>, and <b>45g of fat</b> each. For <b>$2.96 per serving</b>, this recipe <b>covers 47%</b> of your daily requirements of vitamins and minerals. From preparation to the plate, this recipe takes approximately <b>45 minutes</b>. Plenty of people made this recipe, and 601 would say it hit the spot. If you have salt and pepper, orange pepper, t cream, and a few other ingredients on hand, you can make it. It is a good option if you're following a <b>gluten free, lacto ovo vegetarian, primal, and ketogenic</b> diet. It is brought to you by fullbellysisters.blogspot.com. Overall, this recipe earns an <b>amazing spoonacular score of 97%</b>. Users who liked this recipe also liked <a href=\"https://spoonacular.com/recipes/finger-foods-frittata-muffins-1369183\">Finger Foods: Frittata Muffins</a>, <a href=\"https://spoonacular.com/recipes/38-power-foods-skinny-kiwifruit-muffins-524893\">{38 Power Foods} Skinny Kiwifruit Muffins</a>, and <a href=\"https://spoonacular.com/recipes/38-power-foods-skinny-broccoli-cheese-muffins-525064\">{38 Power Foods} Skinny Broccoli Cheese Muffins</a>.",
         "healthscore": 49,
         "steps": [],
-        "created": false,
-        "myId": "myId30"
+        "diets": [
+            "gluten free",
+            "lacto ovo vegetarian",
+            "primal",
+            "ketogenic"
+        ],
+        "created": false
     },
     {
         "id": 798400,
@@ -528,8 +1020,13 @@ REQUEST GET /RECIPES
             "Add the lemon juice and salt to taste near the end of the cooking time.",
             "Remove from heat, cover, and let sit for a few minutes before serving."
         ],
-        "created": false,
-        "myId": "myId31"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "lacto ovo vegetarian",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 782600,
@@ -545,8 +1042,13 @@ REQUEST GET /RECIPES
             "Serve at room temperature or chilled.",
             "Sprinkle each serving with a scattering of toasted cashews and seeds."
         ],
-        "created": false,
-        "myId": "myId32"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "lacto ovo vegetarian",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 652417,
@@ -561,8 +1063,12 @@ REQUEST GET /RECIPES
             "Add water, tomato paste, chickpeas and lentils, bring to a boil. Cover, reduce heat to low and simmer for 20 minutes.Meanwhile, cook couscous in separate pan according to package directions.",
             "Add cilantro and lemon juice to stew and serve over warm couscous."
         ],
-        "created": false,
-        "myId": "myId33"
+        "diets": [
+            "dairy free",
+            "lacto ovo vegetarian",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 639535,
@@ -575,8 +1081,12 @@ REQUEST GET /RECIPES
             "Drain couscous and add to bowl while still hot. Thoroughly mix all ingredients. Taste and adjust seasonings.",
             "Serve warm."
         ],
-        "created": false,
-        "myId": "myId34"
+        "diets": [
+            "dairy free",
+            "lacto ovo vegetarian",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 729366,
@@ -591,8 +1101,11 @@ REQUEST GET /RECIPES
             "Sprinkle the parmesan cheese over the salad",
             "Drizzle your dressing over and serve cool.   "
         ],
-        "created": false,
-        "myId": "myId35"
+        "diets": [
+            "gluten free",
+            "pescatarian"
+        ],
+        "created": false
     },
     {
         "id": 661925,
@@ -606,8 +1119,11 @@ REQUEST GET /RECIPES
             "Add the cooled quinoa, strawberries, mango, cucumber and mint. Toss well to combine and season with salt &amp; pepper.",
             "Serve immediately."
         ],
-        "created": false,
-        "myId": "myId36"
+        "diets": [
+            "gluten free",
+            "lacto ovo vegetarian"
+        ],
+        "created": false
     },
     {
         "id": 794538,
@@ -616,8 +1132,13 @@ REQUEST GET /RECIPES
         "summary": "Almond Joy Protein Shake might be a good recipe to expand your beverage recipe box. One portion of this dish contains roughly <b>24g of protein</b>, <b>41g of fat</b>, and a total of <b>485 calories</b>. This gluten free, dairy free, fodmap friendly, and ketogenic recipe serves 1 and costs <b>$2.24 per serving</b>. 22 people found this recipe to be flavorful and satisfying. From preparation to the plate, this recipe takes approximately <b>45 minutes</b>. It is brought to you by fullbellysisters.blogspot.com. Head to the store and pick up coconut, chocolate almond milk, coconut milk, and a few other things to make it today. All things considered, we decided this recipe <b>deserves a spoonacular score of 97%</b>. This score is super. If you like this recipe, take a look at these similar recipes: <a href=\"https://spoonacular.com/recipes/almond-joy-breakfast-shake-chocolate-coconut-protein-shake-996923\">Almond Joy Breakfast Shake – Chocolate Coconut Protein Shake</a>, <a href=\"https://spoonacular.com/recipes/almond-joy-protein-shake-1283415\">Almond Joy Protein Shake</a>, and <a href=\"https://spoonacular.com/recipes/almond-joy-protein-shake-549372\">Almond Joy Protein Shake</a>.",
         "healthscore": 78,
         "steps": [],
-        "created": false,
-        "myId": "myId37"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "fodmap friendly",
+            "ketogenic"
+        ],
+        "created": false
     },
     {
         "id": 649931,
@@ -632,8 +1153,13 @@ REQUEST GET /RECIPES
             "Combine lentils with tomatoes, pepper, onions, rosemary, olive oil, and vinegars. Season with salt and pepper to taste and adjust oil or vinegar as desired.",
             "Serve cold or at room temperature."
         ],
-        "created": false,
-        "myId": "myId38"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "lacto ovo vegetarian",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 636787,
@@ -660,8 +1186,12 @@ REQUEST GET /RECIPES
             "Cook for 5 minutes at a simmer then stir in chorizo sausage.",
             "Serve hot or at room temperature (the latter is my favorite). Eat with a nice crusty loaf of Portuguese bread. Enjoy!"
         ],
-        "created": false,
-        "myId": "myId39"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "whole 30"
+        ],
+        "created": false
     },
     {
         "id": 641975,
@@ -672,8 +1202,10 @@ REQUEST GET /RECIPES
         "steps": [
             "In a small bowl, combine flour, broth, sugar, and soy sauce. Stir until sugar and flour are dissolved.In a large skillet or wok over high heat, cook and stir beef 2 to 4 minutes, or until browned. Stir in broth mixture, ginger, garlic, and broccoli. Bring to a boil, then reduce heat. Simmer 5 to 10 minutes, or until sauce thickens.Excellent served over rice."
         ],
-        "created": false,
-        "myId": "myId40"
+        "diets": [
+            "dairy free"
+        ],
+        "created": false
     },
     {
         "id": 652423,
@@ -688,8 +1220,12 @@ REQUEST GET /RECIPES
             "Add the spice mixture over the couscous and mix well. Taste, and add salt if needed.",
             "Let the salad marinate for an hour or so before serving."
         ],
-        "created": false,
-        "myId": "myId41"
+        "diets": [
+            "dairy free",
+            "lacto ovo vegetarian",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 715447,
@@ -705,8 +1241,10 @@ REQUEST GET /RECIPES
             "Heat on high, stirring occasionally until the stew mixture comes to a boil.",
             "Once you have reached a boil, cover with a lid, lower heat enough to keep it simmering.  Continue to simmer for 1.5 to 2 hours, stirring occasionally."
         ],
-        "created": false,
-        "myId": "myId42"
+        "diets": [
+            "dairy free"
+        ],
+        "created": false
     },
     {
         "id": 716311,
@@ -718,8 +1256,11 @@ REQUEST GET /RECIPES
             "Wash your rice and bring to boil on medium heat with very little water as you are still going to cook it in chicken stock.Once the rice is slightly soft and the initial water has dried up, reduce the heat and pour in the chicken stock and cook till the chicken stock is all absorbed and has dried up. The chicken stock if freshly made will have some oil from the chicken so your rice does not need oil.Increase the heat and stir in the chopped vegetables and pepper.",
             "Add your seasoning cube.Finally stir in your cubed mango and serve warm with any protein of your choice. I’d say chicken but it’s up to you."
         ],
-        "created": false,
-        "myId": "myId43"
+        "diets": [
+            "gluten free",
+            "dairy free"
+        ],
+        "created": false
     },
     {
         "id": 715543,
@@ -728,8 +1269,16 @@ REQUEST GET /RECIPES
         "summary": "If you want to add more <b>gluten free, dairy free, paleolithic, and lacto ovo vegetarian</b> recipes to your recipe box, Homemade Guacamole might be a recipe you should try. For <b>92 cents per serving</b>, this recipe <b>covers 9%</b> of your daily requirements of vitamins and minerals. This recipe makes 4 servings with <b>170 calories</b>, <b>2g of protein</b>, and <b>15g of fat</b> each. It is an <b>inexpensive</b> recipe for fans of Mexican food. Many people really liked this hor d'oeuvre. This recipe from Pink When has 1330 fans. A mixture of roma tomato, onion, pepper, and a handful of other ingredients are all it takes to make this recipe so tasty. From preparation to the plate, this recipe takes roughly <b>45 minutes</b>. With a spoonacular <b>score of 97%</b>, this dish is amazing. Similar recipes are <a href=\"https://spoonacular.com/recipes/homemade-guacamole-883310\">Homemade Guacamole</a>, <a href=\"https://spoonacular.com/recipes/homemade-guacamole-1059336\">Homemade Guacamole</a>, and <a href=\"https://spoonacular.com/recipes/homemade-guacamole-1170259\">Homemade Guacamole</a>.",
         "healthscore": 34,
         "steps": [],
-        "created": false,
-        "myId": "myId44"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "paleolithic",
+            "lacto ovo vegetarian",
+            "primal",
+            "whole 30",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 157344,
@@ -744,8 +1293,11 @@ REQUEST GET /RECIPES
             "Pour the dressing over the salad.",
             "Fast, easy, and healthy-- one of my favorite lunches!"
         ],
-        "created": false,
-        "myId": "myId45"
+        "diets": [
+            "gluten free",
+            "lacto ovo vegetarian"
+        ],
+        "created": false
     },
     {
         "id": 658509,
@@ -759,8 +1311,16 @@ REQUEST GET /RECIPES
             "Bake in the preheated oven until broccoli is tender enough to pierce the stems with a fork, 15 to 20 minutes.",
             "Remove and place in a bowl, toss with lemon juice."
         ],
-        "created": false,
-        "myId": "myId46"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "paleolithic",
+            "lacto ovo vegetarian",
+            "primal",
+            "whole 30",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 716195,
@@ -773,8 +1333,13 @@ REQUEST GET /RECIPES
             "Drain and rinse, then transfer to a large saucepan.  Cover with several inches of fresh water, bring to a boil, reduce the heat to medium-low and cover.  Simmer for 1 to 1 1/2 hours or until the beans are buttery soft.",
             "Drain.In a food processor, combine all of the ingredients and process until you have a thick, smooth paste. You may need to add extra olive oil or a bit of water if you want a thinner paste. Makes 3 cups, nutrition information is based on 1/4 cup serving."
         ],
-        "created": false,
-        "myId": "myId47"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "lacto ovo vegetarian",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 716361,
@@ -787,8 +1352,10 @@ REQUEST GET /RECIPES
             "Pour into a bowl and set aside.In a pan, heat up the melted butter and pan fry on medium heat the chicken breast, constantly flipping it over so it browns on both sides, reduce the heat, cover the pan and allow the chicken cook properly. If the pan becomes to dry, add 2 tablespoons of water.Stir in the chopped vegetables into the pan of frying chicken and finally add the quinoa/brown rice mix.",
             "Serve hot!     "
         ],
-        "created": false,
-        "myId": "myId48"
+        "diets": [
+            "gluten free"
+        ],
+        "created": false
     },
     {
         "id": 765011,
@@ -804,8 +1371,12 @@ REQUEST GET /RECIPES
             "Add the veggies to the bowl with the pesto and toss to coat.",
             "Pour the veggies onto a large platter and drizzle with the cilantro cream. Top with micro greens and sliced almonds. Enjoy immediately or place in the refrigerator to chill."
         ],
-        "created": false,
-        "myId": "myId49"
+        "diets": [
+            "gluten free",
+            "lacto ovo vegetarian",
+            "primal"
+        ],
+        "created": false
     },
     {
         "id": 660228,
@@ -820,8 +1391,10 @@ REQUEST GET /RECIPES
             "Add the rest of the ingredients into the food processor and mix until everything is well blended.",
             "Pour out all the ingredients into a dish and enjoy with your favorite dishes!"
         ],
-        "created": false,
-        "myId": "myId50"
+        "diets": [
+            "gluten free"
+        ],
+        "created": false
     },
     {
         "id": 716408,
@@ -835,8 +1408,11 @@ REQUEST GET /RECIPES
             "Sprinkle with dried basil and oregano, the tomato, and the feta cheese, then drizzle the white wine and olive oil over top. Grind some fresh pepper over the top.",
             "Bake uncovered for about 12 – 15 minutes or until the fish flakes easily with a fork. Squeeze the lemon wedges over the cooked fish, garnish with the fresh basil and/or oregano and serve with hot cooked rice."
         ],
-        "created": false,
-        "myId": "myId51"
+        "diets": [
+            "gluten free",
+            "pescatarian"
+        ],
+        "created": false
     },
     {
         "id": 661340,
@@ -847,8 +1423,11 @@ REQUEST GET /RECIPES
         "steps": [
             "Place everything on a plate!  :)"
         ],
-        "created": false,
-        "myId": "myId52"
+        "diets": [
+            "gluten free",
+            "primal"
+        ],
+        "created": false
     },
     {
         "id": 782622,
@@ -857,8 +1436,12 @@ REQUEST GET /RECIPES
         "summary": "Chocolate Peanut Butter Cinnamon Smoothie is a <b>gluten free, dairy free, and fodmap friendly</b> breakfast. This recipe serves 1 and costs $1.5 per serving. One portion of this dish contains roughly <b>27g of protein</b>, <b>21g of fat</b>, and a total of <b>420 calories</b>. If you have ice cubes, banana, jif cinnamon peanut butter, and a few other ingredients on hand, you can make it. From preparation to the plate, this recipe takes approximately <b>45 minutes</b>. Only a few people really liked this Southern dish. 5 people found this recipe to be tasty and satisfying. It is brought to you by fullbellysisters.blogspot.com. With a spoonacular <b>score of 96%</b>, this dish is super. <a href=\"https://spoonacular.com/recipes/cinnamon-apple-peanut-butter-smoothie-1177081\">Cinnamon Apple Peanut Butter Smoothie</a>, <a href=\"https://spoonacular.com/recipes/peanut-butter-chocolate-chip-protein-smoothie-with-kura-smoothie-starter-629513\">Peanut Butter Chocolate Chip Protein Smoothie with Kura Smoothie Starter</a>, and <a href=\"https://spoonacular.com/recipes/chocolate-peanut-butter-smoothie-113511\">Chocolate-Peanut butter Smoothie</a> are very similar to this recipe.",
         "healthscore": 100,
         "steps": [],
-        "created": false,
-        "myId": "myId53"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "fodmap friendly"
+        ],
+        "created": false
     },
     {
         "id": 715424,
@@ -869,8 +1452,11 @@ REQUEST GET /RECIPES
         "steps": [
             "Brown the lean ground beef in a deep skillet. Cook over medium heat until cooked all the way through, and then drain.In a large pan over high heat add in all of your additional ingredients: cooked ground beef, tomato juice, kidney beans, pinto beans, water, tomato paste, chili powder, cumin, black pepper, oregano, sugar, cayenne pepper, bell pepper, and chopped onions.Bring to a boil.Once your large pot of chili has started to boil, lower the heat and simmer for 2 hours uncovered."
         ],
-        "created": false,
-        "myId": "myId54"
+        "diets": [
+            "gluten free",
+            "dairy free"
+        ],
+        "created": false
     },
     {
         "id": 659135,
@@ -888,8 +1474,13 @@ REQUEST GET /RECIPES
             "Drizzle the lemon juice and sprinkle over the rosemary and thyme. Season lightly with salt and pepper and roast for 10-15 minutes or until the salmon and veg is cooked through.",
             "Serve with some green salad."
         ],
-        "created": false,
-        "myId": "myId55"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "whole 30",
+            "pescatarian"
+        ],
+        "created": false
     },
     {
         "id": 639851,
@@ -905,8 +1496,12 @@ REQUEST GET /RECIPES
             "Place the cod fillets into a hot oiled non-stick pan and cook over a high heat for 5 minutes on each side or until golden brown.",
             "Serve with mashed potatoes and sauce."
         ],
-        "created": false,
-        "myId": "myId56"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "whole 30"
+        ],
+        "created": false
     },
     {
         "id": 664547,
@@ -918,8 +1513,12 @@ REQUEST GET /RECIPES
             "In a medium bowl combine all ingredients (except raw vegetables for dipping). Cover and refrigerate until ready to serve.",
             "Serve as a dip for raw vegetables. Makes approximately 3 cups."
         ],
-        "created": false,
-        "myId": "myId57"
+        "diets": [
+            "gluten free",
+            "lacto ovo vegetarian",
+            "primal"
+        ],
+        "created": false
     },
     {
         "id": 633921,
@@ -942,8 +1541,12 @@ REQUEST GET /RECIPES
             "Remove lid and add the minced garlic.",
             "Place cover back over the asparagus. Continue cooking an additional 3 to 5 minutes until asparagus is cooked but not too soft.  Grate lemon zest over the top of the asparagus."
         ],
-        "created": false,
-        "myId": "myId58"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "pescatarian"
+        ],
+        "created": false
     },
     {
         "id": 658579,
@@ -960,8 +1563,13 @@ REQUEST GET /RECIPES
             "When the endive is done roasting, arrange three pieces on a plate alongside a handful of sliced dried figs and pistachio nuts.",
             "Drizzle a spoonful of honey over the plate, then sprinkle the endive with about 1/4th of the crumbled prosciutto."
         ],
-        "created": false,
-        "myId": "myId59"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "paleolithic",
+            "primal"
+        ],
+        "created": false
     },
     {
         "id": 715385,
@@ -970,8 +1578,8 @@ REQUEST GET /RECIPES
         "summary": "Slow Cooker Baked Potato Soup might be a good recipe to expand your main course collection. This recipe serves 3. One portion of this dish contains approximately <b>35g of protein</b>, <b>33g of fat</b>, and a total of <b>884 calories</b>. For <b>$2.83 per serving</b>, this recipe <b>covers 36%</b> of your daily requirements of vitamins and minerals. 992 people were glad they tried this recipe. It is brought to you by Pink When. It is perfect for <b>Autumn</b>. If you have green onion tops, cream, water, and a few other ingredients on hand, you can make it. From preparation to the plate, this recipe takes roughly <b>9 hours</b>. All things considered, we decided this recipe <b>deserves a spoonacular score of 96%</b>. This score is excellent. Try <a href=\"https://spoonacular.com/recipes/slow-cooker-baked-potato-soup-569219\">Slow cooker baked potato soup</a>, <a href=\"https://spoonacular.com/recipes/slow-cooker-baked-potato-soup-1399117\">Slow Cooker Baked Potato Soup</a>, and <a href=\"https://spoonacular.com/recipes/slow-cooker-baked-potato-soup-731389\">Slow Cooker Baked Potato Soup</a> for similar recipes.",
         "healthscore": 45,
         "steps": [],
-        "created": false,
-        "myId": "myId60"
+        "diets": [],
+        "created": false
     },
     {
         "id": 641057,
@@ -986,8 +1594,13 @@ REQUEST GET /RECIPES
             "Mix the blended part of the soup with the simmered squash and apples.",
             "Mix in the cubed tofu, gently re-heat and serve."
         ],
-        "created": false,
-        "myId": "myId61"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "lacto ovo vegetarian",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 655575,
@@ -1006,8 +1619,8 @@ REQUEST GET /RECIPES
             "Calories per serving:  235,  Fat:  2.",
             "Cholesterol:  5,  Sodium:  138,  Carbs:  40.3,  Fiber:  8.5,  Sugar:  3.3,  Protein:  12"
         ],
-        "created": false,
-        "myId": "myId62"
+        "diets": [],
+        "created": false
     },
     {
         "id": 632269,
@@ -1027,8 +1640,13 @@ REQUEST GET /RECIPES
             "Toss together and there you have it, an unusual roast veggie salad!",
             "Serve warm"
         ],
-        "created": false,
-        "myId": "myId63"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "lacto ovo vegetarian",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 637162,
@@ -1041,8 +1659,17 @@ REQUEST GET /RECIPES
             "Add the ground coriander, cumin seed, lime juice, and olive oil and massage it into the veggies.",
             "Add the fresh coriander and sunflower seeds on top.Leave aside for a couple of hours for the spices to seep into the veggies for added flavor."
         ],
-        "created": false,
-        "myId": "myId64"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "paleolithic",
+            "lacto ovo vegetarian",
+            "primal",
+            "fodmap friendly",
+            "whole 30",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 982371,
@@ -1057,8 +1684,13 @@ REQUEST GET /RECIPES
             "Fluff the cooked quinoa with a fork. Now you have Instant Pot Quinoa!",
             "Add fruits and vegetables over a scoop of cooked quinoa and make an amazing quinoa grain bowl."
         ],
-        "created": false,
-        "myId": "myId65"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "lacto ovo vegetarian",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 1095753,
@@ -1072,8 +1704,13 @@ REQUEST GET /RECIPES
             "Add in the quinoa and toss so everything is mixed together.",
             "Place some of the kale mixture in the bottom of a bowl and top with sliced avocado, some of the roasted cauliflower, a drizzle of the tahini sauce and if desired, sprinkle some cress on the top."
         ],
-        "created": false,
-        "myId": "myId66"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "lacto ovo vegetarian",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 660405,
@@ -1092,8 +1729,12 @@ REQUEST GET /RECIPES
             "Transfer the cooled beans to a blender and puree until smooth, then return them to the pot. Stir in the remaining 1 tbsp of ground cumin. Now add 1 tbsp of the chipotles in adobo. Taste and continue to add more until it has a spice level that you like. Adjust the salt &amp; pepper as needed.",
             "Serve with a dollop of sour cream."
         ],
-        "created": false,
-        "myId": "myId67"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "lacto ovo vegetarian"
+        ],
+        "created": false
     },
     {
         "id": 715523,
@@ -1110,8 +1751,10 @@ REQUEST GET /RECIPES
             "Sprinkle with a little cheese and then bake in the oven for about 10 minutes until the bell pepper has softened.",
             "Serve immediately."
         ],
-        "created": false,
-        "myId": "myId68"
+        "diets": [
+            "gluten free"
+        ],
+        "created": false
     },
     {
         "id": 632252,
@@ -1126,8 +1769,12 @@ REQUEST GET /RECIPES
             "Bake 12-15 minutes.",
             "Garnish and serve."
         ],
-        "created": false,
-        "myId": "myId69"
+        "diets": [
+            "dairy free",
+            "lacto ovo vegetarian",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 639891,
@@ -1146,8 +1793,11 @@ REQUEST GET /RECIPES
             "Transfer ribs to a platter and spoon sauce over top.",
             "Sprinkle with chopped cilantro."
         ],
-        "created": false,
-        "myId": "myId70"
+        "diets": [
+            "gluten free",
+            "dairy free"
+        ],
+        "created": false
     },
     {
         "id": 646651,
@@ -1161,8 +1811,10 @@ REQUEST GET /RECIPES
             "Remove the chicken from the oven, leave to cool for a minute then cut the bag open and gently tip the contents into a dish. Slice the chicken breasts into chunky pieces on a board, keeping the chicken breast shape together.",
             "Serve the mash potato topped with the chicken and remaining sauce with a side of broccoli."
         ],
-        "created": false,
-        "myId": "myId71"
+        "diets": [
+            "gluten free"
+        ],
+        "created": false
     },
     {
         "id": 716330,
@@ -1176,8 +1828,12 @@ REQUEST GET /RECIPES
             "Mix all your seasoning in a bowl with your vegetable oil.With a brush, smear the mix on the chicken breast on both sides.Flip occasionally as it browns till its cooked. Stack your mangoes after the chicken is done but if your mangoes are firm, you can grill them as well.",
             "Serve on its own as an appetizer or with rice."
         ],
-        "created": false,
-        "myId": "myId72"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "whole 30"
+        ],
+        "created": false
     },
     {
         "id": 640318,
@@ -1189,8 +1845,11 @@ REQUEST GET /RECIPES
             "Mix crabmeat, apple and bell pepper together in a bowl.Season to taste, add coriander and fold mayonnaise through.Toast pita breads until puffed up, then cut open on one side.Stuff with some watercress, then the crab mixture.",
             "Serve immediately."
         ],
-        "created": false,
-        "myId": "myId73"
+        "diets": [
+            "dairy free",
+            "pescatarian"
+        ],
+        "created": false
     },
     {
         "id": 642085,
@@ -1206,8 +1865,14 @@ REQUEST GET /RECIPES
             "Place the vegetables on a large baking tray/baking dish. Make sure they are spread out evenly. Aim for single layer.",
             "Cook the vegetables in the oven for about 30 minutes. They should be tender but still have a slight bite to them."
         ],
-        "created": false,
-        "myId": "myId74"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "lacto ovo vegetarian",
+            "whole 30",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 716437,
@@ -1216,8 +1881,12 @@ REQUEST GET /RECIPES
         "summary": "Chilled Cucumber Avocado Soup with Yogurt and Kefir is a <b>gluten free, lacto ovo vegetarian, and primal</b> hor d'oeuvre. This recipe serves 3 and costs $2.1 per serving. One portion of this dish contains approximately <b>9g of protein</b>, <b>7g of fat</b>, and a total of <b>189 calories</b>. 171 person were impressed by this recipe. A mixture of avocado, kefir, onion, and a handful of other ingredients are all it takes to make this recipe so yummy. <b>Autumn</b> will be even more special with this recipe. From preparation to the plate, this recipe takes around <b>45 minutes</b>. It is brought to you by fullbellysisters.blogspot.com. Overall, this recipe earns an <b>outstanding spoonacular score of 97%</b>. <a href=\"https://spoonacular.com/recipes/chilled-cucumber-avocado-and-yogurt-soup-21553\">Chilled Cucumber, Avocado, and Yogurt Soup</a>, <a href=\"https://spoonacular.com/recipes/chilled-cucumber-yogurt-soup-499125\">Chilled Cucumber-Yogurt Soup</a>, and <a href=\"https://spoonacular.com/recipes/chilled-cucumber-mint-yogurt-soup-608062\">Chilled Cucumber Mint Yogurt Soup</a> are very similar to this recipe.",
         "healthscore": 40,
         "steps": [],
-        "created": false,
-        "myId": "myId75"
+        "diets": [
+            "gluten free",
+            "lacto ovo vegetarian",
+            "primal"
+        ],
+        "created": false
     },
     {
         "id": 664090,
@@ -1240,8 +1909,10 @@ REQUEST GET /RECIPES
             "Lay out the salad on a large plate or chopping board.",
             "Serve with the charred peppers, cacik, salsa vinaigrette and some chilli sauce."
         ],
-        "created": false,
-        "myId": "myId76"
+        "diets": [
+            "gluten free"
+        ],
+        "created": false
     },
     {
         "id": 636602,
@@ -1258,8 +1929,13 @@ REQUEST GET /RECIPES
             "Add greens for about five minutes until soft",
             "Add nutmeg, sea salt and pepper to taste"
         ],
-        "created": false,
-        "myId": "myId77"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "lacto ovo vegetarian",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 716276,
@@ -1276,8 +1952,10 @@ REQUEST GET /RECIPES
             "Add sprinkles for garnishing",
             "Chocolate GlazeI used a chocolate sauce and drizzled over the doughnuts with sprinkles to top it."
         ],
-        "created": false,
-        "myId": "myId78"
+        "diets": [
+            "lacto ovo vegetarian"
+        ],
+        "created": false
     },
     {
         "id": 649944,
@@ -1292,8 +1970,13 @@ REQUEST GET /RECIPES
             "Mix well and leave in the refrigerator for 1 / 2 hour",
             "This salad is left to eat alone or to accompany meat and poultry dishes, enjoy ..."
         ],
-        "created": false,
-        "myId": "myId79"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "lacto ovo vegetarian",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 646043,
@@ -1307,8 +1990,13 @@ REQUEST GET /RECIPES
             "Add the tomatoes, turmeric and mung beans and cook for two minutes. Be careful not to mash it up as you stir.",
             "Add the salt, sugar, lemon juice and cinnamon powder and cook for a further two minutes.Throw in the chopped coriander, combine and serve."
         ],
-        "created": false,
-        "myId": "myId80"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "lacto ovo vegetarian",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 634437,
@@ -1319,8 +2007,16 @@ REQUEST GET /RECIPES
         "steps": [
             "Go to my blog for the full instructions: http://gourmandelle.com/basil-tagliatelle-with-roasted-red-bell-pepper-salad/"
         ],
-        "created": false,
-        "myId": "myId81"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "paleolithic",
+            "lacto ovo vegetarian",
+            "primal",
+            "whole 30",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 655235,
@@ -1332,8 +2028,12 @@ REQUEST GET /RECIPES
             "Place ingredients in a high speed blender like Blendtec for super smooth texture, blend on high.If using a regular blender put milk and strawberries in then blend.Next, add banana pieces and peanut butter, process until smooth.",
             "Garnish with crushed peanuts and serve."
         ],
-        "created": false,
-        "myId": "myId82"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "fodmap friendly"
+        ],
+        "created": false
     },
     {
         "id": 652393,
@@ -1352,8 +2052,13 @@ REQUEST GET /RECIPES
             "Serve hot, with a little vinegar drizzled onto each serving, and a sprinkling of minced",
             "Scallions or parsley on top, if desired."
         ],
-        "created": false,
-        "myId": "myId83"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "lacto ovo vegetarian",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 640828,
@@ -1374,8 +2079,11 @@ REQUEST GET /RECIPES
             "Spread the breadcrumb mixture on top of the fish to cover.",
             "Bake in a preheated 375F for 25- 35 minutes, depending on the thickness of the salmon fillet."
         ],
-        "created": false,
-        "myId": "myId84"
+        "diets": [
+            "dairy free",
+            "pescatarian"
+        ],
+        "created": false
     },
     {
         "id": 769774,
@@ -1384,8 +2092,14 @@ REQUEST GET /RECIPES
         "summary": "If you have roughly <b>45 minutes</b> to spend in the kitchen, Shredded Roast Beef Stuffed Sweet Potatoes (Whole 30 & PALEO) might be an awesome <b>gluten free, dairy free, paleolithic, and primal</b> recipe to try. One portion of this dish contains about <b>48g of protein</b>, <b>5g of fat</b>, and a total of <b>417 calories</b>. For <b>$9.3 per serving</b>, this recipe <b>covers 39%</b> of your daily requirements of vitamins and minerals. This recipe serves 4. It works well as a side dish. This recipe is liked by 4 foodies and cooks. If you have beef broth, sweet potatoes, salt/pepper and favorite healthy seasonings, and a few other ingredients on hand, you can make it. It is brought to you by Pink When. All things considered, we decided this recipe <b>deserves a spoonacular score of 97%</b>. This score is excellent. Similar recipes include <a href=\"https://spoonacular.com/recipes/paleo-s-chicken-stuffed-sweet-potatoes-592982\">Paleo s: Chicken Stuffed Sweet Potatoes</a>, <a href=\"https://spoonacular.com/recipes/whole30-paleo-stuffed-sweet-potatoes-1162795\">Whole30 & Paleo Stuffed Sweet Potatoes</a>, and <a href=\"https://spoonacular.com/recipes/harvest-paleo-vegan-stuffed-sweet-potatoes-1043992\">Harvest Paleo Vegan Stuffed Sweet Potatoes</a>.",
         "healthscore": 76,
         "steps": [],
-        "created": false,
-        "myId": "myId85"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "paleolithic",
+            "primal",
+            "whole 30"
+        ],
+        "created": false
     },
     {
         "id": 715533,
@@ -1394,8 +2108,11 @@ REQUEST GET /RECIPES
         "summary": "The recipe Filet Mignon Soft Tacos is ready <b>in roughly 45 minutes</b> and is definitely a tremendous <b>gluten free and pescatarian</b> option for lovers of Mexican food. This recipe makes 2 servings with <b>514 calories</b>, <b>49g of protein</b>, and <b>29g of fat</b> each. For <b>$4.21 per serving</b>, this recipe <b>covers 24%</b> of your daily requirements of vitamins and minerals. It works well as a pretty expensive main course. This recipe is liked by 400 foodies and cooks. Head to the store and pick up corn tortillas, cracked pepper, guacamole, and a few other things to make it today. It is brought to you by Pink When. All things considered, we decided this recipe <b>deserves a spoonacular score of 95%</b>. This score is awesome. Similar recipes include <a href=\"https://spoonacular.com/recipes/the-secret-to-easy-skillet-filet-mignon-steak-tacos-1063645\">The Secret to Easy Skillet Filet Mignon Steak Tacos</a>, <a href=\"https://spoonacular.com/recipes/the-secret-to-easy-skillet-filet-mignon-steak-tacos-1375033\">The Secret to Easy Skillet Filet Mignon Steak Tacos</a>, and <a href=\"https://spoonacular.com/recipes/the-secret-to-easy-skillet-filet-mignon-steak-tacos-1369305\">The Secret to Easy Skillet Filet Mignon Steak Tacos</a>.",
         "healthscore": 37,
         "steps": [],
-        "created": false,
-        "myId": "myId86"
+        "diets": [
+            "gluten free",
+            "pescatarian"
+        ],
+        "created": false
     },
     {
         "id": 639411,
@@ -1413,8 +2130,14 @@ REQUEST GET /RECIPES
             "Sprinkle with salt and pepper to taste.",
             "Serve immediately."
         ],
-        "created": false,
-        "myId": "myId87"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "paleolithic",
+            "primal",
+            "pescatarian"
+        ],
+        "created": false
     },
     {
         "id": 636228,
@@ -1433,8 +2156,13 @@ REQUEST GET /RECIPES
             "Add the chopped vegetables to the puree and stir gently with a spoon. The rest of the chopped parsley may be added now. A little salt, soy sauce and chili powder. Start with a little bit and add some more later if desired. The herbs de Provence can now embellish the whole with its bright flavor.The seaweed may now well out of the water and squeeze out any excess moisture.",
             "Cut the seaweed finely and mix carefully with the puree.With an ice cream spoon you  create beautiful balls and sprinkle with toasted sesame seeds.bon apptit"
         ],
-        "created": false,
-        "myId": "myId88"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "lacto ovo vegetarian",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 661259,
@@ -1457,8 +2185,8 @@ REQUEST GET /RECIPES
             "Transfer to a cutting board, tend with aluminum foil and allow resting for 10 minutes.",
             "To serve, remove the twine from the roast and cut into  inch to 1 inch thick slices."
         ],
-        "created": false,
-        "myId": "myId89"
+        "diets": [],
+        "created": false
     },
     {
         "id": 664680,
@@ -1482,8 +2210,11 @@ REQUEST GET /RECIPES
             "Don't serve immediately.",
             "Let it cool for at least half an hour."
         ],
-        "created": false,
-        "myId": "myId90"
+        "diets": [
+            "gluten free",
+            "dairy free"
+        ],
+        "created": false
     },
     {
         "id": 715391,
@@ -1494,8 +2225,11 @@ REQUEST GET /RECIPES
         "steps": [
             "Once you have all of your ingredients added, allow it to cook all day for 8 hours on low. If you are wanting to make this a little faster, turn it on high and cook for 4 hours.When your Chicken Taco Soup is ready to serve, add in some crushed tortilla shells, shredded cheddar cheese, and a little sour cream."
         ],
-        "created": false,
-        "myId": "myId91"
+        "diets": [
+            "gluten free",
+            "dairy free"
+        ],
+        "created": false
     },
     {
         "id": 636230,
@@ -1513,8 +2247,10 @@ REQUEST GET /RECIPES
             "Add garlic powder, salt, and pepper. Continue cooking for about 5-6 minutes over low heat until soup thickens.",
             "Add cheese, handfuls at a time, and stir constantly over low heat for 10 minutes until smooth and creamy. If soup becomes too thick, add additional chicken stock. Do not let soup boil."
         ],
-        "created": false,
-        "myId": "myId92"
+        "diets": [
+            "lacto ovo vegetarian"
+        ],
+        "created": false
     },
     {
         "id": 632812,
@@ -1530,8 +2266,11 @@ REQUEST GET /RECIPES
             "Add cooked chicken and sauce. Cook another 3  4 minutes until sauce thickens and chicken is heated through.",
             "Serve with basmati rice."
         ],
-        "created": false,
-        "myId": "myId93"
+        "diets": [
+            "gluten free",
+            "dairy free"
+        ],
+        "created": false
     },
     {
         "id": 633942,
@@ -1546,8 +2285,14 @@ REQUEST GET /RECIPES
             "Toss all the vegetables in a bowl and drizzle enough olive oil to sufficiently coat. Then, add a big splash of balsamic vinegar (approx. 1/4 cup), a couple hearty pinches of Kosher salt, a few good turns of fresh ground black pepper, and a small sprig of fresh rosemary.",
             "Let roast another 30-40 minutes, turning every so often to get an even roast."
         ],
-        "created": false,
-        "myId": "myId94"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "lacto ovo vegetarian",
+            "whole 30",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 632347,
@@ -1566,8 +2311,10 @@ REQUEST GET /RECIPES
             "Slash the top of the loaf 2-3 times with a sharp knife or lame.",
             "Bake 40 minutes. Turn out of pan immediately and cool on a rack before slicing"
         ],
-        "created": false,
-        "myId": "myId95"
+        "diets": [
+            "lacto ovo vegetarian"
+        ],
+        "created": false
     },
     {
         "id": 975070,
@@ -1583,8 +2330,11 @@ REQUEST GET /RECIPES
             "Add chicken, chili powder, corn, black beans, green onions, green chilis, and  cup of cilantro. Lock lid. Press the manual or pressure cook button and set time for 15 minutes. When time is up, do a quick release until the valve drops and then unlock the lid. Shred the chicken using two forks and then let the soup simmer for 5 minutes.",
             "Serve the soup into bowls and then top with your favorite toppings such as sour cream, cheese, avocado, etc."
         ],
-        "created": false,
-        "myId": "myId96"
+        "diets": [
+            "gluten free",
+            "dairy free"
+        ],
+        "created": false
     },
     {
         "id": 649886,
@@ -1603,8 +2353,13 @@ REQUEST GET /RECIPES
             "Add more water if necessary.",
             "Serve with crusty bread and a soft cheese like St. Andre or Cambazola"
         ],
-        "created": false,
-        "myId": "myId97"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "lacto ovo vegetarian",
+            "vegan"
+        ],
+        "created": false
     },
     {
         "id": 659927,
@@ -1620,8 +2375,12 @@ REQUEST GET /RECIPES
             "When you are ready to serve mix  of the avocado through the salad and add the dressing. Toss everything together. Taste to see if you need any salt and pepper.",
             "Place your shrimp on top of the salad with the rest of the avocado and sprinkle/pour any residue from the pan over your salad in which you cooked the shrimp. This is great flavour, so you dont want to lose it."
         ],
-        "created": false,
-        "myId": "myId98"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "pescatarian"
+        ],
+        "created": false
     },
     {
         "id": 716217,
@@ -1640,8 +2399,12 @@ REQUEST GET /RECIPES
             "Sprinkle some sauce over top and fold the pancake.",
             "Drizzle with more sauce and there you go."
         ],
-        "created": false,
-        "myId": "myId99"
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "lacto ovo vegetarian"
+        ],
+        "created": false
     },
     {
         "id": 636608,
@@ -1659,539 +2422,9 @@ REQUEST GET /RECIPES
             "In a large bowl, combine cooked quinoa, butternut squash, arugula, 1 tbsp olive oil, balsamic vinegar and crumbled goat cheese. Season with a pinch more salt and pepper. Toss well to mix everything and wilt arugula.",
             "Serve immediately, garnished with toasted nuts, if desired."
         ],
-        "created": false,
-        "myId": "myId100"
-    }
-]
-
-/////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-///////////////////////////////////////////////////////
-
-
-// request 1
-
-(pasandole id = 1)
-let recipeByIdRaw = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`);
-recipeByIdRaw = recipeByIdRaw.data; 
-recipeByIdClean = {
-    id: recipeByIdRaw.id,
-    name: recipeByIdRaw.title,      // ojo name y title 
-    image: recipeByIdRaw.image,
-    summary: recipeByIdRaw.summary,
-    healthscore: recipeByIdRaw.healthScore,     // ojo mayúscula y minúscula
-    instructions: recipeByIdRaw.instructions,
-    created: false
-}
-
-// Retorna:
-{
-    "id": 1,
-    "name": "Fried Anchovies with Sage",
-    "image": "https://spoonacular.com/recipeImages/1-556x370.jpg",
-    "summary": "Fried Anchovies with Sage might be a good recipe to expand your main course collection. Watching your figure? This dairy free and pescatarian recipe has <b>396 calories</b>, <b>37g of protein</b>, and <b>12g of fat</b> per serving. This recipe serves 3. For <b>$5.61 per serving</b>, this recipe <b>covers 26%</b> of your daily requirements of vitamins and minerals. From preparation to the plate, this recipe takes around <b>45 minutes</b>. This recipe from latavolamarcherecipebox.blogspot.com requires anchovies, baking powder, salt, and vegetable oil. This recipe is liked by 3 foodies and cooks. Taking all factors into account, this recipe <b>earns a spoonacular score of 75%</b>, which is solid. <a href=\"https://spoonacular.com/recipes/fried-anchovies-with-sage-1189555\">Fried Anchovies with Sage</a>, <a href=\"https://spoonacular.com/recipes/fried-anchovies-with-sage-1355669\">Fried Anchovies with Sage</a>, and <a href=\"https://spoonacular.com/recipes/fried-anchovies-with-sage-1201577\">Fried Anchovies with Sage</a> are very similar to this recipe.",
-    "healthscore": 23,
-    "instructions": "<p>If you have not tried anchovies before - you must try them now! Get over any weird apprehensions or that its just bait or a punchline for a joke about pizza (\"extra anchovies\")! These little suckers are delicious &amp; actually good for you! Baked, fried &amp; grilled - they are ohh so good and worth a try. If your not up to it, then pass me your plate because I love'em!Here is my favorite - Fried Anchovies - the recipe below adds a sage leave to each piece of fish as well for an extra burst of flavor &amp; color.Fried Anchovies with SageAcciughe fritte con Salvia1lb of anchovies cleaned, spine removedsage leaves (optional - if you are not a fan of sage just omit)batter1 cup of flour1 egg1 teaspoon of salt1 teaspoon of baking powderseltzer watervegetable oil for fryingIn a bowl combine flour, eggs, salt &amp; baking powder. Slowly add in seltzer water &amp; mix until forms a thin batter. Cover with plastic &amp; set in the fridge for at least an hour.Heat oil in a pot to 350 degree.Remove batter from fridge and mix once or twice (batter will have separated).Take a sage leaf &amp; anchovy put them together &amp; dip into the batter - allowing access batter to drip off.Fry 20 seconds a side until golden brown.Remove from oil &amp; drain on a paper towel.Sprinkle with salt &amp; serve immediately.Pairs great with prosecco or white wine.</p>",
-    "created": false
-}
-
-
-
-// request 2. pasos previos
-let apiAllRecipesRaw = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true`); 
-apiAllRecipesRaw = apiAllRecipesRaw.data.results;
-apiAllRecipesRaw retorna: 
-
-quiero que quede
-[
-    {
-        id: 782585,
-        name: 'asd',
-        image: 'asd',
-        summary: '...'',
-        healthscore: 180,
-        instructions: [    
-            "Rinse...",
-            "Drain...",
-            "Add..."
-        ],
-        created: false
-    
-    }
-
-]
-
-
-instructions = [{                   instructions[0]
-    name: asd
-    steps: [                        instructions[0].steps
-        {
-            number: 1,
-            step: asd               step.step
-        },
-        {
-            number: 2,
-            step: asd
-        },
-    ]
-}]
-
-
-Resultado real: 
-[
-    {
-        "id": 782585,
-        "name": "Cannellini Bean and Asparagus Salad with Mushrooms",
-        "image": "https://spoonacular.com/recipeImages/782585-312x231.jpg",
-        "summary": "Cannellini Bean and Asparagus Salad with Mushrooms requires approximately <b>45 minutes</b> from start to finish. This main course has <b>482 calories</b>, <b>31g of protein</b>, and <b>6g of fat</b> per serving. This gluten free, dairy free, lacto ovo vegetarian, and vegan recipe serves 6 and costs <b>$1.35 per serving</b>. 309 people were impressed by this recipe. Head to the store and pick up grain mustard, sea salt, lemon zest, and a few other things to make it today. It is brought to you by foodandspice.blogspot.com. Taking all factors into account, this recipe <b>earns a spoonacular score of 70%</b>, which is pretty good. Similar recipes are <a href=\"https://spoonacular.com/recipes/cannellini-bean-salad-422994\">Cannellini Bean Salad</a>, <a href=\"https://spoonacular.com/recipes/refreshing-cannellini-bean-salad-113127\">Refreshing Cannellini Bean Salad</a>, and <a href=\"https://spoonacular.com/recipes/cannellini-and-green-bean-salad-33177\">Cannellini-and-Green Bean Salad</a>.",
-        "healthscore": 100,
-        "instructions": [
-            {
-                "name": "",
-                "steps": [
-                    {
-                        "number": 1,
-                        "step": "Rinse the cannellini beans and soak for 8 hours or overnight in several inches of water.",
-                        "ingredients": [
-                            {
-                                "id": 10716050,
-                                "name": "cannellini beans",
-                                "localizedName": "cannellini beans",
-                                "image": "cooked-cannellini-beans.png"
-                            },
-                            {
-                                "id": 14412,
-                                "name": "water",
-                                "localizedName": "water",
-                                "image": "water.png"
-                            }
-                        ],
-                        "equipment": [],
-                        "length": {
-                            "number": 480,
-                            "unit": "minutes"
-                        }
-                    },
-                    {
-                        "number": 2,
-                        "step": "Drain and rinse, then transfer to a medium saucepan and cover with fresh water.",
-                        "ingredients": [
-                            {
-                                "id": 14412,
-                                "name": "water",
-                                "localizedName": "water",
-                                "image": "water.png"
-                            }
-                        ],
-                        "equipment": [
-                            {
-                                "id": 404669,
-                                "name": "sauce pan",
-                                "localizedName": "sauce pan",
-                                "image": "sauce-pan.jpg"
-                            }
-                        ]
-                    },
-                    {
-                        "number": 3,
-                        "step": "Add the curry leaves or bay leaf and bring to a boil. Reduce heat to medium-low, cover, and simmer for 1 hour or until the beans are tender but not falling apart.",
-                        "ingredients": [
-                            {
-                                "id": 93604,
-                                "name": "curry leaves",
-                                "localizedName": "curry leaves",
-                                "image": "curry-leaves.jpg"
-                            },
-                            {
-                                "id": 2004,
-                                "name": "bay leaves",
-                                "localizedName": "bay leaves",
-                                "image": "bay-leaves.jpg"
-                            },
-                            {
-                                "id": 0,
-                                "name": "beans",
-                                "localizedName": "beans",
-                                "image": "kidney-beans.jpg"
-                            }
-                        ],
-                        "equipment": [],
-                        "length": {
-                            "number": 60,
-                            "unit": "minutes"
-                        }
-                    },
-                    {
-                        "number": 4,
-                        "step": "Drain and transfer to a large salad bowl.Meanwhile, snap the woody ends off of the asparagus spears and steam the spears for 6 minutes or until just tender but still retaining their crunch.",
-                        "ingredients": [
-                            {
-                                "id": 11011,
-                                "name": "asparagus",
-                                "localizedName": "asparagus",
-                                "image": "asparagus.png"
-                            }
-                        ],
-                        "equipment": [
-                            {
-                                "id": 404783,
-                                "name": "bowl",
-                                "localizedName": "bowl",
-                                "image": "bowl.jpg"
-                            }
-                        ],
-                        "length": {
-                            "number": 6,
-                            "unit": "minutes"
-                        }
-                    },
-                    {
-                        "number": 5,
-                        "step": "Transfer to the salad bowl.Now cook the mushrooms.",
-                        "ingredients": [
-                            {
-                                "id": 11260,
-                                "name": "mushrooms",
-                                "localizedName": "mushrooms",
-                                "image": "mushrooms.png"
-                            }
-                        ],
-                        "equipment": [
-                            {
-                                "id": 404783,
-                                "name": "bowl",
-                                "localizedName": "bowl",
-                                "image": "bowl.jpg"
-                            }
-                        ]
-                    },
-                    {
-                        "number": 6,
-                        "step": "Heat the oil in a large skillet over high heat. As soon as the oil is hot, drop in the mushrooms and cook, stirring constantly, for 5 minutes or until the mushrooms begin to brown and lose some of their liquid.",
-                        "ingredients": [
-                            {
-                                "id": 11260,
-                                "name": "mushrooms",
-                                "localizedName": "mushrooms",
-                                "image": "mushrooms.png"
-                            },
-                            {
-                                "id": 4582,
-                                "name": "cooking oil",
-                                "localizedName": "cooking oil",
-                                "image": "vegetable-oil.jpg"
-                            }
-                        ],
-                        "equipment": [
-                            {
-                                "id": 404645,
-                                "name": "frying pan",
-                                "localizedName": "frying pan",
-                                "image": "pan.png"
-                            }
-                        ],
-                        "length": {
-                            "number": 5,
-                            "unit": "minutes"
-                        }
-                    },
-                    {
-                        "number": 7,
-                        "step": "Transfer to the bowl with the asparagus.To make the dressing, combine the tarragon, lemon zest, garlic, lemon juice, olive oil and mustard in a small food processor or blender. Process until smooth.",
-                        "ingredients": [
-                            {
-                                "id": 9152,
-                                "name": "lemon juice",
-                                "localizedName": "lemon juice",
-                                "image": "lemon-juice.jpg"
-                            },
-                            {
-                                "id": 9156,
-                                "name": "lemon zest",
-                                "localizedName": "lemon zest",
-                                "image": "zest-lemon.jpg"
-                            },
-                            {
-                                "id": 11011,
-                                "name": "asparagus",
-                                "localizedName": "asparagus",
-                                "image": "asparagus.png"
-                            },
-                            {
-                                "id": 4053,
-                                "name": "olive oil",
-                                "localizedName": "olive oil",
-                                "image": "olive-oil.jpg"
-                            },
-                            {
-                                "id": 2041,
-                                "name": "tarragon",
-                                "localizedName": "tarragon",
-                                "image": "tarragon.jpg"
-                            },
-                            {
-                                "id": 2046,
-                                "name": "mustard",
-                                "localizedName": "mustard",
-                                "image": "regular-mustard.jpg"
-                            },
-                            {
-                                "id": 11215,
-                                "name": "garlic",
-                                "localizedName": "garlic",
-                                "image": "garlic.png"
-                            }
-                        ],
-                        "equipment": [
-                            {
-                                "id": 404771,
-                                "name": "food processor",
-                                "localizedName": "food processor",
-                                "image": "food-processor.png"
-                            },
-                            {
-                                "id": 404726,
-                                "name": "blender",
-                                "localizedName": "blender",
-                                "image": "blender.png"
-                            },
-                            {
-                                "id": 404783,
-                                "name": "bowl",
-                                "localizedName": "bowl",
-                                "image": "bowl.jpg"
-                            }
-                        ]
-                    },
-                    {
-                        "number": 8,
-                        "step": "Pour the dressing over the salad, season with salt and pepper, and toss.",
-                        "ingredients": [
-                            {
-                                "id": 1102047,
-                                "name": "salt and pepper",
-                                "localizedName": "salt and pepper",
-                                "image": "salt-and-pepper.jpg"
-                            }
-                        ],
-                        "equipment": []
-                    },
-                    {
-                        "number": 9,
-                        "step": "Serve at room temperature or chilled.",
-                        "ingredients": [],
-                        "equipment": []
-                    }
-                ]
-            }
-        ],
-        "created": false
-    },
-    {
-        "id": 716426,
-
-
-
-
-// ruta 2. resultado final.
-const apiAllRecipesClean = apiAllRecipesRaw.map((apiRecipe) => {
-    return {
-        id: apiRecipe.id,
-        name: apiRecipe.title,                      // ojo name en vez de title
-        image: apiRecipe.image,
-        summary: apiRecipe.summary,
-        healthscore: apiRecipe.healthScore,         // ojo la mayúscula y minúscula
-        instructions: apiRecipe.analyzedInstructions[0].steps.map((step) => {        // [0] porque analyzedInstructions es un array con sólo un elemento
-            return step.step
-        }),
-        created: false
-    }
-}); 
-
-ApiAllRecipesClean retorna: 
-
-[
-    {
-        "id": 782585,
-        "name": "Cannellini Bean and Asparagus Salad with Mushrooms",
-        "image": "https://spoonacular.com/recipeImages/782585-312x231.jpg",
-        "summary": "Cannellini Bean and Asparagus Salad with Mushrooms requires approximately <b>45 minutes</b> from start to finish. This main course has <b>482 calories</b>, <b>31g of protein</b>, and <b>6g of fat</b> per serving. This gluten free, dairy free, lacto ovo vegetarian, and vegan recipe serves 6 and costs <b>$1.35 per serving</b>. 309 people were impressed by this recipe. Head to the store and pick up grain mustard, sea salt, lemon zest, and a few other things to make it today. It is brought to you by foodandspice.blogspot.com. Taking all factors into account, this recipe <b>earns a spoonacular score of 70%</b>, which is pretty good. Similar recipes are <a href=\"https://spoonacular.com/recipes/cannellini-bean-salad-422994\">Cannellini Bean Salad</a>, <a href=\"https://spoonacular.com/recipes/refreshing-cannellini-bean-salad-113127\">Refreshing Cannellini Bean Salad</a>, and <a href=\"https://spoonacular.com/recipes/cannellini-and-green-bean-salad-33177\">Cannellini-and-Green Bean Salad</a>.",
-        "healthscore": 100,
-        "instructions": [
-            "Rinse the cannellini beans and soak for 8 hours or overnight in several inches of water.",
-            "Drain and rinse, then transfer to a medium saucepan and cover with fresh water.",
-            "Add the curry leaves or bay leaf and bring to a boil. Reduce heat to medium-low, cover, and simmer for 1 hour or until the beans are tender but not falling apart.",
-            "Drain and transfer to a large salad bowl.Meanwhile, snap the woody ends off of the asparagus spears and steam the spears for 6 minutes or until just tender but still retaining their crunch.",
-            "Transfer to the salad bowl.Now cook the mushrooms.",
-            "Heat the oil in a large skillet over high heat. As soon as the oil is hot, drop in the mushrooms and cook, stirring constantly, for 5 minutes or until the mushrooms begin to brown and lose some of their liquid.",
-            "Transfer to the bowl with the asparagus.To make the dressing, combine the tarragon, lemon zest, garlic, lemon juice, olive oil and mustard in a small food processor or blender. Process until smooth.",
-            "Pour the dressing over the salad, season with salt and pepper, and toss.",
-            "Serve at room temperature or chilled."
-        ],
-        "created": false
-    },
-    {
-        "id": 716426,
-        "name": "Cauliflower, Brown Rice, and Vegetable Fried Rice",
-        "image": "https://spoonacular.com/recipeImages/716426-312x231.jpg",
-        "summary": "You can never have too many Chinese recipes, so give Cauliflower, Brown Rice, and Vegetable Fried Rice a try. This recipe serves 8 and costs $1.12 per serving. This hor d'oeuvre has <b>192 calories</b>, <b>7g of protein</b>, and <b>6g of fat</b> per serving. Head to the store and pick up broccoli, sesame seeds, soy sauce, and a few other things to make it today. 3689 people were impressed by this recipe. It is brought to you by fullbellysisters.blogspot.com. It is a good option if you're following a <b>gluten free, dairy free, lacto ovo vegetarian, and vegan</b> diet. From preparation to the plate, this recipe takes roughly <b>30 minutes</b>. Overall, this recipe earns a <b>spectacular spoonacular score of 100%</b>. If you like this recipe, you might also like recipes such as <a href=\"https://spoonacular.com/recipes/cauliflower-brown-rice-and-vegetable-fried-rice-1584601\">Cauliflower, Brown Rice, and Vegetable Fried Rice</a>, <a href=\"https://spoonacular.com/recipes/cauliflower-brown-rice-and-vegetable-fried-rice-1238897\">Cauliflower, Brown Rice, and Vegetable Fried Rice</a>, and <a href=\"https://spoonacular.com/recipes/cauliflower-brown-rice-and-vegetable-fried-rice-1230097\">Cauliflower, Brown Rice, and Vegetable Fried Rice</a>.",
-        "healthscore": 75,
-        "instructions": [
-            "Remove the cauliflower's tough stem and reserve for another use. Using a food processor, pulse cauliflower florets until they resemble rice or couscous. You should end up with around four cups of \"cauliflower rice.\"",
-            "Heat 1T butter and 1T oil in a large skillet over medium heat.",
-            "Add garlic and the white and light green pieces of scallion. Sauté about a minute.",
-            "Add the cauliflower to the pan. Stir to coat with oil, then spread out in pan and let sit; you want it cook a bit and to caramelize (get a bit brown), which will bring out the sweetness. After a couple of minutes, stir and spread out again.",
-            "Add cold rice (it separates easily, so it won't clump up during cooking), plus the additional grapeseed and coconut oil or butter. Raise heat to medium-high. Toss everything together and, again, spread the mixture out over the whole pan and press a bit into the bottom.",
-            "Let it sit for about two minutes—so the rice can get toasted and a little crispy.",
-            "Add the peas and broccoli and stir again.",
-            "Drizzle soy sauce and toasted sesame oil over rice.Cook for another minute or so and turn off heat.",
-            "Add chopped scallion tops and toss.I like to toast some sesame seeds in a dry pan; I sprinkle these and some more raw, chopped scallion over the top of the rice for added flavor and crunch.Season to taste with salt and, if you'd like, more soy sauce. Keep in mind that if you're serving this with something salty and saucy (ie. teriyaki chicken) you may want to hold off on adding too much salt to the fried rice."
-        ],
-        "created": false
-    },
-    {
-        "id": 715497,
-        "name": "Berry Banana Breakfast Smoothie",
-        "image": "https://spoonacular.com/recipeImages/715497-312x231.jpg",
-        "summary": "If you want to add more <b>lacto ovo vegetarian</b> recipes to your recipe box, Berry Banana Breakfast Smoothie might be a recipe you should try. One portion of this dish contains about <b>21g of protein</b>, <b>10g of fat</b>, and a total of <b>457 calories</b>. This recipe serves 1 and costs $2.07 per serving. 689 people have tried and liked this recipe. It works well as a rather inexpensive breakfast. A mixture of banana, graham cracker crumbs, vanilla yogurt, and a handful of other ingredients are all it takes to make this recipe so yummy. From preparation to the plate, this recipe takes roughly <b>5 minutes</b>. It is brought to you by Pink When. Overall, this recipe earns a <b>super spoonacular score of 99%</b>. Similar recipes include <a href=\"https://spoonacular.com/recipes/berry-banana-breakfast-smoothie-1364145\">Berry Banana Breakfast Smoothie</a>, <a href=\"https://spoonacular.com/recipes/berry-banana-breakfast-smoothie-1405583\">Berry Banana Breakfast Smoothie</a>, and <a href=\"https://spoonacular.com/recipes/berry-banana-breakfast-smoothie-1601311\">Berry Banana Breakfast Smoothie</a>.",
-        "healthscore": 64,
-        "instructions": [
-            "Take some yogurt in your favorite flavor and add 1 container to your blender.",
-            "Add in the berries, banana, and soy milk and blend. Top your glass with a few graham cracker crumbs and serve."
-        ],
-        "created": false
-    },
-    {
-        "id": 715415,
-        "name": "Red Lentil Soup with Chicken and Turnips",
-        "image": "https://spoonacular.com/recipeImages/715415-312x231.jpg",
-        "summary": "Red Lentil Soup with Chicken and Turnips might be a good recipe to expand your main course repertoire. This recipe serves 8 and costs $3.0 per serving. One serving contains <b>477 calories</b>, <b>27g of protein</b>, and <b>20g of fat</b>. It is brought to you by Pink When. 1866 people have tried and liked this recipe. It can be enjoyed any time, but it is especially good for <b>Autumn</b>. From preparation to the plate, this recipe takes approximately <b>55 minutes</b>. It is a good option if you're following a <b>gluten free and dairy free</b> diet. Head to the store and pick up salt and pepper, canned tomatoes, flat leaf parsley, and a few other things to make it today. Overall, this recipe earns a <b>spectacular spoonacular score of 99%</b>. If you like this recipe, you might also like recipes such as <a href=\"https://spoonacular.com/recipes/red-lentil-and-chicken-soup-682185\">Red Lentil and Chicken Soup</a>, <a href=\"https://spoonacular.com/recipes/red-lentil-and-chicken-soup-1058971\">Red Lentil and Chicken Soup</a>, and <a href=\"https://spoonacular.com/recipes/red-lentil-soup-34121\">Red-Lentil Soup</a>.",
-        "healthscore": 100,
-        "instructions": [
-            "To a large dutch oven or soup pot, heat the olive oil over medium heat.",
-            "Add the onion, carrots and celery and cook for 8-10 minutes or until tender, stirring occasionally.",
-            "Add the garlic and cook for an additional 2 minutes, or until fragrant. Season conservatively with a pinch of salt and black pepper.To the pot, add the tomatoes, turnip and red lentils. Stir to combine. Stir in the vegetable stock and increase the heat on the stove to high. Bring the soup to a boil and then reduce to a simmer. Simmer for 20 minutes or until the turnips are tender and the lentils are cooked through.",
-            "Add the chicken breast and parsley. Cook for an additional 5 minutes. Adjust seasoning to taste.",
-            "Serve the soup immediately garnished with fresh parsley and any additional toppings. Enjoy!"
-        ],
-        "created": false
-    },
-    {
-        "id": 716406,
-        "name": "Asparagus and Pea Soup: Real Convenience Food",
-        "image": "https://spoonacular.com/recipeImages/716406-312x231.jpg",
-        "summary": "Asparagus and Pea Soup: Real Convenience Food requires approximately <b>20 minutes</b> from start to finish. Watching your figure? This gluten free, dairy free, paleolithic, and lacto ovo vegetarian recipe has <b>217 calories</b>, <b>11g of protein</b>, and <b>8g of fat</b> per serving. This recipe serves 2. For <b>$1.78 per serving</b>, this recipe <b>covers 25%</b> of your daily requirements of vitamins and minerals. <b>Autumn</b> will be even more special with this recipe. It works well as a hor d'oeuvre. 207 people have tried and liked this recipe. It is brought to you by fullbellysisters.blogspot.com. A mixture of vegetable broth, evoo, garlic, and a handful of other ingredients are all it takes to make this recipe so yummy. All things considered, we decided this recipe <b>deserves a spoonacular score of 96%</b>. This score is outstanding. Try <a href=\"https://spoonacular.com/recipes/asparagus-and-pea-soup-real-convenience-food-1393979\">Asparagus and Pea Soup: Real Convenience Food</a>, <a href=\"https://spoonacular.com/recipes/asparagus-and-pea-soup-real-convenience-food-1376201\">Asparagus and Pea Soup: Real Convenience Food</a>, and <a href=\"https://spoonacular.com/recipes/asparagus-and-pea-soup-real-convenience-food-1362341\">Asparagus and Pea Soup: Real Convenience Food</a> for similar recipes.",
-        "healthscore": 100,
-        "instructions": [
-            "Chop the garlic and onions.",
-            "Saute the onions in the EVOO, adding the garlic after a couple of minutes; cook until the onions are translucent.",
-            "Add the whole bag of asparagus and cover everything with the broth. Season with salt and pepper and a pinch of red pepper flakes, if using.Simmer until the asparagus is bright green and tender (if you've thawed the asparagus it will only take a couple of minutes). Turn off the heat and puree using an immersion blender.",
-            "Add peas (the heat of the soup will quickly thaw them) and puree until smooth; add more until it reaches the thickness you like.Top with chives and a small dollop of creme fraiche or sour cream or greek yogurt."
-        ],
-        "created": false
-    },
-    {
-        "id": 644387,
-        "name": "Garlicky Kale",
-        "image": "https://spoonacular.com/recipeImages/644387-312x231.jpg",
-        "summary": "Garlicky Kale requires approximately <b>45 minutes</b> from start to finish. This side dish has <b>170 calories</b>, <b>2g of protein</b>, and <b>15g of fat</b> per serving. This recipe serves 2. For <b>69 cents per serving</b>, this recipe <b>covers 17%</b> of your daily requirements of vitamins and minerals. 19 people have made this recipe and would make it again. This recipe from Foodista requires balsamic vinegar, garlic, curly kale, and olive oil. It is a good option if you're following a <b>gluten free, dairy free, paleolithic, and lacto ovo vegetarian</b> diet. With a spoonacular <b>score of 99%</b>, this dish is outstanding. Try <a href=\"https://spoonacular.com/recipes/garlicky-kale-248759\">Garlicky Kale</a>, <a href=\"https://spoonacular.com/recipes/garlicky-kale-1267347\">Garlicky Kale</a>, and <a href=\"https://spoonacular.com/recipes/garlicky-kale-1584523\">Garlicky Kale</a> for similar recipes.",
-        "healthscore": 83,
-        "instructions": [
-            "Heat the olive oil in a large pot over medium heat.",
-            "Add the kale and cover.Stir occasionally until the volume of the kale is reduced by half. Uncover.",
-            "Add garlic and basalmic.Allow to cook for about another 30 seconds or so, mixing well so that the garlic and vinegar are well distributed.",
-            "Serve hot."
-        ],
-        "created": false
-    },
-    {
-        "id": 715446,
-        "name": "Slow Cooker Beef Stew",
-        "image": "https://spoonacular.com/recipeImages/715446-312x231.jpg",
-        "summary": "If you want to add more <b>gluten free and dairy free</b> recipes to your recipe box, Slow Cooker Beef Stew might be a recipe you should try. One serving contains <b>434 calories</b>, <b>44g of protein</b>, and <b>12g of fat</b>. This recipe serves 6. For <b>$2.7 per serving</b>, this recipe <b>covers 45%</b> of your daily requirements of vitamins and minerals. It works best as a main course, and is done in approximately <b>8 hours and 10 minutes</b>. If you have green onions, carrots, celery, and a few other ingredients on hand, you can make it. This recipe is liked by 57 foodies and cooks. <b>Autumn</b> will be even more special with this recipe. It is brought to you by Pink When. Taking all factors into account, this recipe <b>earns a spoonacular score of 99%</b>, which is awesome. Similar recipes include <a href=\"https://spoonacular.com/recipes/slow-cooker-beef-stew-1578321\">Slow Cooker Beef Stew</a>, <a href=\"https://spoonacular.com/recipes/slow-cooker-beef-stew-1241707\">Slow Cooker Beef Stew</a>, and <a href=\"https://spoonacular.com/recipes/slow-cooker-beef-stew-1281171\">Slow Cooker Beef Stew</a>.",
-        "healthscore": 100,
-        "instructions": [
-            "To get started, heat your slow cooker to low.",
-            "Pour in the cream of mushroom soup, Dale's seasoning, water, and beef broth and stir until mixed well.",
-            "Add in your stew meat, potatoes, onions, carrots, celery, and green onions. Stir well until covered and cook on low for 8 hours. You can add salt and pepper as desired, but the flavors and the Dale's marry together so well that you probably won’t need them."
-        ],
-        "created": false
-    },
-    {
-        "id": 782601,
-        "name": "Red Kidney Bean Jambalaya",
-        "image": "https://spoonacular.com/recipeImages/782601-312x231.jpg",
-        "summary": "Red Kidney Bean Jambalayan is a main course that serves 6. One portion of this dish contains approximately <b>18g of protein</b>, <b>6g of fat</b>, and a total of <b>393 calories</b>. For <b>$1.68 per serving</b>, this recipe <b>covers 33%</b> of your daily requirements of vitamins and minerals. 53 people were glad they tried this recipe. A mixture of vegetable stock, tomatoes, onion, and a handful of other ingredients are all it takes to make this recipe so flavorful. It is a good option if you're following a <b>gluten free, dairy free, lacto ovo vegetarian, and vegan</b> diet. This recipe is typical of Cajun cuisine. It is brought to you by foodandspice.blogspot.com. From preparation to the plate, this recipe takes roughly <b>45 minutes</b>. Overall, this recipe earns a <b>tremendous spoonacular score of 99%</b>. Users who liked this recipe also liked <a href=\"https://spoonacular.com/recipes/red-kidney-bean-jambalaya-1407231\">Red Kidney Bean Jambalaya</a>, <a href=\"https://spoonacular.com/recipes/red-kidney-bean-salad-94525\">Red Kidney Bean Salad</a>, and <a href=\"https://spoonacular.com/recipes/red-kidney-bean-curry-80686\">Red Kidney Bean Curry</a>.",
-        "healthscore": 96,
-        "instructions": [
-            "Rinse the kidney beans and brown rice separately. Cover the kidney beans with water and soak for 8 hours or overnight. In a separate bowl, cover the brown rice with water and soak for 8 hours or overnight.",
-            "Drain and rinse the kidney beans, then transfer to a medium saucepan and cover with fresh water. Bring to a boil, reduce heat to medium-low, cover, and simmer for 1 hour or until just tender but not falling apart.",
-            "Drain and set aside.",
-            "Heat the oil in a large saucepan over medium heat. When hot, add the onion and saut for 5 minutes. Now add the garlic, carrots, celery and green beans, and stir for another 5 minutes. Next add the tomatoes, red pepper, eggplant, sage, thyme, marjoram and celery seed, and continue to stir for another few minutes.",
-            "Pour in the vegetable stock, liquid smoke, rice and the cooked kidney beans. Bring to a boil, reduce heat to medium low, cover, and cook, stirring occasionally, for 45 minutes or until the rice is tender.",
-            "Add water as necessary if the stew becomes too dry.Season with sriracha, salt and pepper, and taste for seasoning  add more liquid smoke, sriracha, salt, pepper or herbs as desired."
-        ],
-        "created": false
-    },
-    {
-        "id": 795751,
-        "name": "Chicken Fajita Stuffed Bell Pepper",
-        "image": "https://spoonacular.com/recipeImages/795751-312x231.jpg",
-        "summary": "Chicken Fajita Stuffed Bell Pepper takes approximately <b>45 minutes</b> from beginning to end. Watching your figure? This gluten free recipe has <b>526 calories</b>, <b>50g of protein</b>, and <b>24g of fat</b> per serving. For <b>$4.35 per serving</b>, you get a main course that serves 3. 159 people have made this recipe and would make it again. This recipe is typical of Mexican cuisine. This recipe from Pink When requires cumin, cilantro, salsa, and chili powder. All things considered, we decided this recipe <b>deserves a spoonacular score of 98%</b>. This score is amazing. Users who liked this recipe also liked <a href=\"https://spoonacular.com/recipes/stuffed-bell-peppers-551310\">Stuffed Bell Peppers</a>, <a href=\"https://spoonacular.com/recipes/stuffed-bell-pepper-1348405\">Stuffed Bell Pepper</a>, and <a href=\"https://spoonacular.com/recipes/stuffed-bell-pepper-526845\">Stuffed Bell Pepper</a>.",
-        "healthscore": 85,
-        "instructions": [
-            "To get started heat oven to 35",
-            "Mix salt, pepper, cilantro, cumin, chili powder, and quinoa together and place to the side.",
-            "Cut the bell pepper in half (if you havent already) and clean out the seeds.",
-            "Layer quinoa and then grilled chicken into the pepper, and then top each with cheese.",
-            "Place in the oven for about 10 minutes until the bell pepper has softened.Chicken Fajita Stuffed Bell Pepper",
-            "Top with avocado and serve with shredded lettuce and salsa for a complete meal.This is SO GOOD! I love bell peppers, and I love all of these flavors that are married together that make this chicken fajita stuffed bell pepper so amazing. I could seriously just eat the flavored quinoa all by itself.If you are looking for even more delicious and healthy recipes, make sure you head over to the Simple Fit Forty tab under the cooking section of this blog. We have all of our favorite healthy recipes listed for you right there in one spot. You can also drool over out latest on the Simple Fit Forty Instagram page.If you are looking to get healthy and fit, come and join the super secret and awesome Simple Fit Forty Lifestyle community over on Facebook. We would love to have you join!"
-        ],
-        "created": false
-    },
-    {
-        "id": 766453,
-        "name": "Hummus and Za'atar",
-        "image": "https://spoonacular.com/recipeImages/766453-312x231.jpg",
-        "summary": "You can never have too many middl eastern recipes, so give Hummus and Za'atar a try. This recipe serves 4. One portion of this dish contains about <b>34g of protein</b>, <b>31g of fat</b>, and a total of <b>778 calories</b>. For <b>$1.61 per serving</b>, this recipe <b>covers 44%</b> of your daily requirements of vitamins and minerals. If you have chickpeas, olive oil, sea salt, and a few other ingredients on hand, you can make it. It works best as a marinade, and is done in about <b>45 minutes</b>. It is a good option if you're following a <b>gluten free, dairy free, lacto ovo vegetarian, and vegan</b> diet. 35 people have made this recipe and would make it again. It is brought to you by foodandspice.blogspot.com. Overall, this recipe earns a <b>great spoonacular score of 98%</b>. <a href=\"https://spoonacular.com/recipes/chopped-hummus-dip-with-zaatar-180958\">Chopped Hummus Dip with Za'atar</a>, <a href=\"https://spoonacular.com/recipes/mediterranean-hummus-toast-with-zaatar-1067472\">Mediterranean Hummus Toast with Za’atar</a>, and <a href=\"https://spoonacular.com/recipes/hummus-deviled-eggs-with-zaatar-exercise-challenge-1195539\">Hummus Deviled Eggs with Za’atar {Exercise Challenge}</a> are very similar to this recipe.",
-        "healthscore": 100,
-        "instructions": [
-            "Rinse the chickpeas and soak for 8 hours or overnight in several inches of water.",
-            "Drain and rinse, then transfer to a medium saucepan and cover with fresh water. Bring to a boil, reduce heat to medium-low, cover, and simmer for 1 to 1 1/2 hours or until soft.",
-            "Drain, reserving the cooking liquid. (If using canned chickpeas, rinse thoroughly.)Meanwhile, toast the pine nuts in a dry unoiled skillet or saucepan over medium-low heat, tossing or stirring frequently, for 10 minutes or until lightly browned.",
-            "Transfer the chickpeas to a food processor and add the pine nuts, 2 tablespoons of olive oil, 1/4 cup of the reserved chickpea cooking liquid (or water if using canned chicpeas), the tahini, garlic, lemon juice and salt. Process until smooth, adding more of the reserved chickpea cooking liquid or water as necessary to reach a light creamy consistency. Taste for seasoning and add more salt or lemon juice as desired.",
-            "Transfer the hummus to a shallow bowl and drizzle with olive oil.",
-            "Sprinkle with za'atar and paprika, and serve with chopped fresh vegetables or toasted pita triangles.Refrigerate leftover hummus for a few days or freeze for up to a month."
+        "diets": [
+            "gluten free",
+            "lacto ovo vegetarian"
         ],
         "created": false
     }
@@ -2200,84 +2433,11 @@ ApiAllRecipesClean retorna:
 
 
 
-// ruta 2. resultado final parte B. 
-let apiAllRecipesRaw = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true`); 
-apiAllRecipesRaw = apiAllRecipesRaw.data.results;
-
-const apiRecipesByNameRaw = apiAllRecipesRaw.filter((apiRecipe) => apiRecipe.title === name);       // ojo name en vez de title
-
-const apiRecipesByNameClean = apiRecipesByNameRaw.map((apiRecipe) => {
-    return {
-        id: apiRecipe.id,
-        name: apiRecipe.title,                      // ojo name en vez de title
-        image: apiRecipe.image,
-        summary: apiRecipe.summary,
-        healthscore: apiRecipe.healthScore,         // ojo la mayúscula y minúscula
-        instructions: apiRecipe.analyzedInstructions[0].steps.map((step) => step.step),       // [0] porque analyzedInstructions es un array con sólo un elemento
-        created: false
-    }
-}); 
-
-
-// apiRecipesByNameClean (con query Berry Banana Breakfast Smoothie) retorna: 
-
-[
-    {
-        "id": 715497,
-        "name": "Berry Banana Breakfast Smoothie",
-        "image": "https://spoonacular.com/recipeImages/715497-312x231.jpg",
-        "summary": "If you want to add more <b>lacto ovo vegetarian</b> recipes to your recipe box, Berry Banana Breakfast Smoothie might be a recipe you should try. One portion of this dish contains about <b>21g of protein</b>, <b>10g of fat</b>, and a total of <b>457 calories</b>. This recipe serves 1 and costs $2.07 per serving. 689 people have tried and liked this recipe. It works well as a rather inexpensive breakfast. A mixture of banana, graham cracker crumbs, vanilla yogurt, and a handful of other ingredients are all it takes to make this recipe so yummy. From preparation to the plate, this recipe takes roughly <b>5 minutes</b>. It is brought to you by Pink When. Overall, this recipe earns a <b>super spoonacular score of 99%</b>. Similar recipes include <a href=\"https://spoonacular.com/recipes/berry-banana-breakfast-smoothie-1364145\">Berry Banana Breakfast Smoothie</a>, <a href=\"https://spoonacular.com/recipes/berry-banana-breakfast-smoothie-1405583\">Berry Banana Breakfast Smoothie</a>, and <a href=\"https://spoonacular.com/recipes/berry-banana-breakfast-smoothie-1601311\">Berry Banana Breakfast Smoothie</a>.",
-        "healthscore": 64,
-        "instructions": [
-            "Take some yogurt in your favorite flavor and add 1 container to your blender.",
-            "Add in the berries, banana, and soy milk and blend. Top your glass with a few graham cracker crumbs and serve."
-        ],
-        "created": false
-    }
-]
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
 
-
-
-
-
-
-
-
-// allRecipesByName con Cannellini Bean and Asparagus Salad with Mushrooms me devuelve (agregué un registro con este nombre a mi DB para que me traiga dos resultados)
-[
-    {
-      id: 'd936ed1c-3a3e-43b3-b013-f328e10cfa82',
-      name: 'Cannellini Bean and Asparagus Salad with Mushrooms',
-      image: 'https://www.example.com/spaghetti-carbonara.jpg',
-      summary: 'A classic Italian dish.',
-      healthscore: 90,
-      instructions: '1. Cook the pasta. 2. Fry.',
-      created: true
-    },
-    {
-      id: 782585,
-      title: 'Cannellini Bean and Asparagus Salad with Mushrooms',
-      image: 'https://spoonacular.com/recipeImages/782585-312x231.jpg',
-      summary: 'Cannellini Bean and Asparagus Salad with Mushrooms requires approximately <b>45 minutes</b> from start to finish. This main course has <b>482 calories</b>, <b>31g of protein</b>, and <b>6g of fat</b> per serving. This gluten free, dairy free, lacto ovo vegetarian, and vegan recipe serves 6 and costs <b>$1.35 per serving</b>. 309 people were impressed by this recipe. Head to the store and pick up grain mustard, sea salt, lemon zest, and a few other things to make it today. It is brought to you by foodandspice.blogspot.com. Taking all factors into account, this recipe <b>earns a spoonacular score of 70%</b>, which is pretty good. Similar recipes are <a href="https://spoonacular.com/recipes/cannellini-bean-salad-422994">Cannellini Bean Salad</a>, <a href="https://spoonacular.com/recipes/refreshing-cannellini-bean-salad-113127">Refreshing Cannellini Bean Salad</a>, and <a href="https://spoonacular.com/recipes/cannellini-and-green-bean-salad-33177">Cannellini-and-Green Bean Salad</a>.',
-      healthscore: 100,
-      instructions: [ [Object] ],
-      created: false
-    }
-  ]
-
-
-// ruta 4, después de los dos bucles forEach, es decir allDiets. 
-[
-    "vegetarian",
-    "vegan",
-    "glutenFree",
-    "gluten free",
-    "dairy free",
-    "lacto ovo vegetarian",
-    "paleolithic",
-    "primal",
-    "whole 30"
-]

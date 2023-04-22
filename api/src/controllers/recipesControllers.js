@@ -10,9 +10,7 @@ const { API_KEY } = process.env;
 
 
 const searchRecipeById = async (id) => {
-
     const source = isNaN(id) ? 'DB' : 'apiExterna'; 
-
     let recipeByIdClean; 
     if (source === "DB") {
         const dbRecipeByIdClean = await getDbRecipeByIdClean(id);
@@ -41,6 +39,7 @@ const searchRecipesByName = async (name) => {
             return recipe.name.toLowerCase().includes(name.toLowerCase());
         }
     });
+    if (!recipesByName.length) throw Error('There are no recipes with this name');
     return recipesByName; 
 };
 
@@ -50,16 +49,13 @@ const createRecipe = async (name, image, summary, healthscore, steps, diets) => 
     const newRecipe = await Recipe.create({
         name, image, summary, healthscore, steps
     });
-
     // selecciono los registros en tabla Diet (instancias de Diet) cuyos nombres estén contenidos en el array diets
     const dietsArrOfObjFromDb = await Diet.findAll({      
         where: {
             name: diets     
         }
     });
-
     await newRecipe.addDiets(dietsArrOfObjFromDb);
-
     return newRecipe;
     // return 'Recipe created';
 };
