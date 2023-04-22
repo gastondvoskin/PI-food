@@ -5,6 +5,7 @@ let sourceToGetDiets = 'api';   // it changes to db after first query
 
 const getDietsHandler = async (req, res) => {
     try {
+        console.log('sourceToGetDiets: ', sourceToGetDiets);
         let allDiets;
         if (sourceToGetDiets === 'api') {
             sourceToGetDiets = 'db';

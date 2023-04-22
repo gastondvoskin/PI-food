@@ -20,6 +20,8 @@ const getDietsFromApi = async () => {
         });
     });
 
+    // console.log(1);
+
     for (let diet of allDiets) {        // sería más óptimo Promise.all y map
         await Diet.findOrCreate({
             where: {
@@ -27,6 +29,8 @@ const getDietsFromApi = async () => {
             }
         }); 
     }
+    // console.log(2);
+
 
     return(allDiets);   
 };

@@ -37,15 +37,6 @@ const searchAllRecipes = async () => {
 const searchRecipesByName = async (name) => {
     const allRecipes = await searchAllRecipes();
     const recipesByName = allRecipes.filter((recipe) => {
-        // console.log('aca... ');
-
-        // console.log('name... ', name);
-        // console.log('name.toLowerCase()... ', name.toLowerCase());
-
-        // console.log('recipe... ', recipe);
-        // console.log('recipe.name... ', recipe.name);
-        // console.log('recipe.name.toLowerCase()... ', recipe.name.toLowerCase());
-        // console.log('recipe.name.toLowerCase().includes(name.toLowerCase())... ', recipe.name.toLowerCase().includes(name.toLowerCase()));
         if (recipe.name) {
             return recipe.name.toLowerCase().includes(name.toLowerCase());
         }
@@ -55,14 +46,27 @@ const searchRecipesByName = async (name) => {
 
 
 
-const createRecipe = async (name, image, summary, healthscore, instructions) => {
-    // NIY: relacionar la nueva receta con los tipos de dieta solicitados. La receta debe estar relacionada con los tipos de dieta indicados (al menos uno). Ver atributo diets en archivo Recipe.js . También rever ruta GET /recipes para que traiga también el atributo diets. 
-    // Para los tipos de dieta debes tener en cuenta las propiedades vegetarian, vegan y glutenFree por un lado, y también analizar las que se incluyan dentro de la propiedad diets por otro.
+const createRecipe = async (name, image, summary, healthscore, steps, diets) => {
     const newRecipe = await Recipe.create({
-        name, image, summary, healthscore, instructions
+        name, image, summary, healthscore, steps
     });
+
+    // selene. inicio. sin chequear. 
+    let dietsDb = await Diet.findAll({
+        where: {
+            name: diets     // y si diets es un [] ???
+        }
+    });
+
+    newRecipe.addDiets(dietsDb);   
+    // falta relaciona con propiedad vegetarian
+    // no requiere await???
+    // selene. fin. sin chequear. 
+
     return newRecipe;
 };
+
+
 
 
 

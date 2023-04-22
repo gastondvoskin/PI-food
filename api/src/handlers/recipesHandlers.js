@@ -33,10 +33,11 @@ const getRecipesHandler = async (req, res) => {
 
 
 const createRecipeHandler = async (req, res) => {
-    // NIY: creo que con diets de req.body tengo que pasarlo como argumento a una función controller que se encargue de mapear los datos del array para cargar la tabla intermedia RecipeDiet. 
     try {
-        const { name, image, summary, healthscore, instructions, diets } = req.body;
-        const newRecipe = await createRecipe(name, image, summary, healthscore, instructions); 
+        const { name, image, summary, healthscore, steps, diets } = req.body;
+        // console.log(steps);
+        // console.log(diets);
+        const newRecipe = await createRecipe(name, image, summary, healthscore, steps, diets); 
         res.status(201).send(newRecipe);     
     } catch (error) {
         res.status(400).send({error: error.message});

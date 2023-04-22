@@ -13,7 +13,7 @@ const getApiRecipeByIdRaw = async (id) => {
     return apiRecipeByIdRaw;
 };
 
-let i = 0;
+let i = 0;      // a futuro borrar
 const cleanApiRecipe = (apiRecipeRaw) => {
     const { id, title: name, image, summary, healthScore: healthscore, analyzedInstructions, diets } = apiRecipeRaw;
 
@@ -51,7 +51,7 @@ const getApiRecipeByIdClean = async (id) => {
 
 const getAllApiRecipesRaw = async () => {
     const numberOfRecipesPerPage = 10;  
-    const numberOfResults = 20;         // reducido a 30 para no hacer tantas requests. a futuro, 100.  
+    const numberOfResults = 10;         // reducido a 1 para hacer una sola request a Spoonacular. a futuro, 100.  
     const numberOfPages = numberOfResults / numberOfRecipesPerPage;     
 
     let apiAllRecipesRaw = []; 

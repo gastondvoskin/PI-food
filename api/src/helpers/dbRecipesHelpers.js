@@ -37,7 +37,7 @@ const getAllDbRecipesRaw = async () => {
     const dbAllRecipesRaw = await Recipe.findAll({
         include: {
             model: Diet,
-            attributes: ['id', 'name'],     // id lo puedo omitir? 
+            attributes: [/* 'id',  */'name'],     // id lo puedo omitir? 
             through: {
                 attributes: []
             }
