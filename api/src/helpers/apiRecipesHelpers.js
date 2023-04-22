@@ -13,7 +13,6 @@ const getApiRecipeByIdRaw = async (id) => {
     return apiRecipeByIdRaw;
 };
 
-let i = 0;      // a futuro borrar
 const cleanApiRecipe = (apiRecipeRaw) => {
     const { id, title: name, image, summary, healthScore: healthscore, analyzedInstructions, diets } = apiRecipeRaw;
 
@@ -24,20 +23,10 @@ const cleanApiRecipe = (apiRecipeRaw) => {
         stepsClean = stepsRaw.map((step) => step.step);
     }
 
-    const apiRecipeByIdClean = {
-        id, 
-        name, 
-        image, 
-        summary, 
-        healthscore, 
-        steps: stepsClean,
-        diets,
-        created: false,
-        myId: 'myId' + i++     // a futuro borrar
-    }; 
+    const apiRecipeByIdClean = {id, name, image, summary, healthscore, steps: stepsClean, diets, created: false}; 
     return apiRecipeByIdClean; 
-    
 };
+
 
 const getApiRecipeByIdClean = async (id) => {
     const apiRecipeByIdRaw = await getApiRecipeByIdRaw(id); 
@@ -46,12 +35,13 @@ const getApiRecipeByIdClean = async (id) => {
 };
 
 ///////////////////////////////////////////
+///////////////////////////////////////////
 
 
 
 const getAllApiRecipesRaw = async () => {
     const numberOfRecipesPerPage = 10;  
-    const numberOfResults = 10;         // reducido a 1 para hacer una sola request a Spoonacular. a futuro, 100.  
+    const numberOfResults = 10;         // reducido a 10 para hacer una sola request a Spoonacular. a futuro, 100.  
     const numberOfPages = numberOfResults / numberOfRecipesPerPage;     
 
     let apiAllRecipesRaw = []; 
@@ -64,12 +54,8 @@ const getAllApiRecipesRaw = async () => {
     return apiAllRecipesRaw;
 };
 
-
 const cleanAllApiRecipes = (allApiRecipesRaw) => {
-    const apiAllRecipesClean = allApiRecipesRaw.map((apiRecipeRaw) => {
-        const apiRecipeClean = cleanApiRecipe(apiRecipeRaw);
-        return apiRecipeClean;
-    }); 
+    const apiAllRecipesClean = allApiRecipesRaw.map((apiRecipeRaw) => cleanApiRecipe(apiRecipeRaw)); 
     return apiAllRecipesClean;
 };
 
@@ -85,4 +71,4 @@ module.exports = {
     getApiRecipeByIdClean, 
     getAllApiRecipesClean,
     getAllApiRecipesRaw
-}
+};

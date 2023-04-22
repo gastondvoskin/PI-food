@@ -51,22 +51,18 @@ const createRecipe = async (name, image, summary, healthscore, steps, diets) => 
         name, image, summary, healthscore, steps
     });
 
-    // selene. inicio. sin chequear. 
-    let dietsDb = await Diet.findAll({
+    // selecciono los registros en tabla Diet (instancias de Diet) cuyos nombres estén contenidos en el array diets
+    const dietsArrOfObjFromDb = await Diet.findAll({      
         where: {
-            name: diets     // y si diets es un [] ???
+            name: diets     
         }
     });
 
-    newRecipe.addDiets(dietsDb);   
-    // falta relaciona con propiedad vegetarian
-    // no requiere await???
-    // selene. fin. sin chequear. 
+    await newRecipe.addDiets(dietsArrOfObjFromDb);
 
     return newRecipe;
+    // return 'Recipe created';
 };
-
-
 
 
 
@@ -75,4 +71,4 @@ module.exports = {
     searchAllRecipes, 
     searchRecipesByName,
     createRecipe
-}
+};

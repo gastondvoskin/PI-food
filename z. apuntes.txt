@@ -298,5 +298,25 @@ Pasos para chequear requests:
 1. GET /diets para que se carguen diets en DB (antes de esto no puedo crear una recipe, ya que cada registro nuevo de una recipe tiene que asociarse a las diets que se extraen de la tabla Diet). Esto lo hago una sola vez si sync está en force: false. Si no, lo tengo que hacer cada vez que levanto el servidor. 
 2. POST /recipes . 
 
-// Ahora parece estar funcionando todo. Chequear si se traen correctamente las diets en GET /recipes.
-git commit -m "changed instructions recipe attribute for steps. Associated recipe with diets in createRecipe controller"
+// Ahora parece estar funcionando todo (creo que porque devolví el attribute id de diets al type UUID). Chequear si se traen correctamente las diets en GET /recipes.
+git commit -m "changed instructions recipe attribute for steps. Associated recipe with diets in createRecipe controller". 
+
+En createRecipe controller, Selene agregó un código que no entiendo del todo. Leer documentación de sequelize: Associations, special methods/mixins added to instances, Foo.nelongsToMany(Bar, [throughL Baz])
+El método addDiets es creado por Sequelize. La instancia de un modelo relacionado con otro adquiere métodos con, por ejemplo, add, concatenado al nombre del modelo relacionado. newRecipe (instancia de Recipe) .addDiets espera como argumento un arreglo de instancias de Diet. 
+Agregué el await a newRecipe.addDiets (en createRecipe controller). Supongo que Selene se lo había olvidado. 
+Chequeé hacer un request GET /recipes/{UUID de ejemplo de la db}, y la propiedad Diets trae un array de objetos:
+    [
+        {
+            "name": "vegetarian"
+        },
+        {
+            "name": "vegan"
+        }
+    ]
+Agregué la variable includeObject, y reemplacé en los helpers getDbRecipeByIdRaw y getAllDbRecipesRaw. 
+Refactoricé cleanDbRecipe helper para que en vez de traer Diets con un array de objetos con la propiedad name, directamente traiga un array de strings con los valores de name. 
+Refactoricé cleanAllDbRecipes con el mismo criterio. 
+Refactoricé cleanAllApiRecipe para que tuviera un código análogo a cleanAllDbRecipe. 
+Refactoricé cleanApiRecipe para mejor legibilidad. 
+
+git commit -m "improved cleanDbRecipe and cleanAllDbRecipes helpers to bring diets instead of Diets. Improved readability of createRecipe controller, cleanApiRecipe".

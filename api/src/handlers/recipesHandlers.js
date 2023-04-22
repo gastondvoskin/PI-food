@@ -35,8 +35,6 @@ const getRecipesHandler = async (req, res) => {
 const createRecipeHandler = async (req, res) => {
     try {
         const { name, image, summary, healthscore, steps, diets } = req.body;
-        // console.log(steps);
-        // console.log(diets);
         const newRecipe = await createRecipe(name, image, summary, healthscore, steps, diets); 
         res.status(201).send(newRecipe);     
     } catch (error) {
@@ -50,4 +48,4 @@ module.exports = {
     getRecipeByIdHandler,
     getRecipesHandler, 
     createRecipeHandler
-}
+};

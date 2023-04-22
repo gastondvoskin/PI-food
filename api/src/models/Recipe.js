@@ -28,7 +28,6 @@ module.exports = (sequelize) => {
         allowNull: false
       }, 
       steps: {
-        // type: DataTypes.TEXT,
         type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: false
       },
@@ -40,11 +39,3 @@ module.exports = (sequelize) => {
     {timestamps: false}
   );
 };
-
-
-      // inicio aún sin chequear
-      // diets: {
-      //   type: DataTypes.STRING,
-      //   allowNull: false
-      // },
-      // fin aún sin chequear
