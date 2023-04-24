@@ -25,7 +25,7 @@ const getDbRecipeByIdRaw = async (id) => {
 };
 
 const cleanDbRecipe = (dbRecipeRaw) => {
-    const { id, name, image, summary, healthscore, steps, created, Diets } = dbRecipeRaw;
+    const { id, name, image, summary, healthscore, steps, created, Diets } = dbRecipeRaw;   
     const diets = Diets.map((diet) => diet.name);   // para reemplazar Diets (array de objetos) por diets (array de strings, igual que en api)
     
     const dbRecipeByIdClean = {id, name, image, summary, healthscore, steps, diets, created};

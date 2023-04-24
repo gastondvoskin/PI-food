@@ -11,3 +11,8 @@ index.js
                               -> Pagination
            -> ruta a Detail.jsx
            -> ruta a Form.jsx
+
+index.js
+storeIndex.js
+reducerIndex.js
+actionsIndex.js --- Dónde importo actions-creators? 

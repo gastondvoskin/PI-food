@@ -270,11 +270,10 @@ Agregué diets al helper cleanApiRecipe.
 A futuro, agregar algunos manejos de errores, por ejemplo si no existe un determinado id, o si no se encuentran coincidencias con un name. 
 git commit -m "added property diets to cleanApiRecipe helper"
 
-Siguiente paso: retomar video de Selene. Dudas principales: relación entre los modelos. recordar cómo se crea la aplicación de redux. Corregir la ruta del POST para asociar con diets. 
+Siguiente paso: Corregir la ruta del POST para asociar con diets.
 
 
 //////////////////////////////////////////
-// DESDE ACÁ NO ESTÁ VERIFICADO CUÁNDO ROMPÍ!!!!!!!!!!
 Cambié instructions por steps en createRecipeHandler, en controller createRecipe y en el model Recipe.js. 
 En attribute steps de Recipe.js cambié DataTypes.TEXT por type: DataTypes.ARRAY(DataTypes.STRING). 
 // archivo index.js. Cambié sync de force: false a force: true, para poder crear recetas nuevas ahora que cambié la columna instructions por steps. Se borran todos los registros. 
@@ -325,3 +324,16 @@ Agregué mensaje de error en controller searchRecipesByName y en helper getDbRec
 Intenté agregar mensaje de error en getApiRecipeByIdRaw helpers, pero no funciona porque da 404. 
 Actualicé archivo resExamp.json con respuestas actuales a las requests de: recipes, recipes por id db y api, diets. 
 El back-end está funcionando completamente. A futuro, chequear que para GET /recipes asocie también las propiedas vegetarian, etc además de las de diets. 
+git commit -m "added error messages in searchRecipesByName controller and in  getDbRecipeByIdRaw helper. Updated resExamp.json file. Whole back-end working properly"
+
+Siguiente paso back-end: incluir propiedades vegetarian, vegan y gluten Free en la ruta GET /recipes. 
+// por qué incluiría vegan y gluten free si ya están incluidas en la propiedad diets?
+
+//////////////////////////
+Siguiente paso: retomar FRONT-END. Redux. Videos Selene. 
+Creé carpeta redux dentro de src. Dentro de reducer creé las carpetas store, reducer y actions con sus respectivos archivos index. 
+storeIndex.js hice la configuración del store. Importa el reducer de reducerIndex.js 
+reducerIndex.js. Hice un reducer básico. 
+actionsIndex.js. Hice una action-creator que por ahora retorna sólo undefined. 
+index.js. El método .render de ReactDom fue reemplazado createRoot, pero lo dejé así para no cambiar la configuración inicial del proyecto. Envolví al BrowserRouter (que envuelve a App) con Provider store={store} para conectar redux con mi App. 
+git commit -m "front-end. Initialized Redux store, reducer and actions"
