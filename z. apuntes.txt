@@ -347,3 +347,9 @@ Componente Home.jsx. Importé useState y useEffect. Importé useDispatch y useSe
 Borré el useEffect y el fetchRecipes de App, porque el global state se tiene que cargar una vez que hago click en Home, y no antes de renderizar la Landing. 
 Implementé: Home hace un useDispatch dentro del useEffect para actualizar las recipes del globalState. Home renderiza Cards. Cards hace un useSelect para obtener las recipes del globalState. Cards hace un map de las recipes y por cada una renderiza un componente Card. Card renderiza las props recibidas (ya desestructuradas) incluyendo un Link con una ruta dinámica según el id de cada recipe recibido por props. En App.js la ruta detail/:id es dinámica, por lo que cualquier Card tendrá un link que redirigirá a una ruta que hace que App renderice el componente Detail.jsx
 git commit -m "Recipes rendered using the global state"
+
+Agregué el paginado. 
+Home hace la lógica. Renderiza Cards y Pagination. Le pasa por props lo que necesita cada uno. Ahora Cards no renderiza allRecipes.map sino currentRecipes.map. 
+En apiRecipesHelpers.js (de mi api) tengo la const numberOfResults para ir regulando cuánto traer de Spoonacular. 
+Próximo paso: filtros. 
+git commit -m "implemented Pagination.jsx and its logic in Home.jsx"

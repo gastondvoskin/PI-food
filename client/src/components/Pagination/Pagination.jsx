@@ -1,16 +1,25 @@
 import React from "react";
 import styles from './Pagination.module.css';
 
-const Pagination = () => {
+const Pagination = ({ totalPages, handlePageChange }) => {
+
+    const pageNumbers = []; 
+    
+    for (let i = 1; i < totalPages; i++) {
+        pageNumbers.push(i);
+    }
+
     return (
-        <div>
-            NIY: 
-            Paginado: el listado de recetas se hará por partes. Tu SPA debe contar con un paginado que muestre un total de 9 recetas por página.
-        </div>
+        <ul>
+            {
+                pageNumbers.map((pageNumber) => {
+                    return (
+                        <button onClick={() => handlePageChange(pageNumber)}>{pageNumber}</button>
+                    )
+                })
+            }
+        </ul>
     );
 };
 
 export default Pagination;
-
-
-// Pagination: Paginado: el listado de recetas se hará por partes. Tu SPA debe contar con un paginado que muestre un total de 9 recetas por página.
