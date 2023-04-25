@@ -11,20 +11,6 @@ import Nav from './components/Nav/Nav.jsx';
 import axios from 'axios';
 
 const App = () => {
-  const [recipes, setRecipes] = useState([]); 
-
-  const fetchRecipes = async () => {
-    try {
-      const response = await axios.get('http://localhost:3001/recipes?name=Cannellini Bean and Asparagus Salad with Mushrooms');  // hardcodeado. a futuro, corregir
-      setRecipes(response.data);  
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect( async () => {
-    await fetchRecipes();
-  }, []);
 
   return (
     <>
@@ -32,7 +18,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/detail/id" element={<Detail />} /> 
+        <Route path={"/detail/:id"} element={<Detail />} /> 
         <Route path="/form" element={<Form />} />    
       </Routes>  
     </>
@@ -40,11 +26,3 @@ const App = () => {
 };
 
 export default App;
-
-
-
-    // console.log('hola')
-    // console.log('recipes: ', recipes);
-    // axios.get('http://localhost:3001/recipes')
-    //   .then((response) => setRecipes(response.data))
-    //   .catch((error) => console.error(error));

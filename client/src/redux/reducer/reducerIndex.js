@@ -1,8 +1,9 @@
 import { GET_RECIPES } from "../actions/actionsIndex.js";
 
+
 const initialState = {
     recipes: [],
-    recipeDetail: {}
+    // recipeDetail: {}
 };
 
 const reducer = (state = initialState, action) => {

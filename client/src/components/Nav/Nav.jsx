@@ -13,7 +13,7 @@ const Nav = () => {
             <SearchBar />
             <Filters />
             <Sorting />
-            <NavLink to='/form'>Form para crear recetas</NavLink>
+            <NavLink to='/form'>Create a recipe</NavLink>
         </nav>
     );
 };

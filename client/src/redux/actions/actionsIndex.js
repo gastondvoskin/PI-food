@@ -1,13 +1,16 @@
+import axios from 'axios';
+
 // actions-types
-const GET_RECIPES = 'GET_RECIPES';
+export const GET_RECIPES = 'GET_RECIPES';
 
 // actions-creators
-const getRecipes = () => {
-
+export const getRecipes = () => {
+    return async (dispatch) => {
+        const recipesRaw = await axios.get('http://localhost:3001/recipes');
+        const recipesClean = recipesRaw.data;
+        return dispatch({
+            type: GET_RECIPES,
+            payload: recipesClean
+        })
+    }
 };
-
-
-module.exports = {
-    GET_RECIPES, 
-    getRecipes
-}

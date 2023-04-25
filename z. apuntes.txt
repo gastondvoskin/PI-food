@@ -332,8 +332,18 @@ Siguiente paso back-end: incluir propiedades vegetarian, vegan y gluten Free en 
 //////////////////////////
 Siguiente paso: retomar FRONT-END. Redux. Videos Selene. 
 Creé carpeta redux dentro de src. Dentro de reducer creé las carpetas store, reducer y actions con sus respectivos archivos index. 
-storeIndex.js hice la configuración del store. Importa el reducer de reducerIndex.js 
+storeIndex.js hice la configuración del store. Importé el reducer de reducerIndex.js. Dejé el compose, también podría instalar composeWithDevTools para simplificar código. 
 reducerIndex.js. Hice un reducer básico. 
 actionsIndex.js. Hice una action-creator que por ahora retorna sólo undefined. 
 index.js. El método .render de ReactDom fue reemplazado createRoot, pero lo dejé así para no cambiar la configuración inicial del proyecto. Envolví al BrowserRouter (que envuelve a App) con Provider store={store} para conectar redux con mi App. 
-git commit -m "front-end. Initialized Redux store, reducer and actions"
+git commit -m "front-end. Initialized Redux store, reducer and actions". 
+Siguiente paso: a partir del proyecto de Rick, ver en qué se usó props y en qué se usó Redux. Apoyarme en documentación de React para recordar props. Y videos de Selene para pensar el flujo general de toda la app. 
+Primer paso principal: mostrar cards de recipes en Home.
+
+video Selene: minuto 19. 
+Componente Landing. Cambié NavLink por Link. 
+actionsIndex.js. Creé la action creator getRecipes. 
+Componente Home.jsx. Importé useState y useEffect. Importé useDispatch y useSelector. Importé getRecipes. 
+Borré el useEffect y el fetchRecipes de App, porque el global state se tiene que cargar una vez que hago click en Home, y no antes de renderizar la Landing. 
+Implementé: Home hace un useDispatch dentro del useEffect para actualizar las recipes del globalState. Home renderiza Cards. Cards hace un useSelect para obtener las recipes del globalState. Cards hace un map de las recipes y por cada una renderiza un componente Card. Card renderiza las props recibidas (ya desestructuradas) incluyendo un Link con una ruta dinámica según el id de cada recipe recibido por props. En App.js la ruta detail/:id es dinámica, por lo que cualquier Card tendrá un link que redirigirá a una ruta que hace que App renderice el componente Detail.jsx
+git commit -m "Recipes rendered using the global state"
