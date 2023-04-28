@@ -17,3 +17,4 @@ storeIndex.js
 reducerIndex.js
 actionsIndex.js (actions-creators) 
 Un componente (por ejemplo Home.jsx) importa una action creator, hace un dispatch de una action-creator ejecutada (que retorna una action) mediante el hook useDispatch. La action va al reducer, y según su propiedad type, entra en un case y modifica al globalState. El globalState es accedido por cualquier componente mediante el hook useSelector. 
+

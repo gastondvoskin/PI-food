@@ -20,6 +20,7 @@ const Cards = ({ currentRecipes }) => {
                             image={recipe.image} 
                             diets={recipe.diets} 
                             id={recipe.id}
+                            key={index}
                         />                 
                     )
                 })

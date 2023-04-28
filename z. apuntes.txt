@@ -352,4 +352,21 @@ Agregué el paginado.
 Home hace la lógica. Renderiza Cards y Pagination. Le pasa por props lo que necesita cada uno. Ahora Cards no renderiza allRecipes.map sino currentRecipes.map. 
 En apiRecipesHelpers.js (de mi api) tengo la const numberOfResults para ir regulando cuánto traer de Spoonacular. 
 Próximo paso: filtros. 
-git commit -m "implemented Pagination.jsx and its logic in Home.jsx"
+git commit -m "implemented Pagination.jsx and its logic in Home.jsx". 
+Minuto 16 del video de Selene (lecture 3). 
+
+Home.jsx. recipesPerPage lo saqué del state y lo pasé a una const normal. 
+Video de Selene lecture 3: 28'30'' empieza con filtros. 
+
+A futuro, componente Detail. Tomar el id de params (creo que hay un hook). Guardar recipe haciendo una llamada al back (ruta de id). Renderizar los elementos que me pide. Si yo ya tengo la info necesaria en el globalState cuando se ejecutó el getRecipes, para qué llamaría a la ruta por id que creo que trae la misma info? 
+
+Eliminé el import Link en Home.jsx. 
+Eliminé el import useEffect y useState en App.js.
+Eliminé el import de axios en App.js.
+Cambié el nombre App.js por App.jsx. 
+
+App.jsx. Con el hook useLocation, implementé que el Nav no se visualice en la Landing. 
+App.css. Comenté todo el css. 
+Landing.jsx y Landing.module.css cambié en NavLink para que sea blanco. Ídem Card.jsx para View Details. Ídem Nav con Create Recipes. 
+Agregué NavLink a Home en el Nav. 
+git commit -m "Styled NavLinks in white. Added conditional render to Nav"

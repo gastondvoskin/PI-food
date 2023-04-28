@@ -4,6 +4,15 @@
     background-position: center;
 }
 
+.link {
+    text-decoration: none;
+    color: white;
+}
+  
+/* .activeLink {
+    color: grey;
+} */
+  
 /* body {
     background-image: url('../../assets/2.png');
     background-size: cover; 

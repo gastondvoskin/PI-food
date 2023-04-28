@@ -9,13 +9,25 @@ import Sorting from "../Sorting/Sorting.jsx";
 const Nav = () => {
     return (
         <nav>
-            <h1>NIY - Nav</h1>
+            <NavLink 
+                to={'/home'}
+                activeClassName={styles.activeLink} 
+                className={styles.link}> 
+                Home
+            </NavLink> 
             <SearchBar />
             <Filters />
             <Sorting />
-            <NavLink to='/form'>Create a recipe</NavLink>
+            <NavLink 
+                to={'/form'}
+                activeClassName={styles.activeLink} 
+                className={styles.link}> 
+                Create a recipe
+            </NavLink> 
+
         </nav>
     );
 };
 
 export default Nav;
+
