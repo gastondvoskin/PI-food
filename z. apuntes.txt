@@ -392,9 +392,11 @@ Implementé el sort en Sorting.jsx copiando y adaptando Filters.jsx. Creé la ac
 Sorting.jsx. Agregué option none a los sorts. 
 reducerIndex.js. Implementé el case SORT_RECIPES. Ahora, el Home renderiza filteredAndSortedRecipes del estado global (en vez de allRecipes). 
 A futuro, tal vez es mejor que cada sort se ejecute de manera individual, ya que es raro aplicar un orden por alfabeto en simultáneo con uno por health, ya que se anulan mutuamente. 
-git commit -m "Added sorting". 
+git commit -m "Added sorting" 
 
-
+Próximo paso: SearchBar, Detail, Create a recipe. 
+Implementé SearchBar. El SearchBar es un formulario controlado. Envía una action con el submit. La action hace una llamada al back-end (ruta por name). El reducer hace que se modifique la propiedad filteredAndSortedRecipes del estado global, que es la que finalmente se termina rerenderizando. 
+git commit -m "Implemented SrarchBar"  
 
 
 - Para filtrar por name, crear una action que llame a la ruta del back-end que ya creé. 

@@ -1,10 +1,10 @@
-import { GET_RECIPES, FILTER_BY_DIET, SORT_RECIPES } from "../actions/actionsIndex.js";
+import { GET_RECIPES, FILTER_BY_DIET, SORT_RECIPES, GET_RECIPES_BY_NAME } from "../actions/actionsIndex.js";
 
 
 const initialState = {
     allRecipes: [],
     filteredRecipes: [],
-    filteredAndSortedRecipes: []
+    filteredAndSortedRecipes: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -72,12 +72,17 @@ const reducer = (state = initialState, action) => {
                 }); 
             };
 
-            console.log(sortedRecipesByAlphabetAndHealthscore);
-
             return {
                 ...state,
                 filteredAndSortedRecipes: sortedRecipesByAlphabetAndHealthscore
             }
+
+        case GET_RECIPES_BY_NAME:
+            return {
+                ...state,
+                filteredAndSortedRecipes: action.payload
+            }
+
 
         default:
             return {...state}

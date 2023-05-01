@@ -4,6 +4,7 @@ import axios from 'axios';
 export const GET_RECIPES = 'GET_RECIPES';
 export const FILTER_BY_DIET = 'FILTER_BY_DIET';     // modificar a futuro. 
 export const SORT_RECIPES = 'SORT_RECIPES';
+export const GET_RECIPES_BY_NAME = 'GET_RECIPES_BY_NAME';
 
 
 // actions-creators
@@ -18,7 +19,6 @@ export const getRecipes = () => {
     }
 };
 
-
 export const filterRecipes = (payload) => {
     return {
         type: FILTER_BY_DIET,
@@ -31,7 +31,16 @@ export const sortRecipes = (payload) => {
         type: SORT_RECIPES,
         payload
     }
-}
+};
 
-
-// ej: filterRecipes({vegetarian, spoonacular})
+export const getRecipesByName = (name) => {
+    return async (dispatch) => {
+        const recipesByNameRaw = await axios.get(`http://localhost:3001/recipes?name=${name}`);
+        console.log('recipesByNameRaw: ', recipesByNameRaw);
+        const recipesByNameClean = recipesByNameRaw.data;
+        return dispatch({
+            type: GET_RECIPES_BY_NAME,
+            payload: recipesByNameClean
+        });
+    };
+};
