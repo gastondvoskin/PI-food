@@ -15,9 +15,6 @@ const reducer = (state = initialState, action) => {
                 filteredRecipes: action.payload
             }
         case FILTER_BY_DIET: 
-            // console.log('state.allRecipes: ', state.allRecipes);
-            // console.log('state.filteredRecipes: ', state.filteredRecipes);
-            // console.log('action.payload: ', action.payload);
             const { diet, creator } = action.payload;
 
             const filteredRecipesByDiet = diet === 'all'
@@ -34,7 +31,6 @@ const reducer = (state = initialState, action) => {
                 }
             });
 
-            // console.log('filteredRecipesByDietsAndCreator: ', filteredRecipesByDietsAndCreator);
             return {
                 ...state,
                 filteredRecipes: filteredRecipesByDietsAndCreator

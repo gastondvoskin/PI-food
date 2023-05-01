@@ -12,9 +12,12 @@ const Pagination = ({ totalPages, handlePageChange }) => {
     return (
         <ul>
             {
-                pageNumbers.map((pageNumber) => {
+                pageNumbers.map((pageNumber, index) => {
                     return (
-                        <button onClick={() => handlePageChange(pageNumber)}>{pageNumber}</button>
+                        <button 
+                            key={index}
+                            onClick={() => handlePageChange(pageNumber)}>{pageNumber}
+                        </button>
                     )
                 })
             }

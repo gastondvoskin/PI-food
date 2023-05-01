@@ -3,7 +3,9 @@ import styles from './Filters.module.css';
 import { filterRecipes } from "../../redux/actions/actionsIndex";
 import { useDispatch } from 'react-redux';
 
-const Filters = () => {
+const Filters = (props) => {
+    const { dietsList } = props;
+    console.log('dietsList', dietsList);
     const dispatch = useDispatch();
 
     // local state for the controlled form
@@ -38,8 +40,11 @@ const Filters = () => {
             <label htmlFor="diet">Choose a diet</label>
             <select name="diet" value={filters.diet} onChange={handleSelect}>
                 <option value="all">all</option>
-                <option value="vegetarian">vegetarian</option>
-                <option value="vegan">vegan</option>
+                {
+                    dietsList.map((diet) => {
+                        return <option value={diet}>{diet}</option>
+                    })
+                }
             </select>
 
             <label htmlFor="creator">Choose a creator</label>

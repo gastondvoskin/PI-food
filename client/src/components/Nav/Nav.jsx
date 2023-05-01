@@ -1,12 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from './Nav.module.css';
+// import { useDispatch, useSelector } from 'react-redux';
+
 import { NavLink } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar.jsx";
 import Filters from "../Filters/Filters.jsx";
 import Sorting from "../Sorting/Sorting.jsx";
+import axios from "axios";
 
 
 const Nav = () => {
+    const [dietsList, setDietsList] = useState([]);
+    
+    useEffect(() => {
+        const getDietsList = async () => {
+            const dietsListRaw = await axios.get('http://localhost:3001/diets');
+            const dietsListClean = dietsListRaw.data;
+            setDietsList(dietsListClean);
+        }
+        getDietsList();
+    }, []);
+
     return (
         <nav>
             <NavLink 
@@ -16,7 +30,7 @@ const Nav = () => {
                 Home
             </NavLink> 
             <SearchBar />
-            <Filters />
+            <Filters dietsList={dietsList} />
             <Sorting />
             <NavLink 
                 to={'/form'}

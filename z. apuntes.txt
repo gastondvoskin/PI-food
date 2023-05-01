@@ -383,8 +383,9 @@ Modifiqué Filters.jsx para que tenga un estado local y sea un formulario contro
 Modifiqué el Home para que en vez de renderizar state.allRecipes, renderice filteredRecipes (línea 21).
 Modifiqué el Reducer para que haga la lógica de filtrar por diet y por creator. 
 git commit -m "Implemented filters."
-Próximo paso: 
-Modifiqué Filters.jsx para que mapee las opciones del select. 
+
+Modifiqué Nav.jsx y Filters.jsx para que mapee las opciones del select. Para eso creé un estado. El useEffect es imprescindible para no retornar una promesa. 
+git commit -m "Diets options mapped in Filters". 
 
 
 
