@@ -20,5 +20,3 @@ const Card = ({ name, image, diets, id }) => {
 };
 
 export default Card;
-
-            {/* <Link to={`/detail/${id}`}>View details</Link> */}

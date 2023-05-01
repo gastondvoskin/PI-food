@@ -18,8 +18,8 @@ const Home = () => {
         dispatch(getRecipes())
     }, []); 
 
-    // receive allRecipes from the global state. 
-    const allRecipes = useSelector((state) => state.recipes);
+    // receive filteredRecipes from the global state. 
+    const filteredRecipes = useSelector((state) => state.filteredRecipes);
 
 
     // handlePageChange -> handles onClick in Pagination
@@ -32,10 +32,10 @@ const Home = () => {
     // currentRecipes (it rerenders with onClick in Pagination handled by handlePageChange). Uaseful for Pagination and for Cards. 
     const indexOfFirstRecipe = currentPage * recipesPerPage - recipesPerPage;  //p1->0. p2-> 9.
     const indexOfLastRecipe = currentPage * recipesPerPage - 1; //p1->8. p2->17. 
-    const currentRecipes = allRecipes.slice(indexOfFirstRecipe, indexOfLastRecipe + 1); // p1-> 0 al 9 sin incluirlo. p1-> 9 al 18 sin incluirlo.
+    const currentRecipes = filteredRecipes.slice(indexOfFirstRecipe, indexOfLastRecipe + 1); // p1-> 0 al 9 sin incluirlo. p1-> 9 al 18 sin incluirlo.
 
     // totalPages. Useful for Pagination. 
-    const totalPages = Math.ceil(allRecipes.length / recipesPerPage);
+    const totalPages = Math.ceil(filteredRecipes.length / recipesPerPage);
 
 
     // render Pagination and Cards components

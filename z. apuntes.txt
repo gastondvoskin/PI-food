@@ -369,4 +369,30 @@ App.jsx. Con el hook useLocation, implementé que el Nav no se visualice en la L
 App.css. Comenté todo el css. 
 Landing.jsx y Landing.module.css cambié en NavLink para que sea blanco. Ídem Card.jsx para View Details. Ídem Nav con Create Recipes. 
 Agregué NavLink a Home en el Nav. 
-git commit -m "Styled NavLinks in white. Added conditional render to Nav"
+git commit -m "Styled NavLinks in white. Added conditional render to Nav".
+
+
+
+Cambié elementos inputs por elementos select. A futuro hacer que los option del select se rendericen con una llamada al back-end, sin hardcodearlo. 
+Agregué action type FILTER_BY_DIET, la exporté al reducer. Creé el case en el reducer. 
+En el reducer, modifiqué el initialState, agregando la propiedad allRecipes y modificando recies por filteredRecipes. 
+En Home.jsx modifiqué recipes por allReicpes (linea 22).
+La lógica no va en la action, sino en el reducer o en el componente. 
+
+Modifiqué Filters.jsx para que tenga un estado local y sea un formulario controlado que hace un dispatch con toda la info junta. 
+Modifiqué el Home para que en vez de renderizar state.allRecipes, renderice filteredRecipes (línea 21).
+Modifiqué el Reducer para que haga la lógica de filtrar por diet y por creator. 
+git commit -m "Implemented filters."
+Próximo paso: 
+Modifiqué Filters.jsx para que mapee las opciones del select. 
+
+
+
+Próximo paso: agregar filtros. 
+- Redux. En el global state (reducer), agregar la propiedad allRecipesUnmodified. 
+- Agregar action de type FILTER_BY_EJEMPLO .
+- En el reducer, para el case FILTER_BY_EJEMPLO , retornar una copia del state, modificando la propiedad allRecipesFiltered. 
+- En vez de renderizar AllRecipes, renderizar AllRecipesFiltered. ---> Duda: cómo afecta al paginado? 
+- Para filtrar por name, crear una action que llame a la ruta del back-end que ya creé. 
+- Selene hizo un setCurrentPage(1) y un setOrden que no entendí. Reverlo en video 3. 
+Trabajar en componente Filters.jsx. Sorting.jsx me parece que lo puedo unir al Filters.jsx. 
