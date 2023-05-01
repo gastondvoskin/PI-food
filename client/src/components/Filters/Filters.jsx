@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 
 const Filters = (props) => {
     const { dietsList } = props;
-    console.log('dietsList', dietsList);
     const dispatch = useDispatch();
 
     // local state for the controlled form
@@ -40,6 +39,7 @@ const Filters = (props) => {
             <label htmlFor="diet">Choose a diet</label>
             <select name="diet" value={filters.diet} onChange={handleSelect}>
                 <option value="all">all</option>
+                {/* map dietsList (received though props) */}
                 {
                     dietsList.map((diet) => {
                         return <option value={diet}>{diet}</option>

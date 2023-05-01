@@ -2,7 +2,8 @@ import axios from 'axios';
 
 // actions-types
 export const GET_RECIPES = 'GET_RECIPES';
-export const FILTER_BY_DIET = 'FILTER_BY_DIET';
+export const FILTER_BY_DIET = 'FILTER_BY_DIET';     // modificar a futuro. 
+export const SORT_RECIPES = 'SORT_RECIPES';
 
 
 // actions-creators
@@ -23,6 +24,14 @@ export const filterRecipes = (payload) => {
         type: FILTER_BY_DIET,
         payload
     }
+};
+
+export const sortRecipes = (payload) => {
+    return {
+        type: SORT_RECIPES,
+        payload
+    }
 }
+
 
 // ej: filterRecipes({vegetarian, spoonacular})

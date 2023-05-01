@@ -386,14 +386,17 @@ git commit -m "Implemented filters."
 
 Modifiqué Nav.jsx y Filters.jsx para que mapee las opciones del select. Para eso creé un estado. El useEffect es imprescindible para no retornar una promesa. 
 git commit -m "Diets options mapped in Filters". 
+Próximo paso: aplicar el sort. 
+
+Implementé el sort en Sorting.jsx copiando y adaptando Filters.jsx. Creé la action sortRecipes. 
+Sorting.jsx. Agregué option none a los sorts. 
+reducerIndex.js. Implementé el case SORT_RECIPES. Ahora, el Home renderiza filteredAndSortedRecipes del estado global (en vez de allRecipes). 
+A futuro, tal vez es mejor que cada sort se ejecute de manera individual, ya que es raro aplicar un orden por alfabeto en simultáneo con uno por health, ya que se anulan mutuamente. 
+git commit -m "Added sorting". 
 
 
 
-Próximo paso: agregar filtros. 
-- Redux. En el global state (reducer), agregar la propiedad allRecipesUnmodified. 
-- Agregar action de type FILTER_BY_EJEMPLO .
-- En el reducer, para el case FILTER_BY_EJEMPLO , retornar una copia del state, modificando la propiedad allRecipesFiltered. 
-- En vez de renderizar AllRecipes, renderizar AllRecipesFiltered. ---> Duda: cómo afecta al paginado? 
+
 - Para filtrar por name, crear una action que llame a la ruta del back-end que ya creé. 
 - Selene hizo un setCurrentPage(1) y un setOrden que no entendí. Reverlo en video 3. 
 Trabajar en componente Filters.jsx. Sorting.jsx me parece que lo puedo unir al Filters.jsx. 

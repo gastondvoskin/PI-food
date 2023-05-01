@@ -1,9 +1,10 @@
-import { GET_RECIPES, FILTER_BY_DIET } from "../actions/actionsIndex.js";
+import { GET_RECIPES, FILTER_BY_DIET, SORT_RECIPES } from "../actions/actionsIndex.js";
 
 
 const initialState = {
     allRecipes: [],
-    filteredRecipes: []
+    filteredRecipes: [],
+    filteredAndSortedRecipes: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -12,8 +13,10 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 allRecipes: action.payload,
-                filteredRecipes: action.payload
+                filteredRecipes: action.payload,
+                filteredAndSortedRecipes: action.payload
             }
+
         case FILTER_BY_DIET: 
             const { diet, creator } = action.payload;
 
@@ -35,6 +38,47 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 filteredRecipes: filteredRecipesByDietsAndCreator
             }
+
+        case SORT_RECIPES: 
+            const { alphabet, health } = action.payload;
+            // make a copy because sort method changes the original array. It also resets to none.  
+            let sortedRecipesByAlphabet = [...state.filteredRecipes];
+            if (alphabet === 'asc') {
+                sortedRecipesByAlphabet.sort((a, b) => {
+                    if (a.name < b.name) return -1;
+                    if (a.name > b.name) return 1;
+                    return 0;
+                }); 
+            } else if (alphabet === 'desc') {
+                sortedRecipesByAlphabet.sort((a, b) => {
+                    if (a.name > b.name) return -1;
+                    if (a.name < b.name) return 1;
+                    return 0;
+                });             
+            };
+
+            let sortedRecipesByAlphabetAndHealthscore = sortedRecipesByAlphabet;
+            if (health === 'asc') {
+                sortedRecipesByAlphabetAndHealthscore.sort((a, b) => {
+                    if (a.healthscore < b.healthscore) return -1;
+                    if (a.healthscore > b.healthscore) return 1;
+                    return 0;
+                }); 
+            } else if (health === 'desc') {
+                sortedRecipesByAlphabetAndHealthscore.sort((a, b) => {
+                    if (a.healthscore > b.healthscore) return -1;
+                    if (a.healthscore < b.healthscore) return 1;
+                    return 0;
+                }); 
+            };
+
+            console.log(sortedRecipesByAlphabetAndHealthscore);
+
+            return {
+                ...state,
+                filteredAndSortedRecipes: sortedRecipesByAlphabetAndHealthscore
+            }
+
         default:
             return {...state}
             
