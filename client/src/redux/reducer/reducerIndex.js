@@ -1,10 +1,11 @@
-import { GET_RECIPES, FILTER_BY_DIET, SORT_RECIPES, GET_RECIPES_BY_NAME } from "../actions/actionsIndex.js";
+import { GET_RECIPES, FILTER_BY_DIET, SORT_RECIPES, GET_RECIPES_BY_NAME/* , GET_RECIPE_DETAIL */ } from "../actions/actionsIndex.js";
 
 
 const initialState = {
     allRecipes: [],
     filteredRecipes: [],
     filteredAndSortedRecipes: [],
+    // recipeDetail: {}
 };
 
 const reducer = (state = initialState, action) => {
@@ -82,7 +83,13 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 filteredAndSortedRecipes: action.payload
             }
-
+        
+        // // Implementación del Componente Detail con Redux (lo reemplacé por local state)
+        // case GET_RECIPE_DETAIL: 
+        //     return {
+        //         ...state,
+        //         recipeDetail: action.payload
+        //     }
 
         default:
             return {...state}

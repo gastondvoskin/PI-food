@@ -378,6 +378,7 @@ Agregué action type FILTER_BY_DIET, la exporté al reducer. Creé el case en el
 En el reducer, modifiqué el initialState, agregando la propiedad allRecipes y modificando recies por filteredRecipes. 
 En Home.jsx modifiqué recipes por allReicpes (linea 22).
 La lógica no va en la action, sino en el reducer o en el componente. 
+- Selene hizo un setCurrentPage(1) y un setOrden que no entendí. Reverlo en video 3. 
 
 Modifiqué Filters.jsx para que tenga un estado local y sea un formulario controlado que hace un dispatch con toda la info junta. 
 Modifiqué el Home para que en vez de renderizar state.allRecipes, renderice filteredRecipes (línea 21).
@@ -394,11 +395,16 @@ reducerIndex.js. Implementé el case SORT_RECIPES. Ahora, el Home renderiza filt
 A futuro, tal vez es mejor que cada sort se ejecute de manera individual, ya que es raro aplicar un orden por alfabeto en simultáneo con uno por health, ya que se anulan mutuamente. 
 git commit -m "Added sorting" 
 
-Próximo paso: SearchBar, Detail, Create a recipe. 
 Implementé SearchBar. El SearchBar es un formulario controlado. Envía una action con el submit. La action hace una llamada al back-end (ruta por name). El reducer hace que se modifique la propiedad filteredAndSortedRecipes del estado global, que es la que finalmente se termina rerenderizando. 
 git commit -m "Implemented SrarchBar"  
 
+Próximo paso: Detail, Create a recipe. 
+Ver video de Selene 4. 
 
-- Para filtrar por name, crear una action que llame a la ruta del back-end que ya creé. 
-- Selene hizo un setCurrentPage(1) y un setOrden que no entendí. Reverlo en video 3. 
-Trabajar en componente Filters.jsx. Sorting.jsx me parece que lo puedo unir al Filters.jsx. 
+Componente Detail.jsx. Por ahora no funciona, no resolví bien la promesa. 
+
+Video 4, minuto 27. Explica el formulario. 
+VIdeo 5, minuto 12. Explica el Detail. 
+
+Implementé el componente Detail. Dejé comentadas abajo en el mismo componente otras implementaciones posibles (con .then, y con redux). 
+git commit -m "Implemented Detail.jsx

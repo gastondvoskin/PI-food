@@ -6,7 +6,7 @@ const Card = ({ name, image, diets, id }) => {
     return (
         <div>
             <h2>{name}</h2>
-            <img src={image} alt="recipe image" width="200px" heigth="200px"/>
+            <img src={image} alt="recipe image" width="200px" height="200px"/>
             <h4>{diets}</h4>
             <NavLink 
                 to={`/detail/${id}`}
