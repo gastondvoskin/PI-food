@@ -436,5 +436,7 @@ Dividí las posibiidades de Sorting como dos actions separadas que una anula a l
 Las diets las estoy trayendo desde Nav.jsx y pasando por props, pero sería mejor hacerlo con redux, y que las traiga con useSelector el componente Filters.jsx. También lo va a poder traer el componente Form. 
 
 Agregué botón resetFilters en Filters.jsx para resetar filtros. 
-A futuro modificar Filters para que funcionen similar a los sorts (sin form, que dispatchen action con el handleChange). 
 git commit -m "Added resetFilters button, refactored Sorting.jsx"
+
+Modifiqué Filters para que funcionen similar a los sorts (sin form, que dispatchen action con el handleChange). 
+git commit -m "Refactored Filters.jsx"

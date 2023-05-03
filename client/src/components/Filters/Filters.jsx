@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from './Filters.module.css';
-import { filterRecipes } from "../../redux/actions/actionsIndex";
+import { filterRecipesByDiet, filterRecipesByCreator } from "../../redux/actions/actionsIndex";
 import { useDispatch } from 'react-redux';
 import { resetFilters } from "../../redux/actions/actionsIndex";
 
@@ -8,65 +8,49 @@ const Filters = (props) => {
     const { dietsList } = props;
     const dispatch = useDispatch();
 
-    // local state for the controlled form
-    const [filters, setFilters] = useState({
-        diet: 'all',
-        creator: 'all'
-    });
-
-    // handleSelect
-    const handleSelect = (event) => {
-        const { name, value } = event.target;
-        setFilters({
-            ...filters,
-            [name]: value
-        });
+    // local state
+    const [filterDiet, setFilterDiet] = useState(''); 
+    const [filterCreator, setFilterCreator] = useState('');    
+    
+    // changeHandlers
+    const handleSelectDiet = (event) => {
+        const newValueFilterDiet = event.target.value;
+        setFilterDiet(newValueFilterDiet);
+        dispatch(filterRecipesByDiet(newValueFilterDiet));      //
     };
 
-    // handleOnSubmit
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        dispatch(filterRecipes({
-            diet: filters.diet,
-            creator: filters.creator
-        }));
+    const handleSelectCreator = (event) => {
+        const newValueFilterHealth = event.target.value;
+        setFilterCreator(newValueFilterHealth);
+        dispatch(filterRecipesByCreator(newValueFilterHealth));     //
     };
 
     // handleReset
     const handleReset = (event) => {
+        setFilterDiet('');
+        setFilterCreator('');
         dispatch(resetFilters());
-    }
+    };
 
     // return
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                <hr />
-                <label htmlFor="diet">Diet:</label>
-                <select name="diet" value={filters.diet} onChange={handleSelect}>
-                    <option value="all">all</option>
-                    {/* map dietsList (received though props) */}
-                    {
-                        dietsList.map((diet) => {
-                            return <option value={diet}>{diet}</option>
-                        })
-                    }
-                </select>
-
-                <label htmlFor="creator">Creator:</label>
-                <select name="creator" value={filters.creator} onChange={handleSelect}>
-                    <option value="all">all</option>
-                    <option value="spoonacular">spoonacular</option>
-                    <option value="client">client</option>
-                </select>
-
-                <button type="submit">Apply filters</button>
-            </form>
+            <label htmlFor="diet">Diet:</label>  
+            <select name="diet" value={filterDiet} onChange={handleSelectDiet}>
+                <option value="all">all</option>
+                <option value="vegetarian">vegetarian</option> {/* harcodeado */}
+                <option value="vegan">vegan</option>
+            </select>
+            
+            <label htmlFor="creator">Creator:</label>
+            <select name="all" value={filterCreator} onChange={handleSelectCreator}>
+                <option value="spoonacular">spoonacular</option>
+                <option value="client">client</option>
+            </select>
             
             <button onClick={handleReset}>Reset filters</button>
-            <hr />
 
-        </div>
+        </div>       
     );
 };
 

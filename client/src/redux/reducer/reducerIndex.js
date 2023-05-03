@@ -1,4 +1,4 @@
-import { GET_RECIPES, FILTER_BY_DIET_AND_ALPHABET, RESET_FILTERS, SORT_RECIPES_BY_ALPHABET, SORT_RECIPES_BY_HEALTHSCORE, GET_RECIPES_BY_NAME/* , GET_RECIPE_DETAIL */, CREATE_RECIPE } from "../actions/actionsIndex.js"; 
+import { GET_RECIPES, FILTER_BY_DIET, FILTER_BY_CREATOR, RESET_FILTERS, SORT_RECIPES_BY_ALPHABET, SORT_RECIPES_BY_HEALTHSCORE, GET_RECIPES_BY_NAME/* , GET_RECIPE_DETAIL */, CREATE_RECIPE } from "../actions/actionsIndex.js"; 
 // wip SORT_RECIPES_BY_HEALTHSCORE
 
 
@@ -19,17 +19,51 @@ const reducer = (state = initialState, action) => {
             }
 
         // Filters
-        case FILTER_BY_DIET_AND_ALPHABET: 
-            const { diet, creator } = action.payload;
+        // original
+        // case FILTER_BY_DIET_AND_ALPHABET: 
+        //     const { diet, creator } = action.payload;
 
-            const filteredRecipesByDiet = diet === 'all'
+        //     const filteredRecipesByDiet = diet === 'all'
+        //     ? [...state.allRecipes] 
+        //     : state.allRecipes.filter((recipe) => recipe.diets.includes(diet))
+
+        //     const filteredRecipesByDietsAndCreator = creator === 'all'
+        //     ? [...filteredRecipesByDiet] 
+        //     : filteredRecipesByDiet.filter((recipe) => {
+        //         if (creator === "client") {
+        //             return recipe.created === true;
+        //         } else {
+        //             return recipe.created === false;
+        //         }
+        //     });
+
+        //     return {
+        //         ...state,
+        //         filteredAndSortedRecipes: [...filteredRecipesByDietsAndCreator] 
+        //     }
+        
+
+        case FILTER_BY_DIET: 
+            // const { diet, creator } = action.payload;
+            const filterDiet = action.payload;        // 'A-Z'
+
+            const filteredRecipesByDiet = filterDiet === 'all'
             ? [...state.allRecipes] 
-            : state.allRecipes.filter((recipe) => recipe.diets.includes(diet))
+            : state.allRecipes.filter((recipe) => recipe.diets.includes(filterDiet))
 
-            const filteredRecipesByDietsAndCreator = creator === 'all'
-            ? [...filteredRecipesByDiet] 
-            : filteredRecipesByDiet.filter((recipe) => {
-                if (creator === "client") {
+            return {
+                ...state,
+                filteredAndSortedRecipes: [...filteredRecipesByDiet] 
+            }
+
+        case FILTER_BY_CREATOR: 
+            // const { diet, creator } = action.payload;
+            const filterCreator = action.payload;        // 'client'
+
+            const filteredRecipesByCreator = filterCreator === 'all'
+            ? [...state.allRecipes] 
+            : state.allRecipes.filter((recipe) => {
+                if (filterCreator === "client") {
                     return recipe.created === true;
                 } else {
                     return recipe.created === false;
@@ -38,8 +72,9 @@ const reducer = (state = initialState, action) => {
 
             return {
                 ...state,
-                filteredAndSortedRecipes: [...filteredRecipesByDietsAndCreator] 
+                filteredAndSortedRecipes: [...filteredRecipesByCreator] 
             }
+
 
         
         case RESET_FILTERS:
@@ -54,7 +89,7 @@ const reducer = (state = initialState, action) => {
         // Sorts
         case SORT_RECIPES_BY_ALPHABET:              // wip: _BY_ALPHABET
             const sortAlphabet = action.payload;        // 'A-Z'
-            console.log(sortAlphabet)
+            // console.log(sortAlphabet)
             let sortedRecipesByAlphabet = [...state.filteredAndSortedRecipes]; 
             if (sortAlphabet === 'A-Z') {                   // wip A-Z
                 console.log('aca');

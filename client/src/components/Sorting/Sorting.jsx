@@ -6,48 +6,23 @@ import { useDispatch } from "react-redux";
 const Sorting = () => {
     const dispatch = useDispatch();
 
-    // local state for the controlled form
-    // const [sorts, setSorts] = useState({         // wip borrar
-    //     alphabet: '',
-    //     health: ''
-    // });
-    
-    const [sortAlphabet, setSortAlphabet] = useState('');    // wip nuevo
+    // local state
+    const [sortAlphabet, setSortAlphabet] = useState(''); 
     const [sortHealth, setsortHealth] = useState('');    
 
-    // handleSelect                                         // wip borrar
-    // const handleSelect = (event) => {
-    //     const { name, value } = event.target;
-    //     setSorts({
-    //         ...sorts,
-    //         [name]: value 
-    //     });
-
-    //     dispatch(sortRecipes(sorts));
-    // };
     
+    // changeHandlers
     const handleSelectAlphabet = (event) => {
-        // console.log(event.target.value);  
         const newValueSortAlphabet = event.target.value;             
-        setSortAlphabet(newValueSortAlphabet);                // wip nuevo
-        dispatch(sortRecipesByAlphabet(newValueSortAlphabet));      // with this variable, and not with the state which may take a time to update. 
+        setSortAlphabet(newValueSortAlphabet); 
+        dispatch(sortRecipesByAlphabet(newValueSortAlphabet));      //
     };
 
-    const handleSelectHealth = (event) => {               // wip nuevo
+    const handleSelectHealth = (event) => { 
         const newValueSortHealth = event.target.value;             
         setsortHealth(newValueSortHealth);
-        dispatch(sortRecipesByHealthscore(newValueSortHealth));     // with this variable, and not with the state which may take a time to update. 
+        dispatch(sortRecipesByHealthscore(newValueSortHealth));     //
     };
-
-
-    // // handleOnSubmit
-    // const handleOnSubmit = (event) => {
-    //     event.preventDefault();
-    //     dispatch(sortRecipes({
-    //         alphabet: sorts.alphabet,
-    //         health: sorts.health
-    //     }));
-    // };
 
 
     // return
@@ -63,32 +38,9 @@ const Sorting = () => {
                 <option value="unhealthyFirst">Unhealthy first</option>
             </select>
             <hr />
-        </div>
-
-        
+        </div>       
     );
 };
 
 export default Sorting;
 
-
-
-// original
-// <form onSubmit={handleOnSubmit}>
-// <label htmlFor="alphabet">Sort by alphabet</label>
-// <select name="alphabet" value={sorts.alphabet} onChange={handleSelect}>
-//     {/* <option value="none">none</option>  */}
-//     <option value="asc">asc</option>
-//     <option value="desc">desc</option>
-// </select>
-
-// <label htmlFor="health">Sort by health</label>
-// <select name="health" value={sorts.health} onChange={handleSelect}>
-//     {/* <option value="none">none</option>  */}
-//     <option value="asc">asc</option>
-//     <option value="desc">desc</option>
-// </select>
-
-// <button type="submit">Sort</button>
-// <hr />
-// </form>

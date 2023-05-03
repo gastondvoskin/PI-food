@@ -2,7 +2,10 @@ import axios from 'axios';
 
 // actions-types
 export const GET_RECIPES = 'GET_RECIPES';
-export const FILTER_BY_DIET_AND_ALPHABET = 'FILTER_BY_DIET_AND_ALPHABET'; 
+// export const FILTER_BY_DIET_AND_ALPHABET = 'FILTER_BY_DIET_AND_ALPHABET'; 
+export const FILTER_BY_DIET = 'FILTER_BY_DIET'; 
+export const FILTER_BY_CREATOR = 'FILTER_BY_CREATOR'; 
+
 export const SORT_RECIPES_BY_ALPHABET = 'SORT_RECIPES_BY_ALPHABET';     // wip _BY_ALPHABET
 export const SORT_RECIPES_BY_HEALTHSCORE = 'SORT_RECIPES_BY_HEALTHSCORE';     // wip nuevo
 export const GET_RECIPES_BY_NAME = 'GET_RECIPES_BY_NAME';
@@ -24,12 +27,27 @@ export const getRecipes = () => {
     }
 };
 
-export const filterRecipes = (payload) => {
+// export const filterRecipes = (payload) => {
+//     return {
+//         type: FILTER_BY_DIET_AND_ALPHABET, 
+//         payload
+//     }
+// };
+
+export const filterRecipesByDiet = (payload) => {
     return {
-        type: FILTER_BY_DIET_AND_ALPHABET, 
+        type: FILTER_BY_DIET, 
         payload
     }
 };
+
+export const filterRecipesByCreator = (payload) => {
+    return {
+        type: FILTER_BY_CREATOR, 
+        payload
+    }
+};
+
 
 export const resetFilters = () => {
     return {
