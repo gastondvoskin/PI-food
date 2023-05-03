@@ -1,4 +1,5 @@
-import { GET_RECIPES, FILTER_BY_DIET_AND_ALPHABET, SORT_RECIPES, GET_RECIPES_BY_NAME/* , GET_RECIPE_DETAIL */, CREATE_RECIPE } from "../actions/actionsIndex.js";       // wip: agregado: _AND_ALPHABET
+import { GET_RECIPES, FILTER_BY_DIET_AND_ALPHABET, RESET_FILTERS, SORT_RECIPES_BY_ALPHABET, SORT_RECIPES_BY_HEALTHSCORE, GET_RECIPES_BY_NAME/* , GET_RECIPE_DETAIL */, CREATE_RECIPE } from "../actions/actionsIndex.js"; 
+// wip SORT_RECIPES_BY_HEALTHSCORE
 
 
 const initialState = {
@@ -14,19 +15,19 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 allRecipes: action.payload,
-                // filteredRecipes: action.payload,         // wip: borrar
                 filteredAndSortedRecipes: action.payload
             }
 
-        case FILTER_BY_DIET_AND_ALPHABET:               // wip: agregado: _AND_ALPHABET
+        // Filters
+        case FILTER_BY_DIET_AND_ALPHABET: 
             const { diet, creator } = action.payload;
 
             const filteredRecipesByDiet = diet === 'all'
-            ? [...state.allRecipes]                     // wip: copia del valor en vez de copia de la referencia
+            ? [...state.allRecipes] 
             : state.allRecipes.filter((recipe) => recipe.diets.includes(diet))
 
             const filteredRecipesByDietsAndCreator = creator === 'all'
-            ? [...filteredRecipesByDiet]                // wip: copia del valor en vez de copia de la referencia. en este caso es sólo para no borrar variable anterior, aunque es prescindible. 
+            ? [...filteredRecipesByDiet] 
             : filteredRecipesByDiet.filter((recipe) => {
                 if (creator === "client") {
                     return recipe.created === true;
@@ -37,20 +38,32 @@ const reducer = (state = initialState, action) => {
 
             return {
                 ...state,
-                filteredAndSortedRecipes: [...filteredRecipesByDietsAndCreator]          // wip: copia del valor en vez de copia de la referencia. en este caso es sólo para no borrar variable anterior, aunque es prescindible. 
+                filteredAndSortedRecipes: [...filteredRecipesByDietsAndCreator] 
             }
 
-        case SORT_RECIPES: 
-            const { alphabet, health } = action.payload;
-            // make a copy because sort method changes the original array. It also resets to none.  
-            let sortedRecipesByAlphabet = [...state.filteredRecipes];               // modificar filteredRecipes por filteredAnd... 
-            if (alphabet === 'asc') {
+        
+        case RESET_FILTERS:
+            const filteredAndSortedRecipes = state.allRecipes;
+            return {
+                ...state,
+                filteredAndSortedRecipes
+            }
+
+
+
+        // Sorts
+        case SORT_RECIPES_BY_ALPHABET:              // wip: _BY_ALPHABET
+            const sortAlphabet = action.payload;        // 'A-Z'
+            console.log(sortAlphabet)
+            let sortedRecipesByAlphabet = [...state.filteredAndSortedRecipes]; 
+            if (sortAlphabet === 'A-Z') {                   // wip A-Z
+                console.log('aca');
                 sortedRecipesByAlphabet.sort((a, b) => {
                     if (a.name < b.name) return -1;
                     if (a.name > b.name) return 1;
                     return 0;
                 }); 
-            } else if (alphabet === 'desc') {
+            } else if (sortAlphabet === 'Z-A') {            // wip Z-A
                 sortedRecipesByAlphabet.sort((a, b) => {
                     if (a.name > b.name) return -1;
                     if (a.name < b.name) return 1;
@@ -58,15 +71,23 @@ const reducer = (state = initialState, action) => {
                 });             
             };
 
-            let sortedRecipesByAlphabetAndHealthscore = sortedRecipesByAlphabet;
-            if (health === 'asc') {
-                sortedRecipesByAlphabetAndHealthscore.sort((a, b) => {
+            return {
+                ...state,
+                filteredAndSortedRecipes: sortedRecipesByAlphabet           // wip sin healtscore
+            }
+
+        case SORT_RECIPES_BY_HEALTHSCORE:                                        // wip: nuevo case
+            const sortHealth = action.payload;
+
+            let sortedRecipesByHealthscore = [...state.filteredAndSortedRecipes];       // wip sin Alphabet
+            if (sortHealth === 'healthyFirst') {
+                sortedRecipesByHealthscore.sort((a, b) => {
                     if (a.healthscore < b.healthscore) return -1;
                     if (a.healthscore > b.healthscore) return 1;
                     return 0;
                 }); 
-            } else if (health === 'desc') {
-                sortedRecipesByAlphabetAndHealthscore.sort((a, b) => {
+            } else if (sortHealth === 'unhealthyFirst') {
+                sortedRecipesByHealthscore.sort((a, b) => {
                     if (a.healthscore > b.healthscore) return -1;
                     if (a.healthscore < b.healthscore) return 1;
                     return 0;
@@ -75,9 +96,11 @@ const reducer = (state = initialState, action) => {
 
             return {
                 ...state,
-                filteredAndSortedRecipes: sortedRecipesByAlphabetAndHealthscore
+                filteredAndSortedRecipes: sortedRecipesByHealthscore
             }
 
+
+        // Filter by name (filtered in the back)
         case GET_RECIPES_BY_NAME:
             return {
                 ...state,
@@ -92,6 +115,8 @@ const reducer = (state = initialState, action) => {
         //         recipeDetail: action.payload
         //     }
         
+
+        // Create a recipe
         case CREATE_RECIPE:
             return {
                 ...state,

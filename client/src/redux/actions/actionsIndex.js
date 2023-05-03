@@ -2,12 +2,13 @@ import axios from 'axios';
 
 // actions-types
 export const GET_RECIPES = 'GET_RECIPES';
-export const FILTER_BY_DIET_AND_ALPHABET = 'FILTER_BY_DIET_AND_ALPHABET';     // modificar a futuro.    // wip: agregado: _AND_ALPHABET
-export const SORT_RECIPES = 'SORT_RECIPES';
+export const FILTER_BY_DIET_AND_ALPHABET = 'FILTER_BY_DIET_AND_ALPHABET'; 
+export const SORT_RECIPES_BY_ALPHABET = 'SORT_RECIPES_BY_ALPHABET';     // wip _BY_ALPHABET
+export const SORT_RECIPES_BY_HEALTHSCORE = 'SORT_RECIPES_BY_HEALTHSCORE';     // wip nuevo
 export const GET_RECIPES_BY_NAME = 'GET_RECIPES_BY_NAME';
 // export const GET_RECIPE_DETAIL = 'GET_RECIPE_DETAIL';
 export const CREATE_RECIPE = 'CREATE_RECIPE';
-
+export const RESET_FILTERS = 'RESET_FILTERS';
 
 
 
@@ -25,17 +26,31 @@ export const getRecipes = () => {
 
 export const filterRecipes = (payload) => {
     return {
-        type: FILTER_BY_DIET_AND_ALPHABET,              // wip: agregado: _AND_ALPHABET
+        type: FILTER_BY_DIET_AND_ALPHABET, 
         payload
     }
 };
 
-export const sortRecipes = (payload) => {
+export const resetFilters = () => {
     return {
-        type: SORT_RECIPES,
+        type: RESET_FILTERS
+    };
+};
+
+export const sortRecipesByAlphabet = (payload) => {               // wip ByAlphabet
+    return {
+        type: SORT_RECIPES_BY_ALPHABET,
         payload
     }
 };
+
+export const sortRecipesByHealthscore = (payload) => {           // wip nuevo
+    return {
+        type: SORT_RECIPES_BY_HEALTHSCORE,
+        payload
+    }
+};
+
 
 export const getRecipesByName = (name) => {
     return async (dispatch) => {

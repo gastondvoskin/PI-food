@@ -13,13 +13,16 @@ const Nav = () => {
     const [dietsList, setDietsList] = useState([]);
     
     useEffect(() => {
-        const getDietsList = async () => {
-            const dietsListRaw = await axios.get('http://localhost:3001/diets');
-            const dietsListClean = dietsListRaw.data;
-            setDietsList(dietsListClean);
-        }
-        getDietsList();
+        // ------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>> HARDCODEADO PARA NO HACER PETICIONES. MODIFICAR. 
+        // const getDietsList = async () => {
+        //     const dietsListRaw = await axios.get('http://localhost:3001/diets');
+        //     const dietsListClean = dietsListRaw.data;
+        //     setDietsList(dietsListClean);
+        // }
+        // getDietsList();
+        setDietsList(['vegetarian', 'vegan', 'ketogenic']);
     }, []);
+
 
     return (
         <nav>

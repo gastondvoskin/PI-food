@@ -427,5 +427,14 @@ Aparentemente los filtros funcionan bien, pero hay un problema posterior con el 
 git commit -m "Fixed Filters and redux store" 
 
 /////////////////////////////
---------->>>>>>>>>>> Para regular requests; recipesControllers.js y apiRecipesHelpers.js <<<<<<<<<<----------------
+--------->>>>>>>>>>>                   Para regular requests:       recipesControllers.js        apiRecipesHelpers.js        Nav.jsx               <<<<<<<<<<----------------
 /////////////////////////////
+
+Próximo paso: arreglar Sort. 
+Eliminé la posibilidad de elegir none en Sorting para simplificar la lógica (para usar none, tendría que guardar una copia del estado antes del sort, no sé exactamente cómo hacerlo, supongo que es copiando el original allRecipes y filtrándolo con los elementos que incluya el array filteredAndSortedRecipes). 
+Dividí las posibiidades de Sorting como dos actions separadas que una anula a la otra. 
+Las diets las estoy trayendo desde Nav.jsx y pasando por props, pero sería mejor hacerlo con redux, y que las traiga con useSelector el componente Filters.jsx. También lo va a poder traer el componente Form. 
+
+Agregué botón resetFilters en Filters.jsx para resetar filtros. 
+A futuro modificar Filters para que funcionen similar a los sorts (sin form, que dispatchen action con el handleChange). 
+git commit -m "Added resetFilters button, refactored Sorting.jsx"
