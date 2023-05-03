@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // actions-types
 export const GET_RECIPES = 'GET_RECIPES';
-export const FILTER_BY_DIET = 'FILTER_BY_DIET';     // modificar a futuro. 
+export const FILTER_BY_DIET_AND_ALPHABET = 'FILTER_BY_DIET_AND_ALPHABET';     // modificar a futuro.    // wip: agregado: _AND_ALPHABET
 export const SORT_RECIPES = 'SORT_RECIPES';
 export const GET_RECIPES_BY_NAME = 'GET_RECIPES_BY_NAME';
 // export const GET_RECIPE_DETAIL = 'GET_RECIPE_DETAIL';
@@ -25,7 +25,7 @@ export const getRecipes = () => {
 
 export const filterRecipes = (payload) => {
     return {
-        type: FILTER_BY_DIET,
+        type: FILTER_BY_DIET_AND_ALPHABET,              // wip: agregado: _AND_ALPHABET
         payload
     }
 };

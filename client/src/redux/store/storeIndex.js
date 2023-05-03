@@ -3,7 +3,7 @@ import thunk from "redux-thunk";
 import reducer from "../reducer/reducerIndex.js";
 
 
-const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSIONS_COMPOSE__ || compose;
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;         // typo corrected: EXTENSION INSTEAD OF EXTENSIONS
 const store = createStore(reducer, composeEnhancer(applyMiddleware(thunk)));
 
 

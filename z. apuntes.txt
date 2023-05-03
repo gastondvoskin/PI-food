@@ -413,3 +413,19 @@ git commit -m "Implemented Detail.jsx" (a futuro ver el unmount, que no me funci
 Implementé Form.jsx excepto diets y steps que están hardcodeados. Lo implementé usando el reducer, pero también lo podría haber hecho directamente desde el componente, ya que en Form no se renderizan las recipes.  
 Próximo paso: Form, actions, reducer. Y ver si me sirve cómo viene la info del back-end (arrays). 
 git commit -m "Form implemented except for diets and steps (WIP)"
+Los filters no están funcionando correctamente. Primero a resolver: Form.jsx, action y reducer para diets y steps. 
+
+Home.jsx está trayendo directamente filteredAndSortedRecipes. En el reducer, el case FILTER_BY_DIET trabaja sobre la propiedad filteredRecipes del globalState. Hay que modificarlo para que se pueda ordenar aunque no estén filtrados. 
+Próximo paso: arreglar o refactorizar reducer. 
+
+back-end. recipesControllers.js. Modifiqué searchAllRecipes para desarrollar front-end sin hacer request a la api. Modificar cuando termine de desarrollar los filtros. --------->>>>> ATENCIÓN
+store del Reducer. Corregí el type de EXTENSIONS por EXTENSION para poder utilizar correctamente Redux DevTools en el Browser. 
+reducer. Modifiqué el global state: eliminé la propiedad filteredRecipes. Paso a usar solamente filteredAndSortedRecipes para poder hacer filter y sort en cualquier orden. Modifiqué lo necesario en el reducer.
+Cambié copia por referencia a spreadoperator para no modificar el array original allRecipes (acá estaba el principal bug). 
+Modifiqué la action FILTER_BY_DIET por FILTER_BY_DIET_AND_ALPHABET. 
+Aparentemente los filtros funcionan bien, pero hay un problema posterior con el paginado. Además, no siempre se renderiza katogenic en el menú desplegable de Diets. 
+git commit -m "Fixed Filters and redux store" 
+
+/////////////////////////////
+--------->>>>>>>>>>> Para regular requests; recipesControllers.js y apiRecipesHelpers.js <<<<<<<<<<----------------
+/////////////////////////////

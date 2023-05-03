@@ -26,7 +26,8 @@ const searchRecipeById = async (id) => {
 
 const searchAllRecipes = async () => {
     const dbAllRecipesClean = await getAllDbRecipesClean();
-    const apiAllRecipesClean = await getAllApiRecipesClean();
+    // const apiAllRecipesClean = await getAllApiRecipesClean();           // comentado para desarrollar filters del front-end sin hacer requests a la api. a futuro, descomentar y comentar línea de abajo    ------------------------------------------------>>>>>>>>>>>>>>>>>>>>>> ATENCION!!!!!!!!!!!!!!!!
+    const apiAllRecipesClean = [];
     const allRecipes = [...dbAllRecipesClean, ...apiAllRecipesClean];
     return allRecipes;
 };

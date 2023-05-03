@@ -1,9 +1,9 @@
-import { GET_RECIPES, FILTER_BY_DIET, SORT_RECIPES, GET_RECIPES_BY_NAME/* , GET_RECIPE_DETAIL */, CREATE_RECIPE } from "../actions/actionsIndex.js";
+import { GET_RECIPES, FILTER_BY_DIET_AND_ALPHABET, SORT_RECIPES, GET_RECIPES_BY_NAME/* , GET_RECIPE_DETAIL */, CREATE_RECIPE } from "../actions/actionsIndex.js";       // wip: agregado: _AND_ALPHABET
 
 
 const initialState = {
     allRecipes: [],
-    filteredRecipes: [],
+        // filteredRecipes: [],         // wip: borrar
     filteredAndSortedRecipes: [],
     // recipeDetail: {}
 };
@@ -14,19 +14,19 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 allRecipes: action.payload,
-                filteredRecipes: action.payload,
+                // filteredRecipes: action.payload,         // wip: borrar
                 filteredAndSortedRecipes: action.payload
             }
 
-        case FILTER_BY_DIET: 
+        case FILTER_BY_DIET_AND_ALPHABET:               // wip: agregado: _AND_ALPHABET
             const { diet, creator } = action.payload;
 
             const filteredRecipesByDiet = diet === 'all'
-            ? state.allRecipes
+            ? [...state.allRecipes]                     // wip: copia del valor en vez de copia de la referencia
             : state.allRecipes.filter((recipe) => recipe.diets.includes(diet))
 
             const filteredRecipesByDietsAndCreator = creator === 'all'
-            ? filteredRecipesByDiet
+            ? [...filteredRecipesByDiet]                // wip: copia del valor en vez de copia de la referencia. en este caso es sólo para no borrar variable anterior, aunque es prescindible. 
             : filteredRecipesByDiet.filter((recipe) => {
                 if (creator === "client") {
                     return recipe.created === true;
@@ -37,13 +37,13 @@ const reducer = (state = initialState, action) => {
 
             return {
                 ...state,
-                filteredRecipes: filteredRecipesByDietsAndCreator
+                filteredAndSortedRecipes: [...filteredRecipesByDietsAndCreator]          // wip: copia del valor en vez de copia de la referencia. en este caso es sólo para no borrar variable anterior, aunque es prescindible. 
             }
 
         case SORT_RECIPES: 
             const { alphabet, health } = action.payload;
             // make a copy because sort method changes the original array. It also resets to none.  
-            let sortedRecipesByAlphabet = [...state.filteredRecipes];
+            let sortedRecipesByAlphabet = [...state.filteredRecipes];               // modificar filteredRecipes por filteredAnd... 
             if (alphabet === 'asc') {
                 sortedRecipesByAlphabet.sort((a, b) => {
                     if (a.name < b.name) return -1;

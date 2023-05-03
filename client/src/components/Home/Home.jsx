@@ -14,6 +14,7 @@ import Pagination from "../Pagination/Pagination.jsx";
 const Home = () => {
     // dipatch the getRecipes action to the reducer to modify the global state
     const dispatch = useDispatch();
+    
     useEffect( () => {
         dispatch(getRecipes())
     }, []); 
