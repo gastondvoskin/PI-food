@@ -6,6 +6,8 @@ export const FILTER_BY_DIET = 'FILTER_BY_DIET';     // modificar a futuro.
 export const SORT_RECIPES = 'SORT_RECIPES';
 export const GET_RECIPES_BY_NAME = 'GET_RECIPES_BY_NAME';
 // export const GET_RECIPE_DETAIL = 'GET_RECIPE_DETAIL';
+export const CREATE_RECIPE = 'CREATE_RECIPE';
+
 
 
 
@@ -58,3 +60,15 @@ export const getRecipesByName = (name) => {
 //         });
 //     };
 // };
+
+export const createRecipe = (dataToCreateRecipe) => {
+    return async (dispatch) => {
+        const createdRecipeRaw = await axios.post('http://localhost:3001/recipes', dataToCreateRecipe)
+        .catch(error => console.log(error));
+        const createdRecipeClean = createdRecipeRaw.data;
+        return dispatch({
+            type: CREATE_RECIPE,
+            payload: createdRecipeClean
+        });
+    };
+};

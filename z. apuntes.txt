@@ -407,4 +407,9 @@ Video 4, minuto 27. Explica el formulario.
 VIdeo 5, minuto 12. Explica el Detail. 
 
 Implementé el componente Detail. Dejé comentadas abajo en el mismo componente otras implementaciones posibles (con .then, y con redux). 
-git commit -m "Implemented Detail.jsx
+git commit -m "Implemented Detail.jsx" (a futuro ver el unmount, que no me funciona y quedó comentado).
+
+
+Implementé Form.jsx excepto diets y steps que están hardcodeados. Lo implementé usando el reducer, pero también lo podría haber hecho directamente desde el componente, ya que en Form no se renderizan las recipes.  
+Próximo paso: Form, actions, reducer. Y ver si me sirve cómo viene la info del back-end (arrays). 
+git commit -m "Form implemented except for diets and steps (WIP)"

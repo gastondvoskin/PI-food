@@ -1,4 +1,4 @@
-import { GET_RECIPES, FILTER_BY_DIET, SORT_RECIPES, GET_RECIPES_BY_NAME/* , GET_RECIPE_DETAIL */ } from "../actions/actionsIndex.js";
+import { GET_RECIPES, FILTER_BY_DIET, SORT_RECIPES, GET_RECIPES_BY_NAME/* , GET_RECIPE_DETAIL */, CREATE_RECIPE } from "../actions/actionsIndex.js";
 
 
 const initialState = {
@@ -83,14 +83,22 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 filteredAndSortedRecipes: action.payload
             }
-        
-        // // Implementación del Componente Detail con Redux (lo reemplacé por local state)
+                        
+            
+        // Implementación del Componente Detail con Redux (lo reemplacé por local state)
         // case GET_RECIPE_DETAIL: 
         //     return {
         //         ...state,
         //         recipeDetail: action.payload
         //     }
-
+        
+        case CREATE_RECIPE:
+            return {
+                ...state,
+                // es innecesario modificar el state porque para ver las recipes hay que ir al Home (salir del Form) que se rerenderiza. 
+                // allRecipes: [...state.allRecipes, action.payload]        
+            }
+        
         default:
             return {...state}
             
