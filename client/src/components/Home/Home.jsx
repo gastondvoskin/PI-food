@@ -19,7 +19,7 @@ import axios from "axios";
 
 
 const Home = () => {
-    // nuevo
+    // nuevo. viene del Nav para pasar por props a Filters. Modificar para hacerlo a través de redux. 
     const [dietsList, setDietsList] = useState([]);
     useEffect(() => {
         // ------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>> HARDCODEADO PARA NO HACER PETICIONES. MODIFICAR. 
@@ -63,23 +63,15 @@ const Home = () => {
     const totalPages = Math.ceil(filteredAndSortedRecipes.length / recipesPerPage);
 
 
-    // render Pagination and Cards components
+    // render SearchBar, Filters, Sorting, Form's Link, Pagination and Cards components
     return (
         <div>
             <SearchBar />
             <Filters dietsList={dietsList} />
             <Sorting />
-            {/* <NavLink 
-                to={'/form'}
-                activeClassName={styles.activeLink} 
-                className={styles.link}> 
-                Create new recipe
-            </NavLink>  */}
-
             <Link to={'/form'}>
                 <button>Create new recipe</button>
             </Link>
-
             <Pagination 
                 totalPages={totalPages} 
                 handlePageChange={handlePageChange}

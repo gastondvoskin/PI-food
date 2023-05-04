@@ -9,31 +9,37 @@ const SearchBar = () => {
 
     const [name, setName] = useState('');
 
+    // no se actualiza con el onChange porque implicaría hacer demasiadas peticiones a Spoonacular 
     const handleChange = (event) => {
-        event.preventDefault();
-        setName(event.target.value);
+        const newValueName = event.target.value;
+        setName(newValueName);
     };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        setName('');
+    const handleClick = () => {
         dispatch(getRecipesByName(name)); 
+        setName('');
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <div>
             <hr />
             <input 
                 type="text"
-                placeholder="Search recipe by name"
+                placeholder="Search a recipe..."
                 value={name}
                 onChange={handleChange}
             />
-            <button type="submit">Search</button>
+
+            <button
+                onClick={handleClick}>
+                Search
+            </button>
+
             <hr />
-        </form>
-    );
+        </div>
+    )
 };
 
 export default SearchBar;
+
 

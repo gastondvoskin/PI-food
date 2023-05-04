@@ -29,11 +29,13 @@ const Sorting = () => {
     return ( 
         <div>
             <select name="alphabet" value={sortAlphabet} onChange={handleSelectAlphabet}>
+                <option value="" disabled selected>A-Z or Z-A</option>
                 <option value="A-Z">A-Z</option>
                 <option value="Z-A">Z-A</option>
             </select>
             
             <select name="health" value={sortHealth} onChange={handleSelectHealth}>
+                <option value="" disabled selected>Health score</option>
                 <option value="healthyFirst">Healthy first</option>
                 <option value="unhealthyFirst">Unhealthy first</option>
             </select>

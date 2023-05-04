@@ -448,5 +448,9 @@ Cambié la estructura: pasé SearchBar, Filters, Sorting del Nav al Home. Agregu
 Rever la lógica de Filters y Sorts para que funcionen combinados y con el Paginado. 
 Cambié de NavLink a button rodeado de Link para el link a Form desde el Home. 
 Filters.jsx. Reemplacé los labels for <option value="" disabled selected
-Próximo paso: Reset filters afecte también al Sorting. 
 git commit -m "Moved SearchBar, Filters, Sorting and Form's link from Home.jsx to Nav.jsx. Added About component"
+
+Adaptar Sorting para que los select también tengan su título
+SearchBar: reemplacé el form por un simple input con un botón. No se actualiza con el onChange para evitar tantas peticiones a la api externa. 
+git commit -m "Refactored Sorting and SearchBar"
+Próximo paso: Reset filters afecte también al Sorting. Funcionalidades. Esquema de Redux. 
