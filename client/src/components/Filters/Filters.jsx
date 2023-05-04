@@ -35,15 +35,15 @@ const Filters = (props) => {
     // return
     return (
         <div>
-            <label htmlFor="diet">Diet:</label>  
             <select name="diet" value={filterDiet} onChange={handleSelectDiet}>
+                <option value="" disabled selected>Diet</option>
                 <option value="all">all</option>
                 <option value="vegetarian">vegetarian</option> {/* harcodeado */}
                 <option value="vegan">vegan</option>
             </select>
             
-            <label htmlFor="creator">Creator:</label>
             <select name="all" value={filterCreator} onChange={handleSelectCreator}>
+                <option value="" disabled selected>Creator</option>
                 <option value="spoonacular">spoonacular</option>
                 <option value="client">client</option>
             </select>

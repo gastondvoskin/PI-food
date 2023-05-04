@@ -30,6 +30,7 @@ const SearchBar = () => {
                 onChange={handleChange}
             />
             <button type="submit">Search</button>
+            <hr />
         </form>
     );
 };

@@ -9,6 +9,7 @@ import Home from './components/Home/Home.jsx';
 import Detail from './components/Detail/Detail.jsx';
 import Form from './components/Form/Form.jsx';
 import Nav from './components/Nav/Nav.jsx';
+import About from './components/About/About.jsx';
 
 const App = () => {
   const location = useLocation();
@@ -21,7 +22,8 @@ const App = () => {
         <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />
         <Route path={"/detail/:id"} element={<Detail />} /> 
-        <Route path="/form" element={<Form />} />    
+        <Route path="/form" element={<Form />} /> 
+        <Route path="/about" element={<About />} />
       </Routes>  
     </>
   );

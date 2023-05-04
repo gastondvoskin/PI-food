@@ -1,13 +1,16 @@
 FLUJO FRONT-END: 
 html 
 index.js 
--> App.js -> Nav.jsx ---> Tiene Link a Form.jsx
+-> App.js -> Nav.jsx ---> Tiene Link a Form.jsx         (ahora tiene que tener sólo el link a Home y )
                        -> SearchBar.jsx
                        -> Filters.jsx
                        -> Sorting.jsx
 
            -> ruta a Landing.jsx ---> Tiene Link a Home.jsx
-           -> ruta a Home.jsx -> Cards.jsx -> Card.jsx ---> Tiene Link a Detail.jsx
+
+                                                        (Home debe contener SearchBar, filtros,  ordenamiento, pagin, link a detail, link a form)
+
+           -> ruta a Home.jsx -> Cards.jsx -> Card.jsx ---> Tiene Link a Detail.jsx     
                               -> Pagination
            -> ruta a Detail.jsx
            -> ruta a Form.jsx
