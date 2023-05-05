@@ -40,10 +40,10 @@ const reducer = (state = initialState, action) => {
 
         // createRecipe 
         case CREATE_RECIPE:
+            console.log('action.payload: ', action.payload);
             return {
                 ...state,
-                // es innecesario modificar el state porque para ver las recipes hay que ir al Home (salir del Form) que se rerenderiza. 
-                // allRecipes: [...state.allRecipes, action.payload]        
+                allRecipes: [...state.allRecipes, action.payload]        
             }
 
                     

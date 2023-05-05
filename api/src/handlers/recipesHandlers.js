@@ -1,17 +1,4 @@
-const { searchRecipeById, searchAllRecipes, searchRecipesByName, createRecipe } = require('../controllers/recipesControllers.js');
-
-
-const getRecipeByIdHandler = async (req, res) => {
-    try {
-        const id = req.params.idRecipe;
-        const recipeById = await searchRecipeById(id);
-        res.status(200).send(recipeById);        
-    } catch (error) {
-        res.status(400).send({error: error.message});
-    }
-};
-
-
+const { searchAllRecipes, searchRecipesByName, searchRecipeById, createRecipe } = require('../controllers/recipesControllers.js');
 
 
 const getRecipesHandler = async (req, res) => {
@@ -31,12 +18,23 @@ const getRecipesHandler = async (req, res) => {
 };
 
 
+const getRecipeByIdHandler = async (req, res) => {
+    try {
+        const id = req.params.idRecipe;
+        const recipeById = await searchRecipeById(id);
+        res.status(200).send(recipeById);        
+    } catch (error) {
+        res.status(400).send({error: error.message});
+    }
+};
+
+
 
 const createRecipeHandler = async (req, res) => {
     try {
         const { name, image, summary, healthscore, steps, diets } = req.body;
-        const newRecipe = await createRecipe(name, image, summary, healthscore, steps, diets); 
-        res.status(201).send(newRecipe);     
+        const recipeWithDiets = await createRecipe(name, image, summary, healthscore, steps, diets); 
+        res.status(201).send(recipeWithDiets);     
     } catch (error) {
         res.status(400).send({error: error.message});
     }
@@ -45,7 +43,7 @@ const createRecipeHandler = async (req, res) => {
 
 
 module.exports = {
-    getRecipeByIdHandler,
     getRecipesHandler, 
+    getRecipeByIdHandler,
     createRecipeHandler
 };

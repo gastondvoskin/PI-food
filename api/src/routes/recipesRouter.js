@@ -3,8 +3,8 @@ const { getRecipeByIdHandler, getRecipesHandler, createRecipeHandler } = require
 
 const recipesRouter = Router(); 
 
-recipesRouter.get('/:idRecipe', getRecipeByIdHandler);
 recipesRouter.get('/', getRecipesHandler);
+recipesRouter.get('/:idRecipe', getRecipeByIdHandler);
 recipesRouter.post('/', createRecipeHandler);
 
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from './Detail.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { getRecipeDetail } from "../../redux/actions/actionsIndex.js";
+// import { getRecipeDetail } from "../../redux/actions/actionsIndex.js";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 

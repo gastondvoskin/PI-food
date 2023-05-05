@@ -1,27 +1,8 @@
 const axios = require("axios"); 
 require('dotenv').config(); 
 const { Recipe, Diet } = require('../db.js'); 
-const { Op } = require('sequelize');
 const { getDbRecipeByIdClean, getAllDbRecipesClean } = require('../helpers/dbRecipesHelpers.js');
 const { getApiRecipeByIdClean, getAllApiRecipesClean } = require('../helpers/apiRecipesHelpers.js');
-
-
-const { API_KEY } = process.env; 
-
-
-const searchRecipeById = async (id) => {
-    const source = isNaN(id) ? 'DB' : 'apiExterna'; 
-    let recipeByIdClean; 
-    if (source === "DB") {
-        const dbRecipeByIdClean = await getDbRecipeByIdClean(id);
-        return dbRecipeByIdClean;
-    } 
-    if (source === 'apiExterna') {
-        const apiAllRecipesClean = getApiRecipeByIdClean(id);
-        return apiAllRecipesClean;
-    }
-    return recipeByIdClean;
-};
 
 
 const searchAllRecipes = async () => {
@@ -45,6 +26,20 @@ const searchRecipesByName = async (name) => {
 };
 
 
+const searchRecipeById = async (id) => {
+    const source = isNaN(id) ? 'DB' : 'apiExterna'; 
+    let recipeByIdClean; 
+    if (source === "DB") {
+        const dbRecipeByIdClean = await getDbRecipeByIdClean(id);
+        return dbRecipeByIdClean;
+    } 
+    if (source === 'apiExterna') {
+        const apiAllRecipesClean = getApiRecipeByIdClean(id);
+        return apiAllRecipesClean;
+    }
+    return recipeByIdClean;
+};
+
 
 const createRecipe = async (name, image, summary, healthscore, steps, diets) => {
     const newRecipe = await Recipe.create({
@@ -56,16 +51,24 @@ const createRecipe = async (name, image, summary, healthscore, steps, diets) => 
             name: diets     
         }
     });
+
     await newRecipe.addDiets(dietsArrOfObjFromDb);
-    return newRecipe;
-    // return 'Recipe created';
+
+    // recipeWithDiets is created to display in the front-end form with the diets after submitting. 
+    const recipeWithDiets = {
+        ...newRecipe.dataValues,
+        diets
+    }
+    console.log('recipeWithDiets: ', recipeWithDiets);
+
+    return recipeWithDiets;
 };
 
 
 
 module.exports = {
-    searchRecipeById, 
     searchAllRecipes, 
     searchRecipesByName,
+    searchRecipeById, 
     createRecipe
 };

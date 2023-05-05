@@ -464,3 +464,12 @@ Dejo la action getDiets hardcodeada para no hacer peticiones a Spoonacular.
 Filters.jsx. Usé useStore para cargar diets (ya no está hardcodeado). Reemplacé el nombre filterDiet por selectedDiet. Ídem filterCreator por selectedCreator. Ídem en componente Sorting.jsx.
 Form.jsx. Modifiqué la propiedad diets del initialState para que no esté hardcodeado. 
 git commit -m "Implemented getDiets action. Implemented the new logic with getDiets action in Filters.jsx and in Form.jsx. Reordered actions and Reducer's cases. Renamed variables in Sorting.jsx and Filters.jsx." 
+
+Próximo paso: steps del Form.
+
+Back. Reordené rutas en recipesRouter.js. Reordené recipesHandlers.js. Reordené recipesControllers.js. Eliminé requires de API-KEY y { Op } sin utilizar en recipesControllers.js. Modifiqué createRecipe controller para que retorne un objeto que ya incluya las dietas, con el objetivo de mostrarlo en el form del front al hacer submit. 
+Form.jsx. Cambié handleOnSubmit por handleSubmit. 
+createRecipe handler. Cambié newRecipe por recipeWithDiets. La recipe se crea en el controller. EL controller retorna un objeto que no es el que se creó en la DB sino lo que quiero mostrar luego en el front al hacer submit. Ahora createRecipe action recibe del back createdRecipeRaw, que ya incluye las dietas (conclusión: antes estaba mal). 
+Cambié el CREATE_RECIPE case del reducer para que actualice el global state inmediatamente con la action sin necesidad de ir al Home. 
+git commit -m "Back-end: Fixed createRecipe controller to include diets in the object returned. Reordered recipesRouter.js, recipesHandlers.js and recipesControllers.js --- Front-end: modified CREATE_RECIPE case in reducer to update immediately allRecipes in the global state"
+Próximo paso: ver cómo llega steps del back-end en la ruta por id y enviarlo de la misma manera desde el form en el front. 

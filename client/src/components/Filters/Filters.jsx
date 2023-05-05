@@ -7,7 +7,7 @@ import { resetFilters } from "../../redux/actions/actionsIndex";
 const Filters = () => {
     const dispatch = useDispatch();
 
-    const diets = useSelector((state) => state.diets);          // new
+    const diets = useSelector((state) => state.diets); 
 
     // local state
     const [selectedDiet, setSelectedDiet] = useState(''); 
@@ -39,7 +39,7 @@ const Filters = () => {
             <select name="diet" value={selectedDiet} onChange={handleSelectDiet}>
                 <option value="" disabled selected>Diet</option>
                 <option value="all">all</option>
-                {                                                   // new
+                { 
                     diets.map((diet) => {
                         return (
                             <option value={diet}>{diet}</option>

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Form = () => {
     const dispatch = useDispatch();
 
-    const diets = useSelector((state) => state.diets);          // new
+    const diets = useSelector((state) => state.diets); 
 
     const initialState = {
         name: '',
@@ -15,7 +15,7 @@ const Form = () => {
         healthscore: '',
         image: '',
         steps: ["step example"],        // hardcodeado. Modificar. Cambiar back para que no sea más un array, sino string.  
-        diets: [],                        // hardcodeado. Modificar. 
+        diets: [], 
     };
 
     const [dataToCreateRecipe, setDataToCreateRecipe] = useState(initialState);
@@ -43,18 +43,19 @@ const Form = () => {
         };
     };
 
-    const handleOnSubmit = (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
         // logica: dispatch createRecipe pasándole un objeto con toda la info
         // console.log('dataToCreateRecipe: ', dataToCreateRecipe); 
         dispatch(createRecipe(dataToCreateRecipe));
+        ///// agregar validación (mostrar objeto que me devuelve el back) o rechazo
         setDataToCreateRecipe(initialState);
     };
 
 
     return (
         <div>
-            <form onSubmit={handleOnSubmit}>
+            <form onSubmit={handleSubmit}>
                 <p>Create your own recipe</p>
 
                 <label htmlFor="name">Name</label>
@@ -138,16 +139,4 @@ const Form = () => {
 
 export default Form;
 
-
-/* 📍 FORM PAGE |: en esta vista se encontrará el formulario para crear una nueva receta.
-
-Este formulario debe ser controlado completamente con JavaScritp. No se pueden utilizar validaciones HTML, ni utilizar librerías especiales para esto. Debe contar con los siguientes campos:
-
-Nombre.
-Resumen del plato.
-Nivel de comida saludable (health score).
-Paso a paso.
-Imagen.
-Posibilidad de seleccionar/agregar varios tipos de dieta en simultáneo.
-Botón para crear la receta.
-[IMPORANTE]: es requisito que el formulario de creación esté validado sólo con JavaScript. Puedes agregar las validaciones que consideres. Por ejemplo: que el nombre de la receta no pueda contener números, o que el health score no pueda exceder determinado valor, etc. */
+// a futuro agregar validaciones
