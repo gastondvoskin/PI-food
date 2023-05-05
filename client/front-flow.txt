@@ -1,19 +1,22 @@
 FLUJO FRONT-END: 
 html 
 index.js 
--> App.js -> Nav.jsx ---> Tiene Link a Form.jsx         (ahora tiene que tener sólo el link a Home y )
-                       -> SearchBar.jsx
-                       -> Filters.jsx
-                       -> Sorting.jsx
+-> App.jsx -> Nav.jsx (not rendered in /landing) ---> Link a Home
+                                                 ---> Link a About    
+           -> Landing.jsx ---> Link a Home.jsx
 
-           -> ruta a Landing.jsx ---> Tiene Link a Home.jsx
-
-                                                        (Home debe contener SearchBar, filtros,  ordenamiento, pagin, link a detail, link a form)
-
-           -> ruta a Home.jsx -> Cards.jsx -> Card.jsx ---> Tiene Link a Detail.jsx     
+           -> Home.jsx -> SearchBar.jsx
+                              -> Filters.jsx
+                              -> Sorting.jsx
+                              ---> Link a Form.jsx
                               -> Pagination
-           -> ruta a Detail.jsx
-           -> ruta a Form.jsx
+                              -> Cards.jsx -> Card.jsx ---> Tiene Link a Detail.jsx     
+           -> About.jsx
+           -> Detail.jsx ---> Link a Home.jsx 
+                                -> Error404.jsx (si no hay recipe con el id del params) ---> Link a Home.jsx
+
+           -> Form.jsx ---> Link a Home.jsx
+           -> Error404.jsx
 
 index.js
 storeIndex.js

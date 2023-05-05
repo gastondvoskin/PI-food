@@ -477,6 +477,19 @@ Próximo paso: ver cómo llega steps del back-end en la ruta por id y enviarlo d
 Refactoricé createRecipe controller para simplificar la lógica. 
 Spoonacular por id trae instructions que es el paso a paso (steps de analizedInstructions) convertido a string. A mí me sirve más tenerlo como array para poder mapearlo y darle estructura de elementos <p> o <li>. Esto funciona bien porque en el model de la DB estoy guardando los steps con type: DataTypes.ARRAY(DataTypes.STRING). 
 Form.jsx. Agregué steps a la creación de la recipe junto con un botón que permite agregar más pasos. Con el button Add steps, se agrega un string vacío como elemento al array steps del local state. Para renderizar, se mapea el estado local dataToCreateRecipe.steps, con lo que se van a renderizar la cantidad de textarea según cuántas veces se haya hecho click en Add step. step comienza como [""], por lo tanto siempre se renderiza al menos un textarea. 
-git commit -m "Added steps to Form.jsx".
+git commit -m "Added steps to Form.jsx. Local state mapped to render que quantity of texareas according to the times the button Add step was clicked".
 
 Próximo paso: componente Detail emprolijar poniendo títulos a los que se renderiza para que se entienda. 
+Luego, ver la lógicas de filtros y sorting. 
+
+Detail.jsx. Emprolijé y reordené títulos. Agregué validaciones para todo lo que retorno, y si no llega la propiedad (si se creó la recipe, sea en la db o en Spoonacular sin algún dato) se renderiza un mensaje que indica que ese dato no fue provisto. 
+Dentro del useEffect, agregué validación antes de setear el local state, por si se introduce una URL /detail/idInexistente. 
+recipesHandler.js. getRecipeByIdHandler cambié 400 por 404. 
+Agregué un try catch en el useEffect en Detail cuando hago la llamada al back, porque si recibo un 404 (por un id inexistente) crashea la aplicación. Agregué local state errorMessage que renderiza condicionalmente otro componente si hay error. Creé componente Error404. Agregué Go back home al componente Error404.jsx y al componente Detail.jsx (copiado del Form.jsx). 
+Agregué en App.jsx que todas las rutas que no sean las anteriores dirigen a Error404. 
+Modifiqué el return de Detail.jsx para que renderice normalmente el div sin el componente Error404. En caso de que se setee el estado local con error, se redirige a '/inexistentID' (con el hook useNavigate). 
+
+git commit -m "Detail.jsx: reordered titles, added conditional renders for each property received from the back-end, added validation for inexistentsId in which case it navigates to /inexistenID. Added a local state isLoading which sets to false when the data is fetched. Added Error404.jsx component and routed it in App.jsx." 
+
+Próximo paso: componente Card.jsx. Reordenar y emprolijar para que sea similar al Detail.jsx. 
+El summary que viene de la DB hay que emprloijarlo. 

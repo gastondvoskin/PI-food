@@ -8,10 +8,14 @@ const baseURL = 'https://api.spoonacular.com/recipes';
 
 
 const getApiRecipeByIdRaw = async (id) => {
-    let apiRecipeByIdRaw = await axios.get(`${baseURL}/${id}/information?apiKey=${API_KEY}`);
     // if (!dbRecipeByIdRaw) throw Error('There is no recipe with this id');       // esto no funciona porque el endpoint con falso id da 404
-    apiRecipeByIdRaw = apiRecipeByIdRaw.data;
-    return apiRecipeByIdRaw;
+    try {
+        let apiRecipeByIdRaw = await axios.get(`${baseURL}/${id}/information?apiKey=${API_KEY}`);
+        apiRecipeByIdRaw = apiRecipeByIdRaw.data;
+        return apiRecipeByIdRaw;    
+    } catch (error) {
+        throw Error('There is no recipe with the provided id');
+    }
 };
 
 const cleanApiRecipe = (apiRecipeRaw) => {

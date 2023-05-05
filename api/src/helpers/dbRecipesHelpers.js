@@ -20,7 +20,10 @@ const includeObject = {
 
 const getDbRecipeByIdRaw = async (id) => {
     const dbRecipeByIdRaw = await Recipe.findByPk(id, includeObject);
-    if (!dbRecipeByIdRaw) throw Error('There is no recipe with this id'); 
+    if (!dbRecipeByIdRaw) {
+        console.log('estoy aca, linea 24');
+        throw Error('There is no recipe with the provided id'); 
+    }
     return dbRecipeByIdRaw;
 };
 

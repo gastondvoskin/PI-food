@@ -24,7 +24,7 @@ const getRecipeByIdHandler = async (req, res) => {
         const recipeById = await searchRecipeById(id);
         res.status(200).send(recipeById);        
     } catch (error) {
-        res.status(400).send({error: error.message});
+        res.status(404).send({error: error.message});
     }
 };
 
