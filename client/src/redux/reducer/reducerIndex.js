@@ -1,16 +1,22 @@
-import { GET_RECIPES, FILTER_BY_DIET, FILTER_BY_CREATOR, RESET_FILTERS, SORT_RECIPES_BY_ALPHABET, SORT_RECIPES_BY_HEALTHSCORE, GET_RECIPES_BY_NAME/* , GET_RECIPE_DETAIL */, CREATE_RECIPE } from "../actions/actionsIndex.js"; 
-// wip SORT_RECIPES_BY_HEALTHSCORE
+import { 
+    GET_RECIPES, GET_RECIPES_BY_NAME, GET_DIETS, CREATE_RECIPE, 
+    FILTER_BY_DIET, FILTER_BY_CREATOR, RESET_FILTERS, 
+    SORT_RECIPES_BY_ALPHABET, SORT_RECIPES_BY_HEALTHSCORE, 
+    /* GET_RECIPE_DETAIL */ 
+} from "../actions/actionsIndex.js"; 
 
 
 const initialState = {
     allRecipes: [],
-        // filteredRecipes: [],         // wip: borrar
     filteredAndSortedRecipes: [],
-    // recipeDetail: {}
+    diets: []
+    // recipeDetail: {}         // OLD (implementation replaced by localState)
 };
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
+
+        // getRecipes (all)
         case GET_RECIPES: 
             return {
                 ...state,
@@ -18,33 +24,31 @@ const reducer = (state = initialState, action) => {
                 filteredAndSortedRecipes: action.payload
             }
 
-        // Filters
-        // original
-        // case FILTER_BY_DIET_AND_ALPHABET: 
-        //     const { diet, creator } = action.payload;
+        // getRecipesByName (filter in back)
+        case GET_RECIPES_BY_NAME:
+            return {
+                ...state,
+                filteredAndSortedRecipes: action.payload
+            }
 
-        //     const filteredRecipesByDiet = diet === 'all'
-        //     ? [...state.allRecipes] 
-        //     : state.allRecipes.filter((recipe) => recipe.diets.includes(diet))
+        // getDiets             // new
+        case GET_DIETS:
+            return {
+                ...state,
+                diets: action.payload
+            }
 
-        //     const filteredRecipesByDietsAndCreator = creator === 'all'
-        //     ? [...filteredRecipesByDiet] 
-        //     : filteredRecipesByDiet.filter((recipe) => {
-        //         if (creator === "client") {
-        //             return recipe.created === true;
-        //         } else {
-        //             return recipe.created === false;
-        //         }
-        //     });
+        // createRecipe 
+        case CREATE_RECIPE:
+            return {
+                ...state,
+                // es innecesario modificar el state porque para ver las recipes hay que ir al Home (salir del Form) que se rerenderiza. 
+                // allRecipes: [...state.allRecipes, action.payload]        
+            }
 
-        //     return {
-        //         ...state,
-        //         filteredAndSortedRecipes: [...filteredRecipesByDietsAndCreator] 
-        //     }
-        
-
+                    
+        // filters
         case FILTER_BY_DIET: 
-            // const { diet, creator } = action.payload;
             const filterDiet = action.payload;        // 'A-Z'
 
             const filteredRecipesByDiet = filterDiet === 'all'
@@ -56,8 +60,8 @@ const reducer = (state = initialState, action) => {
                 filteredAndSortedRecipes: [...filteredRecipesByDiet] 
             }
 
+
         case FILTER_BY_CREATOR: 
-            // const { diet, creator } = action.payload;
             const filterCreator = action.payload;        // 'client'
 
             const filteredRecipesByCreator = filterCreator === 'all'
@@ -76,7 +80,6 @@ const reducer = (state = initialState, action) => {
             }
 
 
-        
         case RESET_FILTERS:
             const filteredAndSortedRecipes = state.allRecipes;
             return {
@@ -87,7 +90,7 @@ const reducer = (state = initialState, action) => {
 
 
         // Sorts
-        case SORT_RECIPES_BY_ALPHABET:              // wip: _BY_ALPHABET
+        case SORT_RECIPES_BY_ALPHABET: 
             const sortAlphabet = action.payload;        // 'A-Z'
             // console.log(sortAlphabet)
             let sortedRecipesByAlphabet = [...state.filteredAndSortedRecipes]; 
@@ -108,13 +111,14 @@ const reducer = (state = initialState, action) => {
 
             return {
                 ...state,
-                filteredAndSortedRecipes: sortedRecipesByAlphabet           // wip sin healtscore
+                filteredAndSortedRecipes: sortedRecipesByAlphabet  
             }
 
-        case SORT_RECIPES_BY_HEALTHSCORE:                                        // wip: nuevo case
+
+        case SORT_RECIPES_BY_HEALTHSCORE:  
             const sortHealth = action.payload;
 
-            let sortedRecipesByHealthscore = [...state.filteredAndSortedRecipes];       // wip sin Alphabet
+            let sortedRecipesByHealthscore = [...state.filteredAndSortedRecipes]; 
             if (sortHealth === 'healthyFirst') {
                 sortedRecipesByHealthscore.sort((a, b) => {
                     if (a.healthscore < b.healthscore) return -1;
@@ -132,33 +136,10 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 filteredAndSortedRecipes: sortedRecipesByHealthscore
-            }
+            }        
 
-
-        // Filter by name (filtered in the back)
-        case GET_RECIPES_BY_NAME:
-            return {
-                ...state,
-                filteredAndSortedRecipes: action.payload
-            }
-                        
-            
-        // Implementación del Componente Detail con Redux (lo reemplacé por local state)
-        // case GET_RECIPE_DETAIL: 
-        //     return {
-        //         ...state,
-        //         recipeDetail: action.payload
-        //     }
         
-
-        // Create a recipe
-        case CREATE_RECIPE:
-            return {
-                ...state,
-                // es innecesario modificar el state porque para ver las recipes hay que ir al Home (salir del Form) que se rerenderiza. 
-                // allRecipes: [...state.allRecipes, action.payload]        
-            }
-        
+        // default
         default:
             return {...state}
             
@@ -166,3 +147,14 @@ const reducer = (state = initialState, action) => {
 };
 
 export default reducer;
+
+
+
+
+//////////////
+// OLD getRecipeDetail (replaced for local state implementation)
+// case GET_RECIPE_DETAIL: 
+//     return {
+//         ...state,
+//         recipeDetail: action.payload
+//     }

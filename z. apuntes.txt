@@ -426,9 +426,11 @@ Modifiqué la action FILTER_BY_DIET por FILTER_BY_DIET_AND_ALPHABET.
 Aparentemente los filtros funcionan bien, pero hay un problema posterior con el paginado. Además, no siempre se renderiza katogenic en el menú desplegable de Diets. 
 git commit -m "Fixed Filters and redux store" 
 
+
 /////////////////////////////
---------->>>>>>>>>>>                   Para regular requests:       recipesControllers.js        apiRecipesHelpers.js        Nav.jsx               <<<<<<<<<<----------------
+--------->>>>>>>>>>>                   Para regular requests:       recipesControllers.js        apiRecipesHelpers.js        actionsIndex.js (getDiets)               <<<<<<<<<<----------------
 /////////////////////////////
+
 
 Próximo paso: arreglar Sort. 
 Eliminé la posibilidad de elegir none en Sorting para simplificar la lógica (para usar none, tendría que guardar una copia del estado antes del sort, no sé exactamente cómo hacerlo, supongo que es copiando el original allRecipes y filtrándolo con los elementos que incluya el array filteredAndSortedRecipes). 
@@ -454,3 +456,11 @@ Adaptar Sorting para que los select también tengan su título
 SearchBar: reemplacé el form por un simple input con un botón. No se actualiza con el onChange para evitar tantas peticiones a la api externa. 
 git commit -m "Refactored Sorting and SearchBar"
 Próximo paso: Reset filters afecte también al Sorting. Funcionalidades. Esquema de Redux. 
+
+Actions. Reordené las actions. (primero peticiones a la api externa, al final filters y sorts). Creé action getDiets. 
+Reducer. Reordené el reducer de la misma forma que las actions. Creé case GET_DIETS. 
+Home.jsx. Importé action getDiets. 
+Dejo la action getDiets hardcodeada para no hacer peticiones a Spoonacular. 
+Filters.jsx. Usé useStore para cargar diets (ya no está hardcodeado). Reemplacé el nombre filterDiet por selectedDiet. Ídem filterCreator por selectedCreator. Ídem en componente Sorting.jsx.
+Form.jsx. Modifiqué la propiedad diets del initialState para que no esté hardcodeado. 
+git commit -m "Implemented getDiets action. Implemented the new logic with getDiets action in Filters.jsx and in Form.jsx. Reordered actions and Reducer's cases. Renamed variables in Sorting.jsx and Filters.jsx." 

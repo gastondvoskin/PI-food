@@ -1,21 +1,35 @@
 import axios from 'axios';
 
 // actions-types
+
+// getRecipes (all)
 export const GET_RECIPES = 'GET_RECIPES';
-// export const FILTER_BY_DIET_AND_ALPHABET = 'FILTER_BY_DIET_AND_ALPHABET'; 
+
+// getRecipesByName (filter in back)
+export const GET_RECIPES_BY_NAME = 'GET_RECIPES_BY_NAME';
+
+// getDiets             // new
+export const GET_DIETS = 'GET_DIETS'; 
+
+// create_recipe 
+export const CREATE_RECIPE = 'CREATE_RECIPE';
+
+// filters
 export const FILTER_BY_DIET = 'FILTER_BY_DIET'; 
 export const FILTER_BY_CREATOR = 'FILTER_BY_CREATOR'; 
-
-export const SORT_RECIPES_BY_ALPHABET = 'SORT_RECIPES_BY_ALPHABET';     // wip _BY_ALPHABET
-export const SORT_RECIPES_BY_HEALTHSCORE = 'SORT_RECIPES_BY_HEALTHSCORE';     // wip nuevo
-export const GET_RECIPES_BY_NAME = 'GET_RECIPES_BY_NAME';
-// export const GET_RECIPE_DETAIL = 'GET_RECIPE_DETAIL';
-export const CREATE_RECIPE = 'CREATE_RECIPE';
 export const RESET_FILTERS = 'RESET_FILTERS';
 
+// sorts
+export const SORT_RECIPES_BY_ALPHABET = 'SORT_RECIPES_BY_ALPHABET'; 
+export const SORT_RECIPES_BY_HEALTHSCORE = 'SORT_RECIPES_BY_HEALTHSCORE'; 
+
+// OLD getRecipeDetail (replaced for local state implementation)
+// export const GET_RECIPE_DETAIL = 'GET_RECIPE_DETAIL';
 
 
+////////////////////////////////////////
 // actions-creators
+// getRecipes (all)
 export const getRecipes = () => {
     return async (dispatch) => {
         const recipesRaw = await axios.get('http://localhost:3001/recipes');
@@ -23,57 +37,15 @@ export const getRecipes = () => {
         return dispatch({
             type: GET_RECIPES,
             payload: recipesClean
-        })
-    }
-};
-
-// export const filterRecipes = (payload) => {
-//     return {
-//         type: FILTER_BY_DIET_AND_ALPHABET, 
-//         payload
-//     }
-// };
-
-export const filterRecipesByDiet = (payload) => {
-    return {
-        type: FILTER_BY_DIET, 
-        payload
-    }
-};
-
-export const filterRecipesByCreator = (payload) => {
-    return {
-        type: FILTER_BY_CREATOR, 
-        payload
-    }
-};
-
-
-export const resetFilters = () => {
-    return {
-        type: RESET_FILTERS
+        });
     };
 };
 
-export const sortRecipesByAlphabet = (payload) => {               // wip ByAlphabet
-    return {
-        type: SORT_RECIPES_BY_ALPHABET,
-        payload
-    }
-};
 
-export const sortRecipesByHealthscore = (payload) => {           // wip nuevo
-    return {
-        type: SORT_RECIPES_BY_HEALTHSCORE,
-        payload
-    }
-};
-
-
+// getRecipesByName (filter in back)
 export const getRecipesByName = (name) => {
     return async (dispatch) => {
         const recipesByNameRaw = await axios.get(`http://localhost:3001/recipes?name=${name}`);
-        // console.log('recipesByNameRaw: ', recipesByNameRaw);
         const recipesByNameClean = recipesByNameRaw.data;
         return dispatch({
             type: GET_RECIPES_BY_NAME,
@@ -82,18 +54,24 @@ export const getRecipesByName = (name) => {
     };
 };
 
-// // Implementación del Componente Detail con Redux (lo reemplacé por local state)
-// export const getRecipeDetail = (idRecipe) => {
-//     return async (dispatch) => {
-//         const recipeDetailRaw = await axios.get(`http://localhost:3001/recipes/${idRecipe}`);
-//         const recipeDetailClean = recipeDetailRaw.data;
-//         return dispatch({
-//             type: GET_RECIPE_DETAIL,
-//             payload: recipeDetailClean
-//         });
-//     };
-// };
 
+
+// getDiets             // new
+export const getDiets = () => {
+    return async (dispatch) => {
+        // const dietsRaw = await axios.get('http://localhost:3001/diets');     // uncomment to make th request to Spoonacular
+        // const dietsClean = dietsRaw.data;                                    // uncomment to make th request to Spoonacular
+        const dietsClean = ['vegetarian', 'vegan', 'whole 30', 'ketogenic'];     // hardcodeado para no hacer peticiones a Spoonacular
+
+        return dispatch({
+            type: GET_DIETS,
+            payload: dietsClean
+        });
+    };
+};
+
+
+// createRecipe 
 export const createRecipe = (dataToCreateRecipe) => {
     return async (dispatch) => {
         const createdRecipeRaw = await axios.post('http://localhost:3001/recipes', dataToCreateRecipe)
@@ -105,3 +83,61 @@ export const createRecipe = (dataToCreateRecipe) => {
         });
     };
 };
+
+
+// filters
+export const filterRecipesByDiet = (payload) => {
+    return {
+        type: FILTER_BY_DIET, 
+        payload
+    };
+};
+
+export const filterRecipesByCreator = (payload) => {
+    return {
+        type: FILTER_BY_CREATOR, 
+        payload
+    }
+};
+
+export const resetFilters = () => {
+    return {
+        type: RESET_FILTERS
+    };
+};
+
+
+// sorts
+export const sortRecipesByAlphabet = (payload) => { 
+    return {
+        type: SORT_RECIPES_BY_ALPHABET,
+        payload
+    }
+};
+
+export const sortRecipesByHealthscore = (payload) => { 
+    return {
+        type: SORT_RECIPES_BY_HEALTHSCORE,
+        payload
+    };
+};
+
+
+
+
+
+
+
+//////////////
+// OLD getRecipeDetail (replaced for local state implementation)
+// export const getRecipeDetail = (idRecipe) => {
+//     return async (dispatch) => {
+//         const recipeDetailRaw = await axios.get(`http://localhost:3001/recipes/${idRecipe}`);
+//         const recipeDetailClean = recipeDetailRaw.data;
+//         return dispatch({
+//             type: GET_RECIPE_DETAIL,
+//             payload: recipeDetailClean
+//         });
+//     };
+// };
+

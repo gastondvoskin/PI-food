@@ -7,34 +7,34 @@ const Sorting = () => {
     const dispatch = useDispatch();
 
     // local state
-    const [sortAlphabet, setSortAlphabet] = useState(''); 
-    const [sortHealth, setsortHealth] = useState('');    
+    const [selectedAlphabet, setSelectedAlphabet] = useState(''); 
+    const [selectedHealth, setSelectedHealth] = useState('');    
 
     
     // changeHandlers
     const handleSelectAlphabet = (event) => {
-        const newValueSortAlphabet = event.target.value;             
-        setSortAlphabet(newValueSortAlphabet); 
-        dispatch(sortRecipesByAlphabet(newValueSortAlphabet));      //
+        const selectedAlphabet = event.target.value;             
+        setSelectedAlphabet(selectedAlphabet); 
+        dispatch(sortRecipesByAlphabet(selectedAlphabet));      //
     };
 
     const handleSelectHealth = (event) => { 
-        const newValueSortHealth = event.target.value;             
-        setsortHealth(newValueSortHealth);
-        dispatch(sortRecipesByHealthscore(newValueSortHealth));     //
+        const selectedHealth = event.target.value;             
+        setSelectedHealth(selectedHealth);
+        dispatch(sortRecipesByHealthscore(selectedHealth));     //
     };
 
 
     // return
     return ( 
         <div>
-            <select name="alphabet" value={sortAlphabet} onChange={handleSelectAlphabet}>
+            <select name="alphabet" value={selectedAlphabet} onChange={handleSelectAlphabet}>
                 <option value="" disabled selected>A-Z or Z-A</option>
                 <option value="A-Z">A-Z</option>
                 <option value="Z-A">Z-A</option>
             </select>
             
-            <select name="health" value={sortHealth} onChange={handleSelectHealth}>
+            <select name="health" value={selectedHealth} onChange={handleSelectHealth}>
                 <option value="" disabled selected>Health score</option>
                 <option value="healthyFirst">Healthy first</option>
                 <option value="unhealthyFirst">Unhealthy first</option>

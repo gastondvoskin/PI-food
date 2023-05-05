@@ -1,48 +1,54 @@
 import React, { useState } from "react";
 import styles from './Filters.module.css';
 import { filterRecipesByDiet, filterRecipesByCreator } from "../../redux/actions/actionsIndex";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { resetFilters } from "../../redux/actions/actionsIndex";
 
-const Filters = (props) => {
-    const { dietsList } = props;
+const Filters = () => {
     const dispatch = useDispatch();
 
+    const diets = useSelector((state) => state.diets);          // new
+
     // local state
-    const [filterDiet, setFilterDiet] = useState(''); 
-    const [filterCreator, setFilterCreator] = useState('');    
+    const [selectedDiet, setSelectedDiet] = useState(''); 
+    const [selectedCreator, setSelectedCreator] = useState('');    
     
     // changeHandlers
     const handleSelectDiet = (event) => {
-        const newValueFilterDiet = event.target.value;
-        setFilterDiet(newValueFilterDiet);
-        dispatch(filterRecipesByDiet(newValueFilterDiet));      //
+        const selectedDiet = event.target.value;
+        setSelectedDiet(selectedDiet);
+        dispatch(filterRecipesByDiet(selectedDiet));      //
     };
 
     const handleSelectCreator = (event) => {
-        const newValueFilterHealth = event.target.value;
-        setFilterCreator(newValueFilterHealth);
-        dispatch(filterRecipesByCreator(newValueFilterHealth));     //
+        const selectedCreator = event.target.value;
+        setSelectedCreator(selectedCreator);
+        dispatch(filterRecipesByCreator(selectedCreator));     //
     };
 
     // handleReset
     const handleReset = (event) => {
-        setFilterDiet('');
-        setFilterCreator('');
+        setSelectedDiet('');
+        setSelectedCreator('');
         dispatch(resetFilters());
     };
 
     // return
     return (
         <div>
-            <select name="diet" value={filterDiet} onChange={handleSelectDiet}>
+            <select name="diet" value={selectedDiet} onChange={handleSelectDiet}>
                 <option value="" disabled selected>Diet</option>
                 <option value="all">all</option>
-                <option value="vegetarian">vegetarian</option> {/* harcodeado */}
-                <option value="vegan">vegan</option>
+                {                                                   // new
+                    diets.map((diet) => {
+                        return (
+                            <option value={diet}>{diet}</option>
+                        );
+                    })
+                }
             </select>
             
-            <select name="all" value={filterCreator} onChange={handleSelectCreator}>
+            <select name="all" value={selectedCreator} onChange={handleSelectCreator}>
                 <option value="" disabled selected>Creator</option>
                 <option value="spoonacular">spoonacular</option>
                 <option value="client">client</option>

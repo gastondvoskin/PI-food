@@ -1,20 +1,22 @@
 import React, { useState } from "react";
 import styles from './Form.module.css';
 import { createRecipe } from "../../redux/actions/actionsIndex";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Form = () => {
     const dispatch = useDispatch();
+
+    const diets = useSelector((state) => state.diets);          // new
 
     const initialState = {
         name: '',
         summary: '',
         healthscore: '',
         image: '',
-        steps: ["step example"],                  // hardcodeado. Modificar. Cambiar back para que no sea más un array, sino string.  
-        diets: ['vegetarian'],          // hardcodeado. Modificar. 
-    }
+        steps: ["step example"],        // hardcodeado. Modificar. Cambiar back para que no sea más un array, sino string.  
+        diets: [],                        // hardcodeado. Modificar. 
+    };
 
     const [dataToCreateRecipe, setDataToCreateRecipe] = useState(initialState);
 
@@ -26,10 +28,25 @@ const Form = () => {
         });
     };
 
+    const handleDietsChange = (event) => {
+        const { name, checked } = event.target;
+        if (checked) {
+            setDataToCreateRecipe({
+                ...dataToCreateRecipe,
+                diets: [...dataToCreateRecipe.diets, name]
+            });
+        } else {
+            setDataToCreateRecipe({
+                ...dataToCreateRecipe,
+                diets: [...dataToCreateRecipe.diets.filter((diet) => diet !== name)]
+            });
+        };
+    };
+
     const handleOnSubmit = (event) => {
         event.preventDefault();
         // logica: dispatch createRecipe pasándole un objeto con toda la info
-        console.log('dataToCreateRecipe: ', dataToCreateRecipe); 
+        // console.log('dataToCreateRecipe: ', dataToCreateRecipe); 
         dispatch(createRecipe(dataToCreateRecipe));
         setDataToCreateRecipe(initialState);
     };
@@ -91,16 +108,21 @@ const Form = () => {
                 </input>
                 <br />
 
-                <label htmlFor="vegetarian">Vegetarian</label>
-                <input
-                    name="vegetarian"
-                    type="checkbox"
-                    /* value="vegetarian" checked={selectedOptions.includes("vegetarian")} onChange={handleOptionChange} */
-                >
-                </input>
-
-                <br />
-
+                {
+                    diets.map((diet, index) => {
+                        return (
+                            <div key={index}>
+                                <label htmlFor={diet}>{diet}</label>
+                                <input
+                                    name={diet}
+                                    type="checkbox"
+                                    onChange={handleDietsChange}
+                                    >
+                                </input>
+                            </div> 
+                        );
+                    })
+                }
 
                 <button type="submit">Create recipe</button>
 

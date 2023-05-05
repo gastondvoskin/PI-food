@@ -6,22 +6,20 @@ import { Link } from "react-router-dom";
 
 // redux
 import { useDispatch, useSelector } from 'react-redux';
-import { getRecipes } from "../../redux/actions/actionsIndex.js";
+import { getRecipes, getDiets } from "../../redux/actions/actionsIndex.js";
 
 // componentes a renderizar
 import SearchBar from "../SearchBar/SearchBar.jsx";
-import Pagination from "../Pagination/Pagination.jsx";
-import Cards from "../Cards/Cards.jsx";
 import Filters from "../Filters/Filters.jsx";
 import Sorting from "../Sorting/Sorting.jsx";
-
-import axios from "axios";
+import Pagination from "../Pagination/Pagination.jsx";
+import Cards from "../Cards/Cards.jsx";
 
 
 const Home = () => {
     // nuevo. viene del Nav para pasar por props a Filters. Modificar para hacerlo a través de redux. 
-    const [dietsList, setDietsList] = useState([]);
-    useEffect(() => {
+    // const [dietsList, setDietsList] = useState([]);
+    // useEffect(() => {
         // ------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>> HARDCODEADO PARA NO HACER PETICIONES. MODIFICAR. 
         // const getDietsList = async () => {
         //     const dietsListRaw = await axios.get('http://localhost:3001/diets');
@@ -29,21 +27,21 @@ const Home = () => {
         //     setDietsList(dietsListClean);
         // }
         // getDietsList();
-        setDietsList(['vegetarian', 'vegan', 'ketogenic']);
-    }, []);
+    //     setDietsList(['vegetarian', 'vegan', 'ketogenic']);
+    // }, []);
 
 
-
-
-
-    // dipatch the getRecipes action to the reducer to modify the global state
+    // dipatch the getRecipes and getDiets actions.
     const dispatch = useDispatch();
     
     useEffect( () => {
-        dispatch(getRecipes())
+        dispatch(getRecipes());
+        dispatch(getDiets());       // new
     }, []); 
 
-    // receive filteredAndSortedRecipes from the global state. 
+    // receive diets from redux
+    // const diets = useSelector((state) => state.diets);          // new
+    // receive filteredAndSortedRecipes from redux. 
     const filteredAndSortedRecipes = useSelector((state) => state.filteredAndSortedRecipes);
 
 
@@ -67,7 +65,7 @@ const Home = () => {
     return (
         <div>
             <SearchBar />
-            <Filters dietsList={dietsList} />
+            <Filters />
             <Sorting />
             <Link to={'/form'}>
                 <button>Create new recipe</button>
