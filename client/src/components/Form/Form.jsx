@@ -4,22 +4,29 @@ import { createRecipe } from "../../redux/actions/actionsIndex";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
+
+
 const Form = () => {
+
     const dispatch = useDispatch();
 
     const diets = useSelector((state) => state.diets); 
 
+
+    // local state
     const initialState = {
         name: '',
         summary: '',
         healthscore: '',
         image: '',
-        steps: ["step example"],        // hardcodeado. Modificar. Cambiar back para que no sea más un array, sino string.  
+        steps: [''],        // new  -------------------------------- STEPS
         diets: [], 
     };
 
     const [dataToCreateRecipe, setDataToCreateRecipe] = useState(initialState);
 
+
+    // general inputs handler
     const handleChange = (event) => {
         const { name, value } = event.target;
         setDataToCreateRecipe({
@@ -28,6 +35,29 @@ const Form = () => {
         });
     };
 
+
+    // steps input handler
+    const handleStepsChange = (event) => {              // new -------------------------------- STEPS
+        const { id, value } = event.target;
+        const idParsed = Number(id);
+
+        setDataToCreateRecipe({
+            ...dataToCreateRecipe,
+            steps: [...dataToCreateRecipe.steps.slice(0, idParsed), value, ...dataToCreateRecipe.steps.slice(idParsed + 1)]
+        });
+    };
+
+
+    // addStep button handler
+    const handleAddStep = () => {
+        setDataToCreateRecipe({
+            ...dataToCreateRecipe,
+            steps: [...dataToCreateRecipe.steps, ""]      // adds an empty element to steps
+        });
+    };
+
+
+    // diets input handler
     const handleDietsChange = (event) => {
         const { name, checked } = event.target;
         if (checked) {
@@ -43,6 +73,8 @@ const Form = () => {
         };
     };
 
+
+    // submitting form handler (create recipe button)
     const handleSubmit = (event) => {
         event.preventDefault();
         // logica: dispatch createRecipe pasándole un objeto con toda la info
@@ -59,27 +91,30 @@ const Form = () => {
                 <p>Create your own recipe</p>
 
                 <label htmlFor="name">Name</label>
+                <br />
                 <input
                     name="name"
                     type="text"
                     value={dataToCreateRecipe.name}
                     onChange={handleChange}
-                    placeholder="eg. Fried sausages">
+                    placeholder="Name...">
                 </input>
                 <br />
 
                 <label htmlFor="summary">Summary</label>
+                <br />
                 <textarea
                     name="summary"
                     value={dataToCreateRecipe.summary}
                     onChange={handleChange}
-                    placeholder="eg. This is a recipe from Argentina..."
+                    placeholder="Summary..."
                     rows="5"
                     cols="50">
                 </textarea>
                 <br />
 
                 <label htmlFor="healthscore">Healthscore</label>
+                <br />
                 <input
                     name="healthscore"
                     type="number"
@@ -89,26 +124,53 @@ const Form = () => {
                 </input>
                 <br />
 
-                {/* <label htmlFor="steps">Steps</label>
-                <textarea
-                    name="steps"
-                    value={dataToCreateRecipe.steps}
-                    onChange={handleChange}
-                    placeholder="eg. Firts prepare the sausages..."
-                    rows="5"
-                    cols="50">
-                </textarea>
-                <br /> */}
+
+
+                <label htmlFor="steps">Steps</label>            {/* -------------------------------- STEPS */}
+                <br />
+
+                {
+                    dataToCreateRecipe.steps.map((step, index) => { 
+                        return (
+                            <div key={index}>
+                                <textarea
+                                    id={index}
+                                    value={step}
+                                    onChange={handleStepsChange}
+                                    placeholder={`Step ${index + 1}`}
+                                    rows="2"
+                                    cols="50"> 
+                                </textarea>
+                                <br />
+                            </div>
+                        )
+                    })
+                }
+
+
+                <button 
+                    type="button"
+                    onClick={handleAddStep}>
+                    Add step
+                </button>
+                <br />
+
+
+
+
 
                 <label htmlFor="image">Image</label>
+                <br />
                 <input
                     name="image"
                     value={dataToCreateRecipe.image}
                     onChange={handleChange}
-                    placeholder="eg. https://thumbs.dreamstime.com/b/boiled-sausages-basil-isolated-white-background-boiled-sausages-basil-isolated-white-background-147745454.jpg">
+                    placeholder="URL...">
                 </input>
                 <br />
 
+
+                <label htmlFor="diets">Diets</label>
                 {
                     diets.map((diet, index) => {
                         return (
@@ -136,6 +198,8 @@ const Form = () => {
 
     );
 };
+
+
 
 export default Form;
 

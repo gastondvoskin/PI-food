@@ -17,20 +17,6 @@ import Cards from "../Cards/Cards.jsx";
 
 
 const Home = () => {
-    // nuevo. viene del Nav para pasar por props a Filters. Modificar para hacerlo a través de redux. 
-    // const [dietsList, setDietsList] = useState([]);
-    // useEffect(() => {
-        // ------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>> HARDCODEADO PARA NO HACER PETICIONES. MODIFICAR. 
-        // const getDietsList = async () => {
-        //     const dietsListRaw = await axios.get('http://localhost:3001/diets');
-        //     const dietsListClean = dietsListRaw.data;
-        //     setDietsList(dietsListClean);
-        // }
-        // getDietsList();
-    //     setDietsList(['vegetarian', 'vegan', 'ketogenic']);
-    // }, []);
-
-
     // dipatch the getRecipes and getDiets actions.
     const dispatch = useDispatch();
     

@@ -56,11 +56,8 @@ const createRecipe = async (name, image, summary, healthscore, steps, diets) => 
 
     // recipeWithDiets is created to display in the front-end form with the diets after submitting. 
     const recipeWithDiets = {
-        ...newRecipe.dataValues,
-        diets
-    }
-    console.log('recipeWithDiets: ', recipeWithDiets);
-
+        name, image, summary, healthscore, steps, diets
+    };
     return recipeWithDiets;
 };
 

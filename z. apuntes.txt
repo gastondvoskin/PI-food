@@ -473,3 +473,10 @@ createRecipe handler. Cambié newRecipe por recipeWithDiets. La recipe se crea e
 Cambié el CREATE_RECIPE case del reducer para que actualice el global state inmediatamente con la action sin necesidad de ir al Home. 
 git commit -m "Back-end: Fixed createRecipe controller to include diets in the object returned. Reordered recipesRouter.js, recipesHandlers.js and recipesControllers.js --- Front-end: modified CREATE_RECIPE case in reducer to update immediately allRecipes in the global state"
 Próximo paso: ver cómo llega steps del back-end en la ruta por id y enviarlo de la misma manera desde el form en el front. 
+
+Refactoricé createRecipe controller para simplificar la lógica. 
+Spoonacular por id trae instructions que es el paso a paso (steps de analizedInstructions) convertido a string. A mí me sirve más tenerlo como array para poder mapearlo y darle estructura de elementos <p> o <li>. Esto funciona bien porque en el model de la DB estoy guardando los steps con type: DataTypes.ARRAY(DataTypes.STRING). 
+Form.jsx. Agregué steps a la creación de la recipe junto con un botón que permite agregar más pasos. Con el button Add steps, se agrega un string vacío como elemento al array steps del local state. Para renderizar, se mapea el estado local dataToCreateRecipe.steps, con lo que se van a renderizar la cantidad de textarea según cuántas veces se haya hecho click en Add step. step comienza como [""], por lo tanto siempre se renderiza al menos un textarea. 
+git commit -m "Added steps to Form.jsx".
+
+Próximo paso: componente Detail emprolijar poniendo títulos a los que se renderiza para que se entienda. 
