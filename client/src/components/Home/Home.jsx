@@ -1,7 +1,6 @@
 // react, estados, estilos, Link
 import React, { useState, useEffect } from "react";
 import styles from './Home.module.css';
-import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 // redux
@@ -17,26 +16,33 @@ import Cards from "../Cards/Cards.jsx";
 
 
 const Home = () => {
+
+    // local state
+    const [currentPage, setCurrentPage] = useState(1);
+    const [isLoading, setIsLoading] = useState(true);
+
     // dipatch the getRecipes and getDiets actions.
     const dispatch = useDispatch();
-    
-    useEffect( () => {
-        dispatch(getRecipes());
-        dispatch(getDiets());       // new
-    }, []); 
 
-    // receive diets from redux
-    // const diets = useSelector((state) => state.diets);          // new
+    useEffect( () => {
+        const fetchRecipesAndDiets = async () => {
+            try {
+                await dispatch(getRecipes());
+                await dispatch(getDiets());
+                setIsLoading(false);
+            } catch (error) {
+                console.log("in the catch");
+                console.log(error.response?.data?.error);
+            }
+        };
+        fetchRecipesAndDiets();
+    }, [dispatch]);             // va el dispatch en el array de dependencias? Por qué? 
+
+
     // receive filteredAndSortedRecipes from redux. 
     const filteredAndSortedRecipes = useSelector((state) => state.filteredAndSortedRecipes);
 
-
-    // handlePageChange -> handles onClick in Pagination
-    const [currentPage, setCurrentPage] = useState(1);
     const recipesPerPage = 9;
-    const handlePageChange = (pageNumber) => {
-        setCurrentPage(pageNumber);
-    };
 
     // currentRecipes (it rerenders with onClick in Pagination handled by handlePageChange). Uaseful for Pagination and for Cards. 
     const indexOfFirstRecipe = currentPage * recipesPerPage - recipesPerPage;  //p1->0. p2-> 9.
@@ -46,24 +52,32 @@ const Home = () => {
     // totalPages. Useful for Pagination. 
     const totalPages = Math.ceil(filteredAndSortedRecipes.length / recipesPerPage);
 
+    // handlePageChange -> handles onClick in Pagination
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
 
     // render SearchBar, Filters, Sorting, Form's Link, Pagination and Cards components
     return (
-        <div>
-            <SearchBar />
-            <Filters />
-            <Sorting />
-            <Link to={'/form'}>
-                <button>Create new recipe</button>
-            </Link>
-            <Pagination 
-                totalPages={totalPages} 
-                handlePageChange={handlePageChange}
-            />
-            <Cards 
-                currentRecipes={currentRecipes}
-            />
-        </div>
+        isLoading 
+        ? (<h2>Loading...</h2>) 
+        : (
+            <div>
+                <SearchBar />
+                <Filters />
+                <Sorting />
+                <Link to={'/form'}>
+                    <button>Create new recipe</button>
+                </Link>
+                <Pagination 
+                    totalPages={totalPages} 
+                    handlePageChange={handlePageChange}
+                />
+                <Cards 
+                    currentRecipes={currentRecipes}
+                />
+            </div>        
+        )
     );
 };
 
