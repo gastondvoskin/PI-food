@@ -508,9 +508,13 @@ git commit -m "Detail.jsx: improved summary render. Improved steps validation. R
 Copié el isLoading del Detail al Home y adapté el useEffect para que contenga un async await, para que se ejecuten las actions antes de ejecutar setIsLoading(false). Creé una nueva api_key, guardada en .env para cuando tengo code 402. 
 git commit -m ".env: Added an alternative API_KEY. Home.jsx: added a loader".
 
-Próximo paso: reordenar y emprolijar componente Card.jsx para que sea similar al Detail.jsx. Rever si no es mejor que Cards.jsx reciba currentRecipes directamente del globalState en vez de recibirlo por props a través de Home.jsx. 
-
 
 Dejé más legibles los archivos que permiten siwtchear entre recibir data de Spoonacular y hardcodearla. Ubiqué la guía de estos tres archivos al principio de este archivo txt. 
 Filters.jsx. Agregué la option 'all' al creator que la había borrado por error. 
 git commit -m "Improved comments to explain how to switch between fetching data from Spoonacular and hardcoding it in files recipesControllers.js, apiRecipesHelpers.js, actionsIndex.js. Added 'all' option to creator filter in Filters.jsx." 
+
+Próximo paso: reordenar y emprolijar componente Card.jsx para que sea similar al Detail.jsx. Rever si no es mejor que Cards.jsx reciba currentRecipes directamente del globalState en vez de recibirlo por props a través de Home.jsx. 
+
+Card.jsx. Detail.jsx. Reemplacé name, image y diets por los que tenía en Detail.jsx. Agregué healthscore para chequear si funciona bien el sort. Reemplacé NavLink por Link dentro de un botón. 
+reducerIndex.js. Arreglé el case SORT_RECIPES_BY_HEALTHSCORE que ordenaba al revés de como esperaba. 
+git commit -m "Reordered elements in Card.jsx. Fixed case sort_recipe_by_health in reducer.js to sort properly"

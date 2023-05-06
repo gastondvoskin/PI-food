@@ -20,6 +20,7 @@ const Cards = ({ currentRecipes }) => {
                             image={recipe.image} 
                             diets={recipe.diets} 
                             id={recipe.id}
+                            healthscore={recipe.healthscore}       /* healthscore to check sort */
                             key={index}
                         />                 
                     )

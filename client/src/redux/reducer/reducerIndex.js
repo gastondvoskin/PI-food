@@ -119,18 +119,15 @@ const reducer = (state = initialState, action) => {
             const sortHealth = action.payload;
 
             let sortedRecipesByHealthscore = [...state.filteredAndSortedRecipes]; 
-            if (sortHealth === 'healthyFirst') {
+            // unhealthyFirst -> Primero el número más chico (1)
+            if (sortHealth === 'unhealthyFirst') {
                 sortedRecipesByHealthscore.sort((a, b) => {
-                    if (a.healthscore < b.healthscore) return -1;
-                    if (a.healthscore > b.healthscore) return 1;
-                    return 0;
-                }); 
-            } else if (sortHealth === 'unhealthyFirst') {
+                   return a.healthscore - b.healthscore;
+                })
+            } else if (sortHealth === 'healthyFirst') {
                 sortedRecipesByHealthscore.sort((a, b) => {
-                    if (a.healthscore > b.healthscore) return -1;
-                    if (a.healthscore < b.healthscore) return 1;
-                    return 0;
-                }); 
+                    return b.healthscore - a.healthscore;
+                 })
             };
 
             return {
