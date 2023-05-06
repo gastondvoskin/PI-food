@@ -50,6 +50,7 @@ const Filters = () => {
             
             <select name="all" value={selectedCreator} onChange={handleSelectCreator}>
                 <option value="" disabled selected>Creator</option>
+                <option value="all">all</option>
                 <option value="spoonacular">spoonacular</option>
                 <option value="client">client</option>
             </select>

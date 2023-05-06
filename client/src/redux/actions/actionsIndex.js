@@ -8,7 +8,7 @@ export const GET_RECIPES = 'GET_RECIPES';
 // getRecipesByName (filter in back)
 export const GET_RECIPES_BY_NAME = 'GET_RECIPES_BY_NAME';
 
-// getDiets             // new
+// getDiets 
 export const GET_DIETS = 'GET_DIETS'; 
 
 // create_recipe 
@@ -55,13 +55,17 @@ export const getRecipesByName = (name) => {
 };
 
 
-////////////////////////////////////////////////  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!  ////////////////////////////
-// getDiets             // new
 export const getDiets = () => {
     return async (dispatch) => {
-        // const dietsRaw = await axios.get('http://localhost:3001/diets');     // uncomment to make the request to Spoonacular
-        // const dietsClean = dietsRaw.data;                                    // uncomment to make the request to Spoonacular
-        const dietsClean = ['vegetarian', 'vegan', 'whole 30', 'ketogenic'];     // hardcodeado para no hacer peticiones a Spoonacular
+
+        ////////////////////    !!!!!!!!!!!!!!!!!!!! ///////////////////////
+        // to fetch data from Spoonacular: comment next line and uncomment the two following to that.
+
+        const dietsClean = ['dairy free', 'fodmap friendly', 'glutenfree', 'ketogenic', 'lacto ovo vegetarian', 'paleolithic', 'pescatarian', 'primal', 'vegan', 'vegetarian', 'whole 30']; 
+        // const dietsRaw = await axios.get('http://localhost:3001/diets'); 
+        // const dietsClean = dietsRaw.data; 
+
+        ////////////////////    !!!!!!!!!!!!!!!!!!!! ///////////////////////
 
         return dispatch({
             type: GET_DIETS,

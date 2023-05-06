@@ -7,8 +7,15 @@ const { getApiRecipeByIdClean, getAllApiRecipesClean } = require('../helpers/api
 
 const searchAllRecipes = async () => {
     const dbAllRecipesClean = await getAllDbRecipesClean();
-    const apiAllRecipesClean = await getAllApiRecipesClean();           // comentado para desarrollar filters del front-end sin hacer requests a la api. a futuro, descomentar y comentar línea de abajo    ------------------------------------------------>>>>>>>>>>>>>>>>>>>>>> ATENCION!!!!!!!!!!!!!!!!
-    // const apiAllRecipesClean = [];          // comentar para traer resultados de la api
+
+////////////////////    !!!!!!!!!!!!!!!!!!!! ///////////////////////
+    // to fetch data from Spoonacular: comment next line and uncomment the following to that. 
+
+    const apiAllRecipesClean = []; 
+    // const apiAllRecipesClean = await getAllApiRecipesClean();
+
+////////////////////    !!!!!!!!!!!!!!!!!!!! ///////////////////////
+
     const allRecipes = [...dbAllRecipesClean, ...apiAllRecipesClean];
     return allRecipes;
 };
