@@ -513,8 +513,13 @@ Dejé más legibles los archivos que permiten siwtchear entre recibir data de Sp
 Filters.jsx. Agregué la option 'all' al creator que la había borrado por error. 
 git commit -m "Improved comments to explain how to switch between fetching data from Spoonacular and hardcoding it in files recipesControllers.js, apiRecipesHelpers.js, actionsIndex.js. Added 'all' option to creator filter in Filters.jsx." 
 
-Próximo paso: reordenar y emprolijar componente Card.jsx para que sea similar al Detail.jsx. Rever si no es mejor que Cards.jsx reciba currentRecipes directamente del globalState en vez de recibirlo por props a través de Home.jsx. 
 
 Card.jsx. Detail.jsx. Reemplacé name, image y diets por los que tenía en Detail.jsx. Agregué healthscore para chequear si funciona bien el sort. Reemplacé NavLink por Link dentro de un botón. 
 reducerIndex.js. Arreglé el case SORT_RECIPES_BY_HEALTHSCORE que ordenaba al revés de como esperaba. 
 git commit -m "Reordered elements in Card.jsx. Fixed case sort_recipe_by_health in reducer.js to sort properly"
+
+Modifiqué case SORT_RECIPES_BY_ALPHABET para que ordene siendo case insensitive. 
+git commit -m "Fixed case sorte_recipe_alphabet in reducer.js". 
+A futuro ver en el ordenamiento por healthscore que ordena por la api o por client por separado (pero también puede ser por cómo queda seteado el filter creator).
+
+Próximo paso: Searchbar lograr que al no encontrar el name, retorne algo. Para eso, probar agregar try catch en action getRecipesByName. 

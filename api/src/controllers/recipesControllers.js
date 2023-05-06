@@ -11,8 +11,8 @@ const searchAllRecipes = async () => {
 ////////////////////    !!!!!!!!!!!!!!!!!!!! ///////////////////////
     // to fetch data from Spoonacular: comment next line and uncomment the following to that. 
 
-    const apiAllRecipesClean = []; 
-    // const apiAllRecipesClean = await getAllApiRecipesClean();
+    // const apiAllRecipesClean = []; 
+    const apiAllRecipesClean = await getAllApiRecipesClean();
 
 ////////////////////    !!!!!!!!!!!!!!!!!!!! ///////////////////////
 

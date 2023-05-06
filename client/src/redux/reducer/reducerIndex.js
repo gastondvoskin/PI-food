@@ -31,7 +31,7 @@ const reducer = (state = initialState, action) => {
                 filteredAndSortedRecipes: action.payload
             }
 
-        // getDiets             // new
+        // getDiets
         case GET_DIETS:
             return {
                 ...state,
@@ -49,7 +49,7 @@ const reducer = (state = initialState, action) => {
                     
         // filters
         case FILTER_BY_DIET: 
-            const filterDiet = action.payload;        // 'A-Z'
+            const filterDiet = action.payload; 
 
             const filteredRecipesByDiet = filterDiet === 'all'
             ? [...state.allRecipes] 
@@ -91,28 +91,41 @@ const reducer = (state = initialState, action) => {
 
         // Sorts
         case SORT_RECIPES_BY_ALPHABET: 
-            const sortAlphabet = action.payload;        // 'A-Z'
-            // console.log(sortAlphabet)
-            let sortedRecipesByAlphabet = [...state.filteredAndSortedRecipes]; 
-            if (sortAlphabet === 'A-Z') {                   // wip A-Z
-                console.log('aca');
-                sortedRecipesByAlphabet.sort((a, b) => {
-                    if (a.name < b.name) return -1;
-                    if (a.name > b.name) return 1;
-                    return 0;
-                }); 
-            } else if (sortAlphabet === 'Z-A') {            // wip Z-A
-                sortedRecipesByAlphabet.sort((a, b) => {
-                    if (a.name > b.name) return -1;
-                    if (a.name < b.name) return 1;
-                    return 0;
-                });             
-            };
 
+            const sortAlphabet = action.payload;        // 'A-Z'
+
+            let sortedRecipesByAlphabet = [...state.filteredAndSortedRecipes]; 
+
+            sortedRecipesByAlphabet.sort((a, b) => { 
+                const nameA = a.name.toLowerCase();
+                const nameB = b.name.toLowerCase();
+
+                if (sortAlphabet === 'A-Z') {
+                    if (nameA < nameB) {
+                      return -1;
+                    }
+                    if (nameA > nameB) {
+                      return 1;
+                    }
+                    return 0;
+                };
+
+                if (sortAlphabet === 'Z-A') {
+                    if (nameA < nameB) {
+                      return 1;
+                    }
+                    if (nameA > nameB) {
+                      return -1;
+                    }
+                    return 0;
+                };    
+            })
+                
             return {
                 ...state,
                 filteredAndSortedRecipes: sortedRecipesByAlphabet  
             }
+
 
 
         case SORT_RECIPES_BY_HEALTHSCORE:  

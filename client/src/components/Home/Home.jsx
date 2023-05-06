@@ -29,11 +29,11 @@ const Home = () => {
             try {
                 await dispatch(getRecipes());
                 await dispatch(getDiets());
-                setIsLoading(false);
             } catch (error) {
-                console.log("in the catch");
+                console.log("in the catch. Check if the API is up and running ");
                 console.log(error.response?.data?.error);
             }
+            setIsLoading(false);
         };
         fetchRecipesAndDiets();
     }, [dispatch]);             // va el dispatch en el array de dependencias? Por qué? 
