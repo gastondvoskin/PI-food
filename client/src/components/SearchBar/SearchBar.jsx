@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from './SearchBar.module.css';
 import { useDispatch } from "react-redux";
-import { getRecipesByName } from "../../redux/actions/actionsIndex";
+import { getRecipesByName, resetFilters } from "../../redux/actions/actionsIndex";
 
 
 const SearchBar = () => {
@@ -16,9 +16,25 @@ const SearchBar = () => {
     };
 
     const handleClick = () => {
-        dispatch(getRecipesByName(name)); 
         setName('');
+        dispatch(getRecipesByName(name)); 
+
+        // por qué el try catch no funciona acá pero sí funciona en actionsIndex.js???? Lo quiero hacer con try catch para renderizar condicionalmente un mensaje que diga "No recipes found"
+        
+        // try {
+        //     dispatch(getRecipesByName(name)); 
+        // } catch (error) {
+        //     console.log('acsdfsdf');
+        //     console.log(error.response?.data.error);
+        // }
     };
+
+    // handleReset (copied from Filters.jsx)
+    const handleReset = (event) => {
+        setName('');
+        dispatch(resetFilters());
+    };
+    
 
     return (
         <div>
@@ -34,6 +50,8 @@ const SearchBar = () => {
                 onClick={handleClick}>
                 Search
             </button>
+
+            <button onClick={handleReset}>Reset</button>
 
             <hr />
         </div>

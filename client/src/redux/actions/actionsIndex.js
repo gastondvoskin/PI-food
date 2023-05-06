@@ -32,12 +32,16 @@ export const SORT_RECIPES_BY_HEALTHSCORE = 'SORT_RECIPES_BY_HEALTHSCORE';
 // getRecipes (all)
 export const getRecipes = () => {
     return async (dispatch) => {
-        const recipesRaw = await axios.get('http://localhost:3001/recipes');
-        const recipesClean = recipesRaw.data;
-        return dispatch({
-            type: GET_RECIPES,
-            payload: recipesClean
-        });
+        try {
+            const recipesRaw = await axios.get('http://localhost:3001/recipes');
+            const recipesClean = recipesRaw.data;
+            return dispatch({
+                type: GET_RECIPES,
+                payload: recipesClean
+            });    
+        } catch (error) {
+            console.log('aca');
+        } 
     };
 };
 
@@ -45,12 +49,25 @@ export const getRecipes = () => {
 // getRecipesByName (filter in back)
 export const getRecipesByName = (name) => {
     return async (dispatch) => {
-        const recipesByNameRaw = await axios.get(`http://localhost:3001/recipes?name=${name}`);
-        const recipesByNameClean = recipesByNameRaw.data;
-        return dispatch({
-            type: GET_RECIPES_BY_NAME,
-            payload: recipesByNameClean
-        });
+        try {
+            const recipesByNameRaw = await axios.get(`http://localhost:3001/recipes?name=${name}`);
+            const recipesByNameClean = recipesByNameRaw.data;
+            return dispatch({
+                type: GET_RECIPES_BY_NAME,
+                payload: recipesByNameClean
+            });
+        } catch (error) {
+            console.log(error.response);
+            alert('There are no recipes with this name, please try another one');
+        }
+
+        // const recipesByNameRaw = await axios.get(`http://localhost:3001/recipes?name=${name}`);
+        // const recipesByNameClean = recipesByNameRaw.data;
+        // return dispatch({
+        //     type: GET_RECIPES_BY_NAME,
+        //     payload: recipesByNameClean
+        // });
+
     };
 };
 

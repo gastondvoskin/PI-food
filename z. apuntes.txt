@@ -522,4 +522,8 @@ Modifiqué case SORT_RECIPES_BY_ALPHABET para que ordene siendo case insensitive
 git commit -m "Fixed case sorte_recipe_alphabet in reducer.js". 
 A futuro ver en el ordenamiento por healthscore que ordena por la api o por client por separado (pero también puede ser por cómo queda seteado el filter creator).
 
-Próximo paso: Searchbar lograr que al no encontrar el name, retorne algo. Para eso, probar agregar try catch en action getRecipesByName. 
+Próximo paso: Searchbar lograr que al no encontrar el name, retorne algo. Para eso, probar agregar try catch en action getRecipesByName. Lograr que se puedan volver a ver las demás recetas (eliminando este filtro searchBar). Mejor, trycatch en el dispatch desde SearchBar. 
+
+SearchBar. Copié el Reset de Filters.jsx. 
+actionsIndex.js: agregué un trycatch en actionsIndex.js a getRecipesByName para que si no encuentra la receta responda con un alert. Lo quiero hacer con try catch en SearchBar para renderizar condicionalmente un mensaje que diga "No recipes found", pero no me funciona. 
+git commit -m "Handled errors in getRecipesByName action when no recipes are found un the searchbar. Copied the reset from Filters.jsx to SearchBar.jsx. 
