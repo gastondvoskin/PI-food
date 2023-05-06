@@ -491,5 +491,9 @@ Modifiqué el return de Detail.jsx para que renderice normalmente el div sin el 
 
 git commit -m "Detail.jsx: reordered titles, added conditional renders for each property received from the back-end, added validation for inexistentsId in which case it navigates to /inexistenID. Added a local state isLoading which sets to false when the data is fetched. Added Error404.jsx component and routed it in App.jsx." 
 
-Próximo paso: componente Card.jsx. Reordenar y emprolijar para que sea similar al Detail.jsx. 
-El summary que viene de la DB hay que emprloijarlo. 
+Próximo paso: El summary que viene de la API hay que emprloijarlo. 
+model Recipe.js. Cambié steps allowNull: true por false ya que en Spoonacular hay recipes sin steps. Cambié el dataTypes de steps a type: DataTypes.ARRAY(DataTypes.TEXT) porque hay steps de más de 255 caracteres. 
+En Detail.jsx agregué validación steps[0] !== '' porque desde el Form siempre envío al menos un elemento porque así inicio su estado local. 
+git commit -m "Detail.jsx: improved summary render. Improved steps validation. Recipe.js model: updated steps Datatypes and allowNull."  
+
+Próximo paso: reordenar y emprolijar componente Card.jsx para que sea similar al Detail.jsx. 

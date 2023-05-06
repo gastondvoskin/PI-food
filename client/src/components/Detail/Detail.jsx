@@ -53,11 +53,14 @@ const Detail = (props) => {
                 {healthscore ? <p>{`Healthscore: ${healthscore} / 100`}</p> : <h2>No healthscore provided</h2>} 
 
                 <h4>Summary:</h4>
-                {summary ? <p>{summary}</p> : <h2>No summary provided</h2>} 
+                <div className={styles.summarycontainer}>
+                    {summary ? <p dangerouslySetInnerHTML={{ __html: summary }}></p> : <h2>No summary provided</h2>} 
+                </div>
+                {/* {summary ? <p>{summary}</p> : <h2>No summary provided</h2>}  */}
 
                 <h4>Steps:</h4>
                 {
-                    steps && steps.length 
+                    steps && steps.length && steps[0] !== ''
                     ? <div>
                         <ol>
                             {

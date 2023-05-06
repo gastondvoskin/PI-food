@@ -55,12 +55,12 @@ export const getRecipesByName = (name) => {
 };
 
 
-
+////////////////////////////////////////////////  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!  ////////////////////////////
 // getDiets             // new
 export const getDiets = () => {
     return async (dispatch) => {
-        // const dietsRaw = await axios.get('http://localhost:3001/diets');     // uncomment to make th request to Spoonacular
-        // const dietsClean = dietsRaw.data;                                    // uncomment to make th request to Spoonacular
+        // const dietsRaw = await axios.get('http://localhost:3001/diets');     // uncomment to make the request to Spoonacular
+        // const dietsClean = dietsRaw.data;                                    // uncomment to make the request to Spoonacular
         const dietsClean = ['vegetarian', 'vegan', 'whole 30', 'ketogenic'];     // hardcodeado para no hacer peticiones a Spoonacular
 
         return dispatch({

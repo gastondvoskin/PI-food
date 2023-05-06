@@ -28,8 +28,8 @@ module.exports = (sequelize) => {
         allowNull: false
       }, 
       steps: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
-        allowNull: false
+        type: DataTypes.ARRAY(DataTypes.TEXT),
+        allowNull: true
       },
       created: {
         type: DataTypes.BOOLEAN,
