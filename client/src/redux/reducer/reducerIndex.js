@@ -22,29 +22,29 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 allRecipes: action.payload,
                 filteredAndSortedRecipes: action.payload
-            }
+            };
 
         // getRecipesByName (filter in back)
         case GET_RECIPES_BY_NAME:
             return {
                 ...state,
                 filteredAndSortedRecipes: action.payload
-            }
+            };
 
         // getDiets
         case GET_DIETS:
             return {
                 ...state,
                 diets: action.payload
-            }
+            };
 
         // createRecipe 
         case CREATE_RECIPE:
-            console.log('action.payload: ', action.payload);
+            console.log('action.payload: ', action.payload); 
             return {
                 ...state,
                 allRecipes: [...state.allRecipes, action.payload]        
-            }
+            };
 
                     
         // filters
@@ -52,13 +52,13 @@ const reducer = (state = initialState, action) => {
             const filterDiet = action.payload; 
 
             const filteredRecipesByDiet = filterDiet === 'all'
-            ? [...state.allRecipes] 
-            : state.allRecipes.filter((recipe) => recipe.diets.includes(filterDiet))
+            ? [...state.allRecipes]
+            : state.allRecipes.filter((recipe) => recipe.diets.includes(filterDiet));
 
             return {
                 ...state,
                 filteredAndSortedRecipes: [...filteredRecipesByDiet] 
-            }
+            };
 
 
         case FILTER_BY_CREATOR: 
@@ -71,13 +71,13 @@ const reducer = (state = initialState, action) => {
                     return recipe.created === true;
                 } else {
                     return recipe.created === false;
-                }
+                };
             });
 
             return {
                 ...state,
                 filteredAndSortedRecipes: [...filteredRecipesByCreator] 
-            }
+            };
 
 
         case RESET_FILTERS:
@@ -85,7 +85,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 filteredAndSortedRecipes
-            }
+            };
 
 
 
@@ -119,12 +119,12 @@ const reducer = (state = initialState, action) => {
                     }
                     return 0;
                 };    
-            })
+            });
                 
             return {
                 ...state,
                 filteredAndSortedRecipes: sortedRecipesByAlphabet  
-            }
+            };
 
 
 
@@ -146,12 +146,12 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 filteredAndSortedRecipes: sortedRecipesByHealthscore
-            }        
+            };      
 
         
         // default
         default:
-            return {...state}
+            return {...state};
             
     };
 };

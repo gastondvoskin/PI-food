@@ -5,14 +5,14 @@ import { Link } from "react-router-dom";
 
 // redux
 import { useDispatch, useSelector } from 'react-redux';
-import { getRecipes, getDiets } from "../../redux/actions/actionsIndex.js";
+import { getRecipes, getDiets } from "../../../redux/actions/actionsIndex";
 
 // componentes a renderizar
-import SearchBar from "../SearchBar/SearchBar.jsx";
-import Filters from "../Filters/Filters.jsx";
-import Sorting from "../Sorting/Sorting.jsx";
-import Pagination from "../Pagination/Pagination.jsx";
-import Cards from "../Cards/Cards.jsx";
+import SearchBar from "../../SearchBar/SearchBar.jsx";
+import Filters from "../../Filters/Filters.jsx";
+import Sorting from "../../Sorting/Sorting.jsx";
+import Pagination from "../../Pagination/Pagination.jsx";
+import Cards from "../../CardsContainer/CardsContainer.jsx";
 
 
 const Home = () => {

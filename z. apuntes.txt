@@ -527,3 +527,35 @@ Próximo paso: Searchbar lograr que al no encontrar el name, retorne algo. Para 
 SearchBar. Copié el Reset de Filters.jsx. 
 actionsIndex.js: agregué un trycatch en actionsIndex.js a getRecipesByName para que si no encuentra la receta responda con un alert. Lo quiero hacer con try catch en SearchBar para renderizar condicionalmente un mensaje que diga "No recipes found", pero no me funciona. 
 git commit -m "Handled errors in getRecipesByName action when no recipes are found un the searchbar. Copied the reset from Filters.jsx to SearchBar.jsx. 
+
+Próximo paso:
+- Descubrir por qué no puedo hacer try catch en SearchBar.jsx
+- Añadir validaciones al Form.jsx. 
+
+Eliminar App.css, reportWebVitals.js, setupTests.js, App.test.js. A futuro borrar index.css. 
+Reorganicé carpetas de componentes. 
+- Views: Landing, Home, Detail. Form. 
+Reemplacé en index.js ReadDOM.render por createRoot. 
+Landing.jsx. Reemplacé NavLink por Link dentro de button. 
+Nav.jsx. Reemplacé NavLink por Link. 
+Filters.jsx. Agregué key al map. 
+Eliminté selected (en selected disabled) de Filters.jsx y Sorting.jsx porque no produce efecto y genera un warning en consola. 
+Agregué un css básico al Nav. 
+Reemplacé el nombre del componente Cards por CardsContainer. 
+Eliminé Link de CardsContainer.jsx. 
+Agregué un css básico a CardsContainer. 
+Agregué varios punto y coma al reducer. 
+Apunte: CardsContainer (en mi caso Home que le pasa por props a CardsContainer) hace useSelector y no le interesa cómo redux trae la info, Redux y React funcionan por separado. A su vez, redux hace una llamada al back y tampoco le interesa cómo el server trae la info. 
+
+git commit -m "Added basic css, fixed minor issues in multiple files"
+
+////////////////////
+Resumen de pasos:
+1. Configuración: CRA, npm i, borrar lo innecesario. Probar renderizar un <div> en App. 
+2. Rutas. BrowserRouter en index.js y App.jsx. views. Landing, Home, Detail, Form. 
+3. NavBar. Link. para desarrollar: todas las views. 
+ components. 
+4. CardsContainer. Mapear array (de recipes, videogames, pokemons, countries, etc). Renderizar una Card por cada objeto mapeado pasándole por props las propiedades del objeto que se quieran renderizar. Antes de usar Redux, probarlo con un array de objetos inventado (copiarlo de api externa o de Postman). 
+5. Card. Renderizar props recibidas. link a Detail. 
+6. css básico. margin, border, display, flex-direction, flex-wrap. En Nav, CardsContainer, Card. 
+7. redux. store (copiar configuración básica), reducer, actions, actions-types. En index.js, Envolver BrowserRouter (o App si no hay BrowserRouter) dentro de Provider pasándole el store. Chequear que haya global state en redux devtools (browser). Probar agregar el array de objetos hardcodeado al globalState y traerlo con useSelector desde CardsContainer para mapearlo. 

@@ -1,17 +1,9 @@
-.background {
-    background-image: url('../../assets/1.jpeg');
+/* .background {
+    background-image: url('../../../assets/1.jpeg');
     background-size: cover;
     background-position: center;
-}
-
-.link {
-    text-decoration: none;
-    color: white;
-}
-  
-/* .activeLink {
-    color: grey;
 } */
+
   
 /* body {
     background-image: url('../../assets/2.png');

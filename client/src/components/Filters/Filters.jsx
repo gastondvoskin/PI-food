@@ -37,19 +37,19 @@ const Filters = () => {
     return (
         <div>
             <select name="diet" value={selectedDiet} onChange={handleSelectDiet}>
-                <option value="" disabled selected>Diet</option>
+                <option value="" disabled>Diet</option>
                 <option value="all">all</option>
                 { 
-                    diets.map((diet) => {
+                    diets.map((diet, index) => {
                         return (
-                            <option value={diet}>{diet}</option>
+                            <option key={index} value={diet}>{diet}</option>
                         );
                     })
                 }
             </select>
             
             <select name="all" value={selectedCreator} onChange={handleSelectCreator}>
-                <option value="" disabled selected>Creator</option>
+                <option value="" disabled>Creator</option>
                 <option value="all">all</option>
                 <option value="spoonacular">spoonacular</option>
                 <option value="client">client</option>

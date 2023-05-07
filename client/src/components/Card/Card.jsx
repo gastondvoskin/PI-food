@@ -6,7 +6,7 @@ const Card = ({ name, image, diets, id, healthscore }) => {     /* healthscore t
 
 // return con info similar a la de Detail.jsx
     return (
-        <div>
+        <div className={styles.mainContainer}>
             {name ? <h2>{name}</h2> : <h2>No name provided</h2>} 
 
             {image ? <img src={image}  width="200px" height="200px"/> : <h2>No image provided</h2>} 

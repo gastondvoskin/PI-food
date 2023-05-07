@@ -1,8 +1,9 @@
-.link {
-    text-decoration: none;
-    color: white;
+.mainContainer {
+    margin: 2px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border: solid white 1px;
+    /* border-radius: 0%; */
+    /* background-color: grey; */
 }
-  
-/* .activeLink {
-    color: grey;
-} */

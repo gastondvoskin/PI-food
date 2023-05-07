@@ -1,8 +1,7 @@
 // A futuro chequear si es mejor el nombre Cards o es preferible Recipes. 
 
 import React, { useState } from "react";
-import styles from './Cards.module.css';
-import { Link } from "react-router-dom";
+import styles from "./CardsContainer.module.css";
 import { useSelector } from "react-redux";
 // componentes a renderizar
 import Card from "../Card/Card.jsx";
@@ -11,7 +10,7 @@ const Cards = ({ currentRecipes }) => {
     
         
     return (
-        <div>
+        <div className={styles.mainContainer}>
             {
                 currentRecipes.map((recipe, index) => {
                     return (

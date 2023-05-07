@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from './Form.module.css';
-import { createRecipe } from "../../redux/actions/actionsIndex";
+import { createRecipe } from "../../../redux/actions/actionsIndex";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
