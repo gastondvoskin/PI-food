@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from './Form.module.css';
 import { createRecipe } from "../../../redux/actions/actionsIndex";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,47 +12,122 @@ const Form = () => {
 
     const diets = useSelector((state) => state.diets); 
 
-
     // local state
-    const initialState = {
+    const initialFormState = {
         name: '',
         summary: '',
         healthscore: '',
         image: '',
-        steps: [''],        // new  -------------------------------- STEPS
+        steps: [''], 
         diets: [], 
     };
 
-    const [dataToCreateRecipe, setDataToCreateRecipe] = useState(initialState);
-
-
-    // general inputs handler
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        setDataToCreateRecipe({
-            ...dataToCreateRecipe,
-            [name]: value
-        });
+    const initialErrorsState = {
+        name: '',
+        summary: '',
+        healthscore: '',
+        image: '',
+        steps: '', 
+        diets: '', 
     };
 
 
+    const [form, setForm] = useState(initialFormState);
+    const [errors, setErrors] = useState(initialErrorsState);
+
+
+
+    // validation
+    const validateName = (form) => {
+        if (form.name.length > 10) { // update number          
+            setErrors({...errors, name: 'Max 10 characters'});
+        } else if(form.name === '') { // update number
+            setErrors({...errors, name: 'Required field'});
+        } else {
+            setErrors({...errors, name: ''}); 
+        };
+    };
+
+    const validateSummary = (form) => {
+        if (form.summary.length > 15) {
+            setErrors({...errors, summary: 'Max 15 characters'});
+        } else if (form.summary === '') {
+            setErrors({...errors, summary: 'Required field'})
+        } else {
+            setErrors({...errors, summary: ''}); 
+        };
+    };
+
+    const validateHealthscore = (form) => {
+        if (form.healthscore < 0) {
+            setErrors({...errors, healthscore: 'Min value: 0'});
+        } else if (form.healthscore > 100) {
+            setErrors({...errors, healthscore: 'Max value: 100'});
+        } else if (form.healthscore === '') {
+            setErrors({...errors, healthscore: 'Required field'})
+        } else {
+            setErrors({...errors, healthscore: ''}); 
+        };
+    };
+
+    const validateImage = (form) => {
+        if (!urlRegex.test(form.image)) {
+            setErrors({...errors, image: 'Invalid URL'});
+        } else {
+            setErrors({...errors, image: ''}); 
+        };
+    };
+
+
+    const urlRegex = /\bhttps?:\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?/i;
+
+    // general inputs handler
+    const handleChange = (event) => { 
+        const { name, value } = event.target;
+        console.log('name: ', name);
+        const updatedForm = {
+            ...form,
+            [name]: value
+        }
+        setForm(updatedForm);
+        // the local state takes some time to update. I didn't do it with useEffect because I want the first state to be with no errors set. 
+        // I validate with different functions, so each one validates only the event.target.name
+        switch (name) {
+            case 'name':
+                validateName(updatedForm);
+                break;
+            case 'summary':
+                validateSummary(updatedForm);
+                break;
+            case 'healthscore':
+                validateHealthscore(updatedForm);
+                break;
+            case 'image': 
+                validateImage(updatedForm);
+                break;
+            default:
+                break;
+        };
+      };
+    
+
     // steps input handler
-    const handleStepsChange = (event) => {              // new -------------------------------- STEPS
+    const handleStepsChange = (event) => { 
         const { id, value } = event.target;
         const idParsed = Number(id);
 
-        setDataToCreateRecipe({
-            ...dataToCreateRecipe,
-            steps: [...dataToCreateRecipe.steps.slice(0, idParsed), value, ...dataToCreateRecipe.steps.slice(idParsed + 1)]
+        setForm({
+            ...form,
+            steps: [...form.steps.slice(0, idParsed), value, ...form.steps.slice(idParsed + 1)]
         });
     };
 
 
     // addStep button handler
     const handleAddStep = () => {
-        setDataToCreateRecipe({
-            ...dataToCreateRecipe,
-            steps: [...dataToCreateRecipe.steps, ""]      // adds an empty element to steps
+        setForm({
+            ...form,
+            steps: [...form.steps, ""]      // adds an empty element to steps
         });
     };
 
@@ -61,14 +136,14 @@ const Form = () => {
     const handleDietsChange = (event) => {
         const { name, checked } = event.target;
         if (checked) {
-            setDataToCreateRecipe({
-                ...dataToCreateRecipe,
-                diets: [...dataToCreateRecipe.diets, name]
+            setForm({
+                ...form,
+                diets: [...form.diets, name]
             });
         } else {
-            setDataToCreateRecipe({
-                ...dataToCreateRecipe,
-                diets: [...dataToCreateRecipe.diets.filter((diet) => diet !== name)]
+            setForm({
+                ...form,
+                diets: [...form.diets.filter((diet) => diet !== name)]
             });
         };
     };
@@ -78,114 +153,102 @@ const Form = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         // logica: dispatch createRecipe pasándole un objeto con toda la info
-        // console.log('dataToCreateRecipe: ', dataToCreateRecipe); 
-        dispatch(createRecipe(dataToCreateRecipe));
+        // console.log('form: ', form); 
+        dispatch(createRecipe(form));
         ///// agregar validación (mostrar objeto que me devuelve el back) o rechazo
-        setDataToCreateRecipe(initialState);
+        setForm(initialFormState);
     };
 
 
+    // return
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <p>Create your own recipe</p>
+                <h2>Create your own recipe</h2>
 
-                <label htmlFor="name">Name</label>
-                <br />
-                <input
-                    name="name"
-                    type="text"
-                    value={dataToCreateRecipe.name}
-                    onChange={handleChange}
-                    placeholder="Name...">
-                </input>
-                <br />
+                <div>
+                    <label htmlFor="name">Name: </label>
+                    <br />
+                    <input 
+                        name="name" type="text" placeholder="Name..."
+                        value={form.name} onChange={handleChange} 
+                    /> 
+                    {errors.name && <p>{errors.name}</p>}
+                    <br />
+                </div>
 
-                <label htmlFor="summary">Summary</label>
-                <br />
-                <textarea
-                    name="summary"
-                    value={dataToCreateRecipe.summary}
-                    onChange={handleChange}
-                    placeholder="Summary..."
-                    rows="5"
-                    cols="50">
-                </textarea>
-                <br />
+                <div>
+                    <label htmlFor="summary">Summary: </label>
+                    <br />
+                    <textarea 
+                        name="summary" placeholder="Summary..."
+                        rows="5" cols="50"
+                        value={form.summary} onChange={handleChange}
+                    />
+                    <br />
+                </div>
 
-                <label htmlFor="healthscore">Healthscore</label>
-                <br />
-                <input
-                    name="healthscore"
-                    type="number"
-                    value={dataToCreateRecipe.healthscore}
-                    onChange={handleChange}
-                    placeholder="0 to 100">
-                </input>
-                <br />
+                <div>
+                    <label htmlFor="healthscore">Healthscore: </label>
+                    <br />
+                    <input
+                        name="healthscore" type="number" placeholder="0 to 100"
+                        value={form.healthscore} onChange={handleChange}
+                    />
+                    <br />
+                </div>
 
 
+                <div>
+                    <label htmlFor="steps">Steps: </label> 
+                    <br />
 
-                <label htmlFor="steps">Steps</label>            {/* -------------------------------- STEPS */}
-                <br />
+                    {
+                        form.steps.map((step, index) => { 
+                            return (
+                                <div key={index}>
+                                    <textarea
+                                        id={index} placeholder={`Step ${index + 1}`} rows="2" cols="50" 
+                                        value={step} onChange={handleStepsChange}
+                                    />
+                                    <br />
+                                </div>
+                            )
+                        })
+                    }
 
-                {
-                    dataToCreateRecipe.steps.map((step, index) => { 
-                        return (
-                            <div key={index}>
-                                <textarea
-                                    id={index}
-                                    value={step}
-                                    onChange={handleStepsChange}
-                                    placeholder={`Step ${index + 1}`}
-                                    rows="2"
-                                    cols="50"> 
-                                </textarea>
-                                <br />
-                            </div>
-                        )
-                    })
-                }
+                    <button type="button" onClick={handleAddStep}>Add step</button>
+                    <br />
+                </div>
+                
+                <div>
+                    <label htmlFor="image">Image: </label>
+                    <br />
+                    <input
+                        name="image" type="text" placeholder="URL..."
+                        value={form.image} onChange={handleChange}
+                    />
+                    <br />
+                </div>
+                
+                <div>
+                    <label htmlFor="diets">Diets: </label>
+                    {
+                        diets.map((diet, index) => {
+                            return (
+                                <div key={index}>
+                                    <label htmlFor={diet}>{diet}</label>
+                                    <input
+                                        name={diet} 
+                                        type="checkbox"
+                                        onChange={handleDietsChange}
+                                    />
+                                </div> 
+                            );
+                        })
+                    }
+                </div>
 
-
-                <button 
-                    type="button"
-                    onClick={handleAddStep}>
-                    Add step
-                </button>
-                <br />
-
-
-
-
-
-                <label htmlFor="image">Image</label>
-                <br />
-                <input
-                    name="image"
-                    value={dataToCreateRecipe.image}
-                    onChange={handleChange}
-                    placeholder="URL...">
-                </input>
-                <br />
-
-
-                <label htmlFor="diets">Diets</label>
-                {
-                    diets.map((diet, index) => {
-                        return (
-                            <div key={index}>
-                                <label htmlFor={diet}>{diet}</label>
-                                <input
-                                    name={diet}
-                                    type="checkbox"
-                                    onChange={handleDietsChange}
-                                    >
-                                </input>
-                            </div> 
-                        );
-                    })
-                }
 
                 <button type="submit">Create recipe</button>
 

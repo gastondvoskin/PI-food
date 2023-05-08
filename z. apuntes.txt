@@ -545,12 +545,46 @@ Reemplacé el nombre del componente Cards por CardsContainer.
 Eliminé Link de CardsContainer.jsx. 
 Agregué un css básico a CardsContainer. 
 Agregué varios punto y coma al reducer. 
+
 Apunte: CardsContainer (en mi caso Home que le pasa por props a CardsContainer) hace useSelector y no le interesa cómo redux trae la info, Redux y React funcionan por separado. A su vez, redux hace una llamada al back y tampoco le interesa cómo el server trae la info. 
 
 git commit -m "Added basic css, fixed minor issues in multiple files"
 
+Próximo paso: ver última lecture de Jorge Vega y seguir anotando pasos. 
+
+Apunte. 
+Redux no puede tener incertidumbre. Para operaciones asíncronas que devuelvan promesas, el store requiere de compose. En las actions, las actions creators con operaciones asíncronas no puede retornar una action, sino que retornan una nueva función que es async, que toma como argumento dispatch y retorna el dispatch de la action. 
+Puedo probar la action con jsonplaceholder. 
+En el reducer no se modifica el estado, sino que se pisa, siempre se retorna un nuevo global state. 
+El useSelector es como un watcher. Cuando el global state cambia, lo que guardo con el useSelector se actualiza y se rerenderiza el componente. Home hace el dispatch cuando se monta, CardsContainer hace el useSelector. 
+
+---- Filtros ----
+Para hacer filtros en el back (por ejemplo filtrar recetas por creador), se crea un nuevo endpoint que luego es llamado en el front con una action de redux. 
+Para hacer filtros en el front, se hace en el reducer. De la info general del estado global, un case filtra esa info y se guarda en una segunda propiedad del estado global sin pisar la propiedad desde donde se sacó la info general. 
+
+---- Flujo de redux con operaciones async: ----
+El componente Home se monta, se ejecuta useEffect, dentro del useEffect se ejecuta dispatch con action creator como argumento. La action creator ejecutada retorna una función async. La función async es tomada por thunkMiddleware. Thunkmiddleware ejecuta la función async, hace dispatch de la action final. Esta action final va al reducer. El reducer evalúa la aaction type, entra en un case, retorna un nuevo estado global que pisa al anterior
+
+Array de dependencias: variables que, en caso de que esa variable se modifique, se ejecuta nuevamente el useEffect. Si no se pone el array de dependencias, se puede loopear el useEffect. Las variables que use dentro del useEffect, ponerlas dentro del array de dependencias. 
+
+En las actions async, reemplacé recipesRaw por apiData y recipesClean por allRecipes. 
+Pasé las actions types a un archivo separado. 
+Cambié el nombre de la action getRecipes por getAllRecipes. 
+Form. Uní label, br, input, br en div. 
+Form. Cambié el nombre de dataToCreateRecipe y setdataToCreateRecipe por form y setForm. 
+Form. Cambié <input></input> por <input />
+Form. Agregar validaciones. 
+
+git commit -m "Implemented validations to Form.jsx. Fixed minor issues in multiple files"
+
+
+
+
+
+
+
 ////////////////////
-Resumen de pasos:
+Resumen de pasos aplicación React Redux:
 1. Configuración: CRA, npm i, borrar lo innecesario. Probar renderizar un <div> en App. 
 2. Rutas. BrowserRouter en index.js y App.jsx. views. Landing, Home, Detail, Form. 
 3. NavBar. Link. para desarrollar: todas las views. 
@@ -558,4 +592,8 @@ Resumen de pasos:
 4. CardsContainer. Mapear array (de recipes, videogames, pokemons, countries, etc). Renderizar una Card por cada objeto mapeado pasándole por props las propiedades del objeto que se quieran renderizar. Antes de usar Redux, probarlo con un array de objetos inventado (copiarlo de api externa o de Postman). 
 5. Card. Renderizar props recibidas. link a Detail. 
 6. css básico. margin, border, display, flex-direction, flex-wrap. En Nav, CardsContainer, Card. 
-7. redux. store (copiar configuración básica), reducer, actions, actions-types. En index.js, Envolver BrowserRouter (o App si no hay BrowserRouter) dentro de Provider pasándole el store. Chequear que haya global state en redux devtools (browser). Probar agregar el array de objetos hardcodeado al globalState y traerlo con useSelector desde CardsContainer para mapearlo. 
+7. redux store. store (copiar configuración básica), reducer, actions, actions-types. En index.js, Envolver BrowserRouter (o App si no hay BrowserRouter) dentro de Provider pasándole el store. Chequear que haya global state en redux devtools (browser). Probar agregar el array de objetos hardcodeado al globalState y traerlo con useSelector desde CardsContainer para mapearlo. 
+8. actions y reducer. request al server. En componente, useSelector y useDispatch. 
+9. Form. initialState, useState. form, label, input, button. value controlado por el localState. Chequear con Components en el browser. handleChange modifica el localState. handleSubmit hace dispatch. Validaciones. 
+
+////////////////////

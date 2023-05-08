@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 // redux
 import { useDispatch, useSelector } from 'react-redux';
-import { getRecipes, getDiets } from "../../../redux/actions/actionsIndex";
+import { getAllRecipes, getDiets } from "../../../redux/actions/actionsIndex";
 
 // componentes a renderizar
 import SearchBar from "../../SearchBar/SearchBar.jsx";
@@ -27,7 +27,7 @@ const Home = () => {
     useEffect( () => {
         const fetchRecipesAndDiets = async () => {
             try {
-                await dispatch(getRecipes());
+                await dispatch(getAllRecipes());
                 await dispatch(getDiets());
             } catch (error) {
                 console.log("in the catch. Check if the API is up and running ");
@@ -36,7 +36,7 @@ const Home = () => {
             setIsLoading(false);
         };
         fetchRecipesAndDiets();
-    }, [dispatch]);             // va el dispatch en el array de dependencias? Por qué? 
+    }, [dispatch]); 
 
 
     // receive filteredAndSortedRecipes from redux. 

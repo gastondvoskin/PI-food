@@ -3,7 +3,7 @@ import {
     FILTER_BY_DIET, FILTER_BY_CREATOR, RESET_FILTERS, 
     SORT_RECIPES_BY_ALPHABET, SORT_RECIPES_BY_HEALTHSCORE, 
     /* GET_RECIPE_DETAIL */ 
-} from "../actions/actionsIndex.js"; 
+} from "../actions/actionsTypes.js"; 
 
 
 const initialState = {
