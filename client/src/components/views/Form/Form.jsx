@@ -27,8 +27,8 @@ const Form = () => {
         summary: '',
         healthscore: '',
         image: '',
-        steps: '', 
-        diets: '', 
+        // steps: '', 
+        // diets: '', 
     };
 
 
@@ -71,7 +71,9 @@ const Form = () => {
     };
 
     const validateImage = (form) => {
-        if (!urlRegex.test(form.image)) {
+        if (form.image === '') {
+            setErrors({...errors, image: 'Required field'})
+        } else if (!urlRegex.test(form.image)) {
             setErrors({...errors, image: 'Invalid URL'});
         } else {
             setErrors({...errors, image: ''}); 
@@ -185,6 +187,7 @@ const Form = () => {
                         rows="5" cols="50"
                         value={form.summary} onChange={handleChange}
                     />
+                    {errors.summary && <p>{errors.summary}</p>}
                     <br />
                 </div>
 
@@ -196,6 +199,7 @@ const Form = () => {
                         value={form.healthscore} onChange={handleChange}
                     />
                     <br />
+                    {errors.healthscore && <p>{errors.healthscore}</p>}
                 </div>
 
 
@@ -229,6 +233,7 @@ const Form = () => {
                         value={form.image} onChange={handleChange}
                     />
                     <br />
+                    {errors.image && <p>{errors.image}</p>}
                 </div>
                 
                 <div>
@@ -249,8 +254,18 @@ const Form = () => {
                     }
                 </div>
 
-
-                <button type="submit">Create recipe</button>
+                    {/* disable button in cases of ...  */}
+                <button 
+                    type="submit" 
+                    disabled={
+                        // !Object.values(errors).some(error => error) &&
+                        errors.name !== '' || errors.summary !== '' || errors.healthscore !== '' || errors.image !== '' || 
+                        form.name === '' || form.summary === '' || form.healthscore === '' || form.image === ''                         
+                        ? "true" 
+                        : ""
+                    } 
+                    >Create recipe
+                </button>
 
             </form>
 

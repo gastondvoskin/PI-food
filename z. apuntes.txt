@@ -574,8 +574,13 @@ Form. Uní label, br, input, br en div.
 Form. Cambié el nombre de dataToCreateRecipe y setdataToCreateRecipe por form y setForm. 
 Form. Cambié <input></input> por <input />
 Form. Agregar validaciones. 
+A futuro averiguar cómo controlar checkboxs y agregar validación a las diets. 
 
-git commit -m "Implemented validations to Form.jsx. Fixed minor issues in multiple files"
+git commit -m "Implemented validations to Form.jsx. Fixed minor issues in multiple files". 
+
+Agregué advertencias cuando hay errores. Impedí hacer submit si hay errores. A futuro modularizar Form.jsx. 
+git commit -m "Added error warnings to Form.jsx. Disabled submit when there are errors"
+
 
 
 
